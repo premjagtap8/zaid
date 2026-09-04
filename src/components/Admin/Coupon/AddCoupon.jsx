@@ -378,7 +378,7 @@ const AddCoupon = () => {
                         CODE
                     ================================= */}
 
-                    <div className="form-group">
+                    <div className="form-group1">
 
                         <label>
                             Coupon Code
@@ -403,7 +403,7 @@ const AddCoupon = () => {
                         DESCRIPTION
                     ================================= */}
 
-                    <div className="form-group">
+                    <div className="form-group1">
 
                         <label>
                             Description
@@ -428,7 +428,7 @@ const AddCoupon = () => {
                         DISCOUNT TYPE
                     ================================= */}
 
-                    <div className="form-group">
+                    <div className="form-group1">
 
                         <label>
                             Discount Type
@@ -461,7 +461,7 @@ const AddCoupon = () => {
                         DISCOUNT VALUE
                     ================================= */}
 
-                    <div className="form-group">
+                    <div className="form-group1">
 
                         <label>
                             Discount Value
@@ -501,7 +501,7 @@ const AddCoupon = () => {
                     {formData.discountType ===
                         "PERCENTAGE" && (
 
-                        <div className="form-group">
+                        <div className="form-group1">
 
                             <label>
                                 Maximum Discount Amount
@@ -533,7 +533,7 @@ const AddCoupon = () => {
                         MIN CART VALUE
                     ================================= */}
 
-                    <div className="form-group">
+                    <div className="form-group1">
 
                         <label>
                             Minimum Cart Value
@@ -559,7 +559,7 @@ const AddCoupon = () => {
                         TOTAL USAGE LIMIT
                     ================================= */}
 
-                    <div className="form-group">
+                    <div className="form-group1">
 
                         <label>
                             Total Usage Limit
@@ -585,7 +585,7 @@ const AddCoupon = () => {
                         PER USER LIMIT
                     ================================= */}
 
-                    <div className="form-group">
+                    <div className="form-group1">
 
                         <label>
                             Usage Limit Per User
@@ -610,7 +610,7 @@ const AddCoupon = () => {
                         START DATE
                     ================================= */}
 
-                    <div className="form-group">
+                    <div className="form-group1">
 
                         <label>
                             Start Date
@@ -634,7 +634,7 @@ const AddCoupon = () => {
                         END DATE
                     ================================= */}
 
-                    <div className="form-group">
+                    <div className="form-group1">
 
                         <label>
                             End Date
@@ -658,7 +658,7 @@ const AddCoupon = () => {
                         STATUS
                     ================================= */}
 
-                    <div className="form-group">
+                    <div className="form-group1">
 
                         <label>
                             Status
@@ -691,7 +691,7 @@ const AddCoupon = () => {
                         BUTTONS
                     ================================= */}
 
-                    <div className="coupon-actions">
+                    <div className="add-coupon-actions">
 
                         <button
                             type="button"

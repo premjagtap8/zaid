@@ -242,7 +242,7 @@ const res = await axios.get(
               <p>No customers found.</p>
             </div>
           ) : (
-            <table className="custom-table">
+            <table className="custom-table1">
               <thead>
                 <tr>
                   <th>Customer Name</th>

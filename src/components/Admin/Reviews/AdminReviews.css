@@ -1,464 +1,1148 @@
+/* =========================================================
+   ADMIN REVIEWS PAGE
+   ========================================================= */
+
 .admin-reviews-page {
-  width: 100%;
-  padding: 24px;
-  background: #f8fafc;
-  min-height: 100%;
-  box-sizing: border-box;
+    width: 100%;
+    min-height: 100%;
+
+    padding: 24px;
+
+    background: #f8fafc;
+    color: #111827;
+
+    box-sizing: border-box;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
 }
 
 
-/* =====================================
+/* =========================================================
    HEADER
-===================================== */
+   ========================================================= */
 
 .admin-reviews-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 24px;
 }
 
 .admin-reviews-header h1 {
-  margin: 0;
-  font-size: 28px;
-  font-weight: 700;
-  color: #111827;
+    margin: 0;
+
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 700;
+
+    color: #111827;
 }
 
 .admin-reviews-header p {
-  margin: 7px 0 0;
-  color: #6b7280;
-  font-size: 14px;
+    margin: 7px 0 0;
+
+    color: #6b7280;
+
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 
-/* =====================================
+/* =========================================================
    SUMMARY
-===================================== */
+   ========================================================= */
 
 .review-summary {
-  display: grid;
-  grid-template-columns:
-    repeat(4, minmax(0, 1fr));
+    display: grid;
 
-  gap: 16px;
-  margin-bottom: 24px;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-bottom: 24px;
 }
 
 .review-summary-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.04);
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    padding: 20px;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.04);
+
+    box-sizing: border-box;
+
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .review-summary-card span {
-  display: block;
-  color: #6b7280;
-  font-size: 14px;
-  margin-bottom: 8px;
+    display: block;
+
+    color: #6b7280;
+
+    font-size: 14px;
+
+    margin-bottom: 8px;
 }
 
 .review-summary-card strong {
-  font-size: 26px;
-  color: #111827;
+    font-size: 26px;
+
+    color: #111827;
 }
 
 .review-summary-card.pending strong {
-  color: #d97706;
+    color: #d97706;
 }
 
 .review-summary-card.approved strong {
-  color: #16a34a;
+    color: #16a34a;
 }
 
 .review-summary-card.rejected strong {
-  color: #dc2626;
+    color: #dc2626;
 }
 
 
-/* =====================================
+/* =========================================================
    FILTER
-===================================== */
+   ========================================================= */
 
 .review-filter-bar {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 20px;
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 20px;
+
+    flex-wrap: wrap;
 }
 
 .review-filter-bar button {
-  border: 1px solid #e5e7eb;
-  background: #ffffff;
-  padding: 9px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
+    border: 1px solid #e5e7eb;
+
+    background: #ffffff;
+
+    color: #374151;
+
+    padding: 9px 18px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .review-filter-bar button:hover {
-  background: #f3f4f6;
+    background: #f3f4f6;
 }
 
 .review-filter-bar button.active {
-  background: #111827;
-  color: #ffffff;
-  border-color: #111827;
+    background: #111827;
+
+    color: #ffffff;
+
+    border-color: #111827;
 }
 
 
-/* =====================================
+/* =========================================================
    TABLE
-===================================== */
+   ========================================================= */
 
 .reviews-table-wrapper {
-  width: 100%;
-  overflow-x: auto;
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
+    width: 100%;
+
+    overflow-x: auto;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    box-sizing: border-box;
+
+    -webkit-overflow-scrolling: touch;
 }
 
 .reviews-table {
-  width: 100%;
-  min-width: 1100px;
-  border-collapse: collapse;
+    width: 100%;
+
+    min-width: 1100px;
+
+    border-collapse: collapse;
 }
 
 .reviews-table th {
-  background: #f9fafb;
-  color: #374151;
-  font-size: 13px;
-  font-weight: 700;
-  text-align: left;
-  padding: 14px 16px;
-  border-bottom: 1px solid #e5e7eb;
+    background: #f9fafb;
+
+    color: #374151;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    text-align: left;
+
+    padding: 14px 16px;
+
+    border-bottom: 1px solid #e5e7eb;
+
+    white-space: nowrap;
 }
 
 .reviews-table td {
-  padding: 16px;
-  border-bottom: 1px solid #f1f5f9;
-  vertical-align: top;
-  color: #374151;
-  font-size: 14px;
+    padding: 16px;
+
+    border-bottom: 1px solid #f1f5f9;
+
+    vertical-align: top;
+
+    color: #374151;
+
+    font-size: 14px;
+}
+
+.reviews-table tbody tr {
+    transition: background-color 0.2s ease;
 }
 
 .reviews-table tbody tr:hover {
-  background: #fafafa;
+    background: #fafafa;
 }
 
 
-/* =====================================
+/* =========================================================
    CUSTOMER
-===================================== */
+   ========================================================= */
 
 .review-customer {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
 }
 
 .review-customer strong {
-  color: #111827;
+    color: #111827;
 }
 
 .review-customer small {
-  color: #6b7280;
+    color: #6b7280;
 }
 
 
-/* =====================================
+/* =========================================================
    STARS
-===================================== */
+   ========================================================= */
 
 .review-stars {
-  display: flex;
-  gap: 2px;
-  margin-bottom: 3px;
+    display: flex;
+
+    gap: 2px;
+
+    margin-bottom: 3px;
 }
 
 .review-stars span {
-  font-size: 16px;
-  color: #d1d5db;
+    font-size: 16px;
+
+    color: #d1d5db;
 }
 
 .review-stars span.filled {
-  color: #f59e0b;
+    color: #f59e0b;
 }
 
 
-/* =====================================
+/* =========================================================
    COMMENT
-===================================== */
+   ========================================================= */
 
 .review-comment {
-  max-width: 280px;
-  line-height: 1.5;
-  color: #4b5563;
-  word-break: break-word;
+    max-width: 280px;
+
+    line-height: 1.5;
+
+    color: #4b5563;
+
+    word-break: break-word;
+
+    overflow-wrap: anywhere;
 }
 
 
-/* =====================================
+/* =========================================================
    VERIFIED
-===================================== */
+   ========================================================= */
 
 .verified-badge {
-  display: inline-flex;
-  padding: 5px 9px;
-  border-radius: 20px;
-  background: #dcfce7;
-  color: #15803d;
-  font-size: 12px;
-  font-weight: 600;
+    display: inline-flex;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    background: #dcfce7;
+
+    color: #15803d;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
 }
 
 .not-verified {
-  display: inline-flex;
-  padding: 5px 9px;
-  border-radius: 20px;
-  background: #f3f4f6;
-  color: #6b7280;
-  font-size: 12px;
+    display: inline-flex;
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    background: #f3f4f6;
+
+    color: #6b7280;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
 }
 
 
-/* =====================================
+/* =========================================================
    STATUS
-===================================== */
+   ========================================================= */
 
 .review-status {
-  display: inline-flex;
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 700;
+    display: inline-flex;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
 }
 
 .review-status.pending {
-  background: #fef3c7;
-  color: #92400e;
+    background: #fef3c7;
+
+    color: #92400e;
 }
 
 .review-status.approved {
-  background: #dcfce7;
-  color: #166534;
+    background: #dcfce7;
+
+    color: #166534;
 }
 
 .review-status.rejected {
-  background: #fee2e2;
-  color: #991b1b;
+    background: #fee2e2;
+
+    color: #991b1b;
 }
 
 
-/* =====================================
+/* =========================================================
    ACTIONS
-===================================== */
+   ========================================================= */
 
 .review-actions {
-  display: flex;
-  gap: 7px;
+    display: flex;
+
+    gap: 7px;
+
+    flex-wrap: wrap;
 }
 
 .review-actions button {
-  border: none;
-  border-radius: 7px;
-  padding: 7px 11px;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 600;
+    border: none;
+
+    border-radius: 7px;
+
+    padding: 7px 11px;
+
+    cursor: pointer;
+
+    font-size: 12px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
 }
 
 .review-actions button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+    opacity: 0.6;
+
+    cursor: not-allowed;
 }
 
 .approve-btn {
-  background: #16a34a;
-  color: #ffffff;
+    background: #16a34a;
+
+    color: #ffffff;
 }
 
 .approve-btn:hover:not(:disabled) {
-  background: #15803d;
+    background: #15803d;
 }
 
 .reject-btn {
-  background: #dc2626;
-  color: #ffffff;
+    background: #dc2626;
+
+    color: #ffffff;
 }
 
 .reject-btn:hover:not(:disabled) {
-  background: #b91c1c;
+    background: #b91c1c;
 }
 
 
-/* =====================================
+/* =========================================================
    EMPTY / LOADING
-===================================== */
+   ========================================================= */
 
 .reviews-loading,
 .reviews-empty {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 60px 20px;
-  text-align: center;
+    width: 100%;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 12px;
+
+    padding: 60px 20px;
+
+    text-align: center;
+
+    box-sizing: border-box;
 }
 
 .reviews-empty h3 {
-  margin: 0 0 8px;
-  color: #111827;
+    margin: 0 0 8px;
+
+    color: #111827;
+
+    font-size: 18px;
 }
 
 .reviews-empty p {
-  margin: 0;
-  color: #6b7280;
+    margin: 0;
+
+    color: #6b7280;
+
+    font-size: 14px;
 }
 
 
-/* =====================================
+/* =========================================================
    REJECT MODAL
-===================================== */
+   ========================================================= */
 
 .reject-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+    position: fixed;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    inset: 0;
 
-  z-index: 9999;
+    background: rgba(0, 0, 0, 0.45);
 
-  padding: 20px;
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    z-index: 9999;
+
+    padding: 20px;
+
+    box-sizing: border-box;
 }
 
 .reject-modal {
-  width: 100%;
-  max-width: 500px;
-  background: #ffffff;
-  border-radius: 14px;
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
+    width: 100%;
+
+    max-width: 500px;
+
+    max-height: calc(100vh - 40px);
+
+    background: #ffffff;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.2);
+
+    overflow: hidden;
+
+    box-sizing: border-box;
 }
 
 .reject-modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 18px 20px;
-  border-bottom: 1px solid #e5e7eb;
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px 20px;
+
+    border-bottom: 1px solid #e5e7eb;
 }
 
 .reject-modal-header h2 {
-  margin: 0;
-  font-size: 20px;
-  color: #111827;
+    margin: 0;
+
+    font-size: 20px;
+
+    color: #111827;
 }
 
 .reject-modal-header button {
-  border: none;
-  background: transparent;
-  font-size: 28px;
-  color: #6b7280;
-  cursor: pointer;
+    border: none;
+
+    background: transparent;
+
+    font-size: 28px;
+
+    line-height: 1;
+
+    color: #6b7280;
+
+    cursor: pointer;
+
+    flex-shrink: 0;
 }
 
 .reject-modal-body {
-  padding: 20px;
+    padding: 20px;
 }
 
 .reject-modal-body p {
-  margin: 0 0 12px;
-  color: #4b5563;
+    margin: 0 0 12px;
+
+    color: #4b5563;
+
+    line-height: 1.5;
 }
 
 .reject-modal-body textarea {
-  width: 100%;
-  box-sizing: border-box;
-  resize: vertical;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  padding: 12px;
-  font-family: inherit;
-  outline: none;
+    width: 100%;
+
+    box-sizing: border-box;
+
+    resize: vertical;
+
+    min-height: 100px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    padding: 12px;
+
+    font-family: inherit;
+
+    font-size: 14px;
+
+    color: #111827;
+
+    background: #ffffff;
+
+    outline: none;
 }
 
 .reject-modal-body textarea:focus {
-  border-color: #111827;
+    border-color: #111827;
 }
 
 .reject-modal-body small {
-  display: block;
-  text-align: right;
-  color: #6b7280;
-  margin-top: 5px;
+    display: block;
+
+    text-align: right;
+
+    color: #6b7280;
+
+    margin-top: 5px;
 }
 
 .reject-modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  padding: 16px 20px;
-  border-top: 1px solid #e5e7eb;
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 16px 20px;
+
+    border-top: 1px solid #e5e7eb;
 }
 
 .reject-modal-actions button {
-  padding: 9px 16px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
+    padding: 9px 16px;
+
+    border-radius: 8px;
+
+    border: none;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    white-space: nowrap;
 }
 
 .cancel-btn {
-  background: #f3f4f6;
-  color: #374151;
+    background: #f3f4f6;
+
+    color: #374151;
 }
 
 .confirm-reject-btn {
-  background: #dc2626;
-  color: #ffffff;
+    background: #dc2626;
+
+    color: #ffffff;
 }
 
 .confirm-reject-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+    opacity: 0.6;
+
+    cursor: not-allowed;
 }
 
 
-/* =====================================
-   RESPONSIVE
-===================================== */
+/* =========================================================
+   DARK THEME
+   ThemeContext adds "dark" to <html>
+   ========================================================= */
 
-@media (max-width: 900px) {
+html.dark .admin-reviews-page {
+    background: #0f172a;
 
-  .review-summary {
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-  }
+    color: #f8fafc;
+}
+
+
+/* =========================================================
+   DARK HEADER
+   ========================================================= */
+
+html.dark .admin-reviews-header h1 {
+    color: #f8fafc;
+}
+
+html.dark .admin-reviews-header p {
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   DARK SUMMARY CARDS
+   ========================================================= */
+
+html.dark .review-summary-card {
+    background: #172033;
+
+    border-color: #293548;
+
+    box-shadow: none;
+}
+
+html.dark .review-summary-card span {
+    color: #94a3b8;
+}
+
+html.dark .review-summary-card strong {
+    color: #f8fafc;
+}
+
+
+/*
+   Keep status numbers visible in dark mode
+*/
+
+html.dark .review-summary-card.pending strong {
+    color: #fbbf24;
+}
+
+html.dark .review-summary-card.approved strong {
+    color: #4ade80;
+}
+
+html.dark .review-summary-card.rejected strong {
+    color: #f87171;
+}
+
+
+/* =========================================================
+   DARK FILTER BUTTONS
+   ========================================================= */
+
+html.dark .review-filter-bar button {
+    background: #172033;
+
+    color: #cbd5e1;
+
+    border-color: #344158;
+}
+
+html.dark .review-filter-bar button:hover {
+    background: #1e293b;
+
+    color: #ffffff;
+}
+
+
+/*
+   IMPORTANT:
+   Active filter text stays WHITE.
+   This fixes Pending / Approved / Rejected
+   becoming invisible in dark mode.
+*/
+
+html.dark .review-filter-bar button.active {
+    background: #22c55e;
+
+    color: #ffffff;
+
+    border-color: #22c55e;
+}
+
+
+/* =========================================================
+   DARK TABLE
+   ========================================================= */
+
+html.dark .reviews-table-wrapper {
+    background: #172033;
+
+    border-color: #293548;
+}
+
+html.dark .reviews-table th {
+    background: #1e293b;
+
+    color: #e2e8f0;
+
+    border-bottom-color: #344158;
+}
+
+html.dark .reviews-table td {
+    color: #cbd5e1;
+
+    border-bottom-color: #293548;
+}
+
+html.dark .reviews-table tbody tr:hover {
+    background: #1e293b;
+}
+
+
+/* =========================================================
+   DARK CUSTOMER
+   ========================================================= */
+
+html.dark .review-customer strong {
+    color: #f8fafc;
+}
+
+html.dark .review-customer small {
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   DARK COMMENT
+   ========================================================= */
+
+html.dark .review-comment {
+    color: #cbd5e1;
+}
+
+
+/* =========================================================
+   DARK VERIFIED
+   ========================================================= */
+
+html.dark .verified-badge {
+    background: rgba(34, 197, 94, 0.15);
+
+    color: #4ade80;
+}
+
+html.dark .not-verified {
+    background: #273449;
+
+    color: #cbd5e1;
+}
+
+
+/* =========================================================
+   DARK STATUS BADGES
+   ========================================================= */
+
+html.dark .review-status.pending {
+    background: rgba(245, 158, 11, 0.16);
+
+    color: #fbbf24;
+}
+
+html.dark .review-status.approved {
+    background: rgba(34, 197, 94, 0.16);
+
+    color: #4ade80;
+}
+
+html.dark .review-status.rejected {
+    background: rgba(239, 68, 68, 0.16);
+
+    color: #f87171;
+}
+
+
+/* =========================================================
+   DARK EMPTY / LOADING
+   ========================================================= */
+
+html.dark .reviews-loading,
+html.dark .reviews-empty {
+    background: #172033;
+
+    border-color: #293548;
+
+    color: #cbd5e1;
+}
+
+html.dark .reviews-empty h3 {
+    color: #f8fafc;
+}
+
+html.dark .reviews-empty p {
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   DARK MODAL
+   ========================================================= */
+
+html.dark .reject-modal {
+    background: #172033;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+html.dark .reject-modal-header {
+    border-bottom-color: #293548;
+}
+
+html.dark .reject-modal-header h2 {
+    color: #f8fafc;
+}
+
+html.dark .reject-modal-header button {
+    color: #94a3b8;
+}
+
+html.dark .reject-modal-body p {
+    color: #cbd5e1;
+}
+
+html.dark .reject-modal-body textarea {
+    background: #0f172a;
+
+    border-color: #344158;
+
+    color: #f8fafc;
+}
+
+html.dark .reject-modal-body textarea::placeholder {
+    color: #64748b;
+}
+
+html.dark .reject-modal-body textarea:focus {
+    border-color: #22c55e;
+}
+
+html.dark .reject-modal-body small {
+    color: #94a3b8;
+}
+
+html.dark .reject-modal-actions {
+    border-top-color: #293548;
+}
+
+html.dark .cancel-btn {
+    background: #273449;
+
+    color: #e2e8f0;
+}
+
+html.dark .cancel-btn:hover {
+    background: #344158;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .admin-reviews-page {
+        padding: 22px;
+    }
+
+    .review-summary {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
 
 }
 
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 600px) {
 
-  .admin-reviews-page {
-    padding: 16px;
-  }
+    .admin-reviews-page {
+        padding: 16px;
+    }
 
-  .review-summary {
-    grid-template-columns: 1fr;
-  }
 
-  .review-filter-bar {
-    overflow-x: auto;
-  }
+    /* -------------------------
+       Header
+       ------------------------- */
+
+    .admin-reviews-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 8px;
+
+        margin-bottom: 20px;
+    }
+
+    .admin-reviews-header h1 {
+        font-size: 23px;
+    }
+
+    .admin-reviews-header p {
+        font-size: 13px;
+    }
+
+
+    /* -------------------------
+       Summary
+       ------------------------- */
+
+    .review-summary {
+        grid-template-columns: 1fr;
+
+        gap: 12px;
+
+        margin-bottom: 20px;
+    }
+
+    .review-summary-card {
+        padding: 16px;
+    }
+
+    .review-summary-card strong {
+        font-size: 24px;
+    }
+
+
+    /* -------------------------
+       Filter
+       ------------------------- */
+
+    .review-filter-bar {
+        width: 100%;
+
+        flex-wrap: nowrap;
+
+        overflow-x: auto;
+
+        padding-bottom: 4px;
+
+        margin-bottom: 16px;
+
+        -webkit-overflow-scrolling: touch;
+
+        scrollbar-width: thin;
+    }
+
+    .review-filter-bar button {
+        flex-shrink: 0;
+
+        padding: 9px 15px;
+
+        font-size: 13px;
+    }
+
+
+    /* -------------------------
+       Table
+       ------------------------- */
+
+    .reviews-table-wrapper {
+        border-radius: 10px;
+    }
+
+    .reviews-table {
+        min-width: 950px;
+    }
+
+    .reviews-table th {
+        padding: 12px 14px;
+
+        font-size: 12px;
+    }
+
+    .reviews-table td {
+        padding: 13px 14px;
+
+        font-size: 13px;
+    }
+
+
+    /* -------------------------
+       Empty state
+       ------------------------- */
+
+    .reviews-loading,
+    .reviews-empty {
+        padding: 50px 16px;
+    }
+
+
+    /* -------------------------
+       Modal
+       ------------------------- */
+
+    .reject-modal-overlay {
+        padding: 14px;
+    }
+
+    .reject-modal {
+        max-height: calc(100vh - 28px);
+
+        border-radius: 12px;
+    }
+
+    .reject-modal-header {
+        padding: 15px 16px;
+    }
+
+    .reject-modal-header h2 {
+        font-size: 18px;
+    }
+
+    .reject-modal-body {
+        padding: 16px;
+    }
+
+    .reject-modal-actions {
+        padding: 14px 16px;
+    }
+
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .admin-reviews-page {
+        padding: 12px;
+    }
+
+    .admin-reviews-header h1 {
+        font-size: 21px;
+    }
+
+    .review-summary-card {
+        padding: 14px;
+    }
+
+    .review-summary-card span {
+        font-size: 13px;
+    }
+
+    .review-summary-card strong {
+        font-size: 22px;
+    }
+
+    .review-filter-bar button {
+        padding: 8px 13px;
+
+        font-size: 12px;
+    }
+
+    .reject-modal-overlay {
+        padding: 10px;
+    }
+
+    .reject-modal-header {
+        padding: 14px;
+    }
+
+    .reject-modal-body {
+        padding: 14px;
+    }
+
+    .reject-modal-actions {
+        padding: 12px 14px;
+
+        gap: 8px;
+    }
+
+    .reject-modal-actions button {
+        padding: 8px 13px;
+
+        font-size: 13px;
+    }
 
 }

@@ -1,160 +1,63 @@
-/* *{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
-
-.add-employee-page{
-
-width:100%;
-
-min-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:#f4f6fb;
-
-padding:30px;
-
-}
-
-.employee-box{
-
-width:500px;
-
-background:white;
-
-padding:35px;
-
-border-radius:10px;
-
-box-shadow:0px 5px 20px rgba(0,0,0,.15);
-
-}
-
-.employee-box h2{
-
-text-align:center;
-
-margin-bottom:25px;
-
-color:#0d6efd;
-
-}
-
-.employee-box form{
-
-display:flex;
-
-flex-direction:column;
-
-gap:15px;
-
-}
-
-.employee-box input,
-
-.employee-box select{
-
-padding:14px;
-
-border:1px solid #ddd;
-
-border-radius:8px;
-
-font-size:15px;
-
-outline:none;
-
-}
-
-.employee-box input:focus,
-
-.employee-box select:focus{
-
-border:1px solid #0d6efd;
-
-}
-
-.employee-box button{
-
-padding:14px;
-
-border:none;
-
-background:#0d6efd;
-
-color:white;
-
-font-size:16px;
-
-font-weight:bold;
-
-border-radius:8px;
-
-cursor:pointer;
-
-}
-
-.employee-box button:hover{
-
-background:#0b5ed7;
-
-} */
-
-
-
-
 :root {
   --primary-green: #2e7d32;
   --primary-hover: #1b5e20;
-  --bg-gradient-start: #e8f5e9;
-  --bg-gradient-end: #c8e6c9;
+  --primary-active: #14471a;
+  --bg-page: #f4faf6;
   --card-bg: #ffffff;
-  --input-bg: #f4fbf7;
-  --input-border: #a5d6a7;
+  --input-bg: #f6fbf8;
+  --input-border: #c9e6cd;
   --input-focus: #4caf50;
   --text-dark: #1e3a1e;
-  --text-muted: #557255;
+  --text-body: #33473a;
+  --text-muted: #6b8570;
   --border-radius: 10px;
-  --shadow: 0 10px 25px rgba(46, 125, 50, 0.12);
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 4px 14px rgba(46, 125, 50, 0.08);
+  --shadow-lg: 0 12px 28px rgba(46, 125, 50, 0.12);
+  --transition: all 0.2s ease;
 }
 
-/* Page Background */
-.add-employee-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, var(--bg-gradient-start), var(--bg-gradient-end));
-  padding: 30px 20px;
+* {
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Form Container */
+/* ==========================================================================
+   Page Wrapper (fills parent — no full-viewport takeover)
+   ========================================================================== */
+
+.add-employee-page {
+  width: 100%;
+  padding: clamp(1rem, 3vw, 30px);
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ==========================================================================
+   Form Container
+   ========================================================================== */
+
 .employee-box {
   background: var(--card-bg);
   width: 100%;
-  max-width: 720px;
-  padding: 35px 40px;
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(165, 214, 167, 0.4);
+  max-width: 820px;
+  margin: 0 auto;
+  padding: clamp(1.5rem, 4vw, 40px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--input-border);
+  transition: var(--transition);
 }
 
 .employee-box h2 {
   margin-top: 0;
   margin-bottom: 24px;
   color: var(--text-dark);
-  font-size: 1.75rem;
-  font-weight: 700;
-  text-align: center;
-  letter-spacing: -0.5px;
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  font-weight: 800;
+  text-align: left;
+  letter-spacing: -0.02em;
+  border-bottom: 2px solid var(--input-bg);
+  padding-bottom: 16px;
 }
 
 /* ==========================================================================
@@ -168,43 +71,48 @@ background:#0b5ed7;
   align-items: center;
 }
 
-/* ==========================================================================
-   Full-Width Span Adjustments (Spans across both columns)
-   ========================================================================== */
-
 /* Full-width elements */
 .employee-box form .form-row,
 .employee-box form button[type="submit"] {
   grid-column: 1 / -1;
 }
 
-/* Label for Joining Date - formatted as full section block or line label */
+/* Section labels */
 .employee-box form label:not(.form-row label) {
   grid-column: 1 / -1;
   color: var(--text-dark);
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   margin-top: 6px;
   margin-bottom: -8px;
 }
 
-/* Checkbox Row Styling */
+/* ==========================================================================
+   Checkbox Row
+   ========================================================================== */
+
 .form-row {
   background-color: var(--input-bg);
-  padding: 12px 16px;
+  padding: 14px 16px;
   border-radius: var(--border-radius);
-  border: 1px solid var(--input-border);
+  border: 1.5px solid var(--input-border);
   display: flex;
   align-items: center;
+  transition: var(--transition);
+}
+
+.form-row:hover {
+  border-color: var(--input-focus);
 }
 
 .form-row label {
   color: var(--text-dark);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   cursor: pointer;
   display: flex;
   align-items: center;
+  width: 100%;
 }
 
 .form-row input[type="checkbox"] {
@@ -212,6 +120,7 @@ background:#0b5ed7;
   height: 18px;
   accent-color: var(--primary-green);
   cursor: pointer;
+  margin-right: 4px;
 }
 
 /* ==========================================================================
@@ -233,19 +142,65 @@ background:#0b5ed7;
   font-size: 0.95rem;
   outline: none;
   box-sizing: border-box;
-  transition: all 0.25s ease-in-out;
+  font-family: inherit;
+  transition: var(--transition);
 }
 
 .employee-box input::placeholder {
-  color: #8fae91;
+  color: #94ab97;
 }
 
-/* Focus States */
+.employee-box input:hover,
+.employee-box select:hover {
+  border-color: var(--input-focus);
+}
+
 .employee-box input:focus,
 .employee-box select:focus {
   border-color: var(--input-focus);
   background-color: #ffffff;
-  box-shadow: 0 0 0 3.5px rgba(76, 175, 80, 0.18);
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.15);
+}
+
+.employee-box select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23557255' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.3rem;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   Bank Details Section
+   (targets the inline-styled div by its className; visual polish only)
+   ========================================================================== */
+
+.bank-details-section {
+  grid-column: 1 / -1;
+  background: var(--input-bg) !important;
+  border: 1.5px solid var(--input-border) !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.bank-details-section h3 {
+  color: var(--text-dark);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.bank-details-section p {
+  color: var(--text-muted) !important;
+}
+
+.bank-details-section input,
+.bank-details-section select {
+  margin-bottom: 12px;
+}
+
+.bank-details-section input:last-of-type,
+.bank-details-section select:last-of-type {
+  margin-bottom: 0;
 }
 
 /* ==========================================================================
@@ -255,23 +210,33 @@ background:#0b5ed7;
 .employee-box button[type="submit"] {
   margin-top: 10px;
   padding: 14px;
-  background-color: var(--primary-green);
+  background: linear-gradient(135deg, var(--primary-green), var(--primary-hover));
   color: #ffffff;
   border: none;
   border-radius: var(--border-radius);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  letter-spacing: 0.5px;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  letter-spacing: 0.3px;
+  box-shadow: 0 6px 16px rgba(46, 125, 50, 0.28);
+  transition: var(--transition);
 }
 
 .employee-box button[type="submit"]:hover {
-  background-color: var(--primary-hover);
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-active));
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(46, 125, 50, 0.34);
 }
 
 .employee-box button[type="submit"]:active {
-  transform: scale(0.99);
+  transform: translateY(0);
+}
+
+.employee-box button[type="submit"]:disabled {
+  background: #a5d6a7;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /* ==========================================================================
@@ -279,11 +244,20 @@ background:#0b5ed7;
    ========================================================================== */
 
 @media (max-width: 640px) {
+  .add-employee-page {
+    padding: 0.85rem;
+  }
+
   .employee-box {
-    padding: 25px 20px;
+    padding: 22px 18px;
+    border-radius: 12px;
   }
 
   .employee-box form {
     grid-template-columns: 1fr;
+  }
+
+  .employee-box h2 {
+    font-size: 1.3rem;
   }
 }

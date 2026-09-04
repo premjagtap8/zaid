@@ -1,23 +1,35 @@
+/* =========================================
+   CONTAINER & THEME
+========================================= */
 
-/* Container & Theme */
 .shift-container {
+  width: 100%;
   max-width: 1100px;
   margin: 30px auto;
   padding: 0 20px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   display: flex;
   flex-direction: column;
   gap: 28px;
   background-color: #f4fdf8;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Card */
+/* =========================================
+   CARD
+========================================= */
+
 .shift-card {
+  width: 100%;
   background-color: #ffffff;
   border-radius: 12px;
   padding: 24px 28px;
   box-shadow: 0 4px 16px rgba(46, 125, 50, 0.08);
   border: 1px solid #d8f3e5;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .shift-header {
@@ -38,7 +50,10 @@
   color: #5c8d7b;
 }
 
-/* Error Banner */
+/* =========================================
+   ERROR BANNER
+========================================= */
+
 .shift-error-msg {
   background-color: #fde8e8;
   color: #9b1c1c;
@@ -49,15 +64,19 @@
   border-left: 4px solid #f87171;
 }
 
-/* Form Layout */
+/* =========================================
+   FORM LAYOUT
+========================================= */
+
 .shift-form-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
   align-items: end;
 }
 
 .shift-field-group {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -73,8 +92,14 @@
   color: #2e5d4b;
 }
 
+/* =========================================
+   INPUTS & SELECT
+========================================= */
+
 .shift-input,
 .shift-select {
+  width: 100%;
+  min-height: 42px;
   padding: 10px 12px;
   border-radius: 6px;
   border: 1px solid #b7e4c7;
@@ -82,7 +107,15 @@
   outline: none;
   background-color: #fbfdfc;
   color: #1b4d3e;
-  transition: border-color 0.2s;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.shift-input::placeholder {
+  color: #8ca99d;
 }
 
 .shift-input:focus,
@@ -91,11 +124,16 @@
   box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
 }
 
+/* =========================================
+   CHECKBOX
+========================================= */
+
 .shift-checkbox-group {
   display: flex;
   align-items: center;
   gap: 8px;
   padding-bottom: 10px;
+  min-height: 42px;
 }
 
 .shift-checkbox {
@@ -103,6 +141,7 @@
   height: 16px;
   accent-color: #2e7d32;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .shift-checkbox-label {
@@ -112,9 +151,15 @@
   cursor: pointer;
 }
 
+/* =========================================
+   SUBMIT BUTTON
+========================================= */
+
 .shift-submit-wrapper {
   grid-column: 1 / -1;
-  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 4px;
 }
 
 .shift-submit-btn {
@@ -127,27 +172,44 @@
   font-weight: 600;
   cursor: pointer;
   box-shadow: 0 2px 6px rgba(46, 125, 50, 0.2);
-  transition: background-color 0.2s;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .shift-submit-btn:hover {
   background-color: #256528;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(46, 125, 50, 0.25);
 }
 
 .shift-submit-btn:disabled {
   background-color: #a3d9b1;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
-/* Table */
+/* =========================================
+   TABLE WRAPPER
+========================================= */
+
 .shift-table-wrapper {
+  width: 100%;
   overflow-x: auto;
   border-radius: 8px;
   border: 1px solid #d8f3e5;
+  -webkit-overflow-scrolling: touch;
 }
+
+/* =========================================
+   TABLE
+========================================= */
 
 .shift-table {
   width: 100%;
+  min-width: 700px;
   border-collapse: collapse;
   text-align: left;
   font-size: 14px;
@@ -159,6 +221,7 @@
   font-weight: 700;
   padding: 12px 16px;
   border-bottom: 2px solid #d8f3e5;
+  white-space: nowrap;
 }
 
 .shift-tr-even {
@@ -169,10 +232,19 @@
   background-color: #f7fdfa;
 }
 
+.shift-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.shift-table tbody tr:hover {
+  background-color: #edf9f2;
+}
+
 .shift-td {
   padding: 12px 16px;
   color: #334e43;
   border-bottom: 1px solid #edf7f2;
+  white-space: nowrap;
 }
 
 .shift-td-name {
@@ -180,6 +252,7 @@
   font-weight: 600;
   color: #1b4d3e;
   border-bottom: 1px solid #edf7f2;
+  white-space: nowrap;
 }
 
 .shift-td-time {
@@ -188,6 +261,7 @@
   color: #2e7d32;
   font-weight: 600;
   border-bottom: 1px solid #edf7f2;
+  white-space: nowrap;
 }
 
 .shift-empty-cell {
@@ -196,30 +270,376 @@
   color: #7fa998;
 }
 
-/* Badges */
+/* =========================================
+   BADGES
+========================================= */
+
 .badge-active {
+  display: inline-block;
   background-color: #d1e7dd;
   color: #0f5132;
   padding: 4px 10px;
   border-radius: 12px;
   font-size: 12px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .badge-inactive {
+  display: inline-block;
   background-color: #f8d7da;
   color: #842029;
   padding: 4px 10px;
   border-radius: 12px;
   font-size: 12px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .badge-success {
   color: #2e7d32;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .badge-neutral {
   color: #888888;
+  white-space: nowrap;
+}
+
+/* =========================================
+   DARK MODE
+   ThemeProvider adds .dark to <html>
+========================================= */
+
+html.dark .shift-container {
+  background-color: #0f172a;
+  color: #e5e7eb;
+}
+
+html.dark .shift-card {
+  background-color: #111827;
+  border-color: #263a32;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+}
+
+html.dark .shift-header {
+  border-bottom-color: #263a32;
+}
+
+html.dark .shift-heading {
+  color: #f0fdf4;
+}
+
+html.dark .shift-subheading {
+  color: #8fb8a5;
+}
+
+/* =========================================
+   DARK INPUTS
+========================================= */
+
+html.dark .shift-label {
+  color: #b7d8c6;
+}
+
+html.dark .shift-input,
+html.dark .shift-select {
+  background-color: #1f2937;
+  color: #f3f4f6;
+  border-color: #405448;
+}
+
+html.dark .shift-input::placeholder {
+  color: #7d9187;
+}
+
+html.dark .shift-input:focus,
+html.dark .shift-select:focus {
+  border-color: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.12);
+}
+
+html.dark .shift-select option {
+  background-color: #1f2937;
+  color: #f3f4f6;
+}
+
+html.dark .shift-checkbox-label {
+  color: #b7d8c6;
+}
+
+/* =========================================
+   DARK ERROR
+========================================= */
+
+html.dark .shift-error-msg {
+  background-color: #3a1f23;
+  color: #fecaca;
+  border-left-color: #ef4444;
+}
+
+/* =========================================
+   DARK TABLE
+========================================= */
+
+html.dark .shift-table-wrapper {
+  border-color: #263a32;
+}
+
+html.dark .shift-table {
+  background-color: #111827;
+}
+
+html.dark .shift-th {
+  background-color: #19382a;
+  color: #d1fae5;
+  border-bottom-color: #31513f;
+}
+
+html.dark .shift-tr-even {
+  background-color: #111827;
+}
+
+html.dark .shift-tr-odd {
+  background-color: #17231f;
+}
+
+html.dark .shift-table tbody tr:hover {
+  background-color: #1d352a;
+}
+
+html.dark .shift-td {
+  color: #d1d5db;
+  border-bottom-color: #263a32;
+}
+
+html.dark .shift-td-name {
+  color: #d1fae5;
+  border-bottom-color: #263a32;
+}
+
+html.dark .shift-td-time {
+  color: #4ade80;
+  border-bottom-color: #263a32;
+}
+
+html.dark .shift-empty-cell {
+  color: #7fa998;
+}
+
+/* =========================================
+   DARK BADGES
+========================================= */
+
+html.dark .badge-active {
+  background-color: #164e35;
+  color: #bbf7d0;
+}
+
+html.dark .badge-inactive {
+  background-color: #4c2025;
+  color: #fecaca;
+}
+
+html.dark .badge-success {
+  color: #4ade80;
+}
+
+html.dark .badge-neutral {
+  color: #9ca3af;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 992px) {
+  .shift-container {
+    margin: 24px auto;
+    padding: 0 16px;
+    gap: 22px;
+  }
+
+  .shift-card {
+    padding: 20px;
+  }
+
+  .shift-form-grid {
+    gap: 16px;
+  }
+
+  .shift-heading {
+    font-size: 19px;
+  }
+
+  .shift-table {
+    min-width: 680px;
+  }
+
+  .shift-th,
+  .shift-td,
+  .shift-td-name,
+  .shift-td-time {
+    padding: 11px 13px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .shift-container {
+    width: 100%;
+    margin: 16px auto;
+    padding: 0 12px;
+    gap: 18px;
+  }
+
+  .shift-card {
+    padding: 18px 16px;
+    border-radius: 10px;
+  }
+
+  .shift-header {
+    margin-bottom: 16px;
+  }
+
+  .shift-heading {
+    font-size: 18px;
+  }
+
+  .shift-subheading {
+    display: block;
+    margin-top: 3px;
+    font-size: 12px;
+  }
+
+  /*
+     Form becomes one column on mobile
+  */
+
+  .shift-form-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .shift-field-group.span-two {
+    grid-column: span 1;
+  }
+
+  .shift-label {
+    font-size: 12px;
+  }
+
+  .shift-input,
+  .shift-select {
+    min-height: 40px;
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+
+  .shift-checkbox-group {
+    padding-bottom: 4px;
+  }
+
+  .shift-submit-wrapper {
+    grid-column: 1;
+    width: 100%;
+    margin-top: 2px;
+  }
+
+  .shift-submit-btn {
+    width: 100%;
+    padding: 11px 18px;
+  }
+
+  /*
+     Table stays wide and scrolls horizontally
+     so all 6 columns remain readable.
+  */
+
+  .shift-table {
+    min-width: 680px;
+    font-size: 13px;
+  }
+
+  .shift-th,
+  .shift-td,
+  .shift-td-name,
+  .shift-td-time {
+    padding: 10px 11px;
+    font-size: 12px;
+  }
+
+  .badge-active,
+  .badge-inactive {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .shift-container {
+    margin: 12px auto;
+    padding: 0 8px;
+    gap: 14px;
+  }
+
+  .shift-card {
+    padding: 15px 12px;
+    border-radius: 9px;
+  }
+
+  .shift-heading {
+    font-size: 17px;
+  }
+
+  .shift-subheading {
+    font-size: 11px;
+  }
+
+  .shift-form-grid {
+    gap: 13px;
+  }
+
+  .shift-input,
+  .shift-select {
+    min-height: 39px;
+    font-size: 12px;
+    padding: 8px 9px;
+  }
+
+  .shift-checkbox-label {
+    font-size: 12px;
+  }
+
+  .shift-submit-btn {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+
+  .shift-table {
+    min-width: 640px;
+    font-size: 12px;
+  }
+
+  .shift-th,
+  .shift-td,
+  .shift-td-name,
+  .shift-td-time {
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+
+  .badge-active,
+  .badge-inactive {
+    font-size: 10px;
+    padding: 3px 7px;
+  }
 }

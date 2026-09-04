@@ -1,64 +1,712 @@
+/* =========================================
+   EMPLOYEE SHIFT PAGE
+   All styles are scoped under
+   .employee-shift-page to avoid conflicts
+   with ShiftManagement.css
+========================================= */
 
 .employee-shift-page {
+  width: 100%;
+  min-height: 100vh;
   padding: 30px 20px;
   background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
-  min-height: 100vh;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
-.employee-shift-card {
-  background: #ffffff;
-  padding: 30px;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(46, 125, 50, 0.12);
-  border: 1px solid rgba(165, 214, 167, 0.4);
-  max-width: 1000px;
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.employee-shift-page .employee-shift-card {
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  width: 100%;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid rgba(165, 214, 167, 0.4);
+  box-shadow: 0 10px 25px rgba(46, 125, 50, 0.12);
   box-sizing: border-box;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.employee-shift-card h2 {
-  margin-top: 0;
-  margin-bottom: 24px;
-  color: #1e3a1e;
-  font-size: 1.6rem;
-  font-weight: 700;
-}
+/* =========================================
+   HEADER
+========================================= */
 
-/* Shift Table Styling */
-.shift-table {
+.employee-shift-page .shift-page-header {
   width: 100%;
-  border-collapse: collapse;
+  margin-bottom: 22px;
 }
 
-.shift-table th,
-.shift-table td {
-  padding: 14px 16px;
-  text-align: left;
-  border-bottom: 1px solid #e8f5e9;
-  font-size: 0.93rem;
+.employee-shift-page .shift-page-header h2 {
+  margin: 0 0 24px 0;
   color: #1e3a1e;
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1.3;
+  transition: color 0.3s ease;
 }
 
-.shift-table th {
+.employee-shift-page .shift-page-header p {
+  margin: 0 0 14px 0;
+  color: #374151;
+  font-size: 15px;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.employee-shift-page .employee-count {
+  color: #374151;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* =========================================
+   TABLE WRAPPER
+   Scoped specifically to EmployeeShiftList
+========================================= */
+
+.employee-shift-page .shift-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid #d8f3e5;
+  border-radius: 10px;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* =========================================
+   TABLE
+========================================= */
+
+.employee-shift-page .shift-table {
+  width: 100%;
+  min-width: 850px;
+  border-collapse: collapse;
+  text-align: left;
+  background: #ffffff;
+  font-size: 14px;
+}
+
+/* =========================================
+   TABLE HEADER
+========================================= */
+
+.employee-shift-page .shift-table th {
+  padding: 14px 16px;
   background-color: #e8f5e9;
   color: #2e7d32;
+  border-bottom: 1px solid #d8f3e5;
+  font-size: 14px;
   font-weight: 700;
+  text-align: left;
+  white-space: nowrap;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
 
-.shift-table tr:hover {
+/* =========================================
+   TABLE CELLS
+========================================= */
+
+.employee-shift-page .shift-table td {
+  padding: 14px 16px;
+  color: #1e3a1e;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e8f5e9;
+  font-size: 14px;
+  vertical-align: middle;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.employee-shift-page .shift-table tbody tr {
+  background-color: #ffffff;
+  transition: background-color 0.2s ease;
+}
+
+.employee-shift-page .shift-table tbody tr:hover {
   background-color: #f4fbf7;
 }
 
-.shift-table strong {
-  color: #1e3a1e;
+/* =========================================
+   SERIAL NUMBER
+========================================= */
+
+.employee-shift-page .serial-number {
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 600;
 }
 
+/* =========================================
+   EMPLOYEE INFORMATION
+========================================= */
+
+.employee-shift-page .employee-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 240px;
+}
+
+.employee-shift-page .employee-avatar {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  border-radius: 50%;
+  background: #e8f7ee;
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.employee-shift-page .employee-details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.employee-shift-page .employee-details strong {
+  color: #1e3a1e;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.employee-shift-page .employee-details small {
+  color: #6b7280;
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+/* =========================================
+   BIOMETRIC
+========================================= */
+
+.employee-shift-page .biometric-badge {
+  display: inline-block;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.employee-shift-page .not-available {
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+/* =========================================
+   DEPARTMENT
+========================================= */
+
+.employee-shift-page .department-text {
+  color: #64748b;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* =========================================
+   SHIFT BADGE
+========================================= */
+
+.employee-shift-page .shift-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 14px;
+  background: #e8f7ee;
+  color: #16803c;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.employee-shift-page .shift-badge.unassigned {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* =========================================
+   TIMING BADGE
+========================================= */
+
+.employee-shift-page .timing-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 14px;
+  background: #ecfdf5;
+  color: #16803c;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.employee-shift-page .timing-badge.unavailable {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+/* =========================================
+   LOADING
+========================================= */
+
+.employee-shift-page .shift-loading {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.employee-shift-page .shift-loading p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.employee-shift-page .loading-spinner {
+  width: 34px;
+  height: 34px;
+  border: 4px solid #d8f3e5;
+  border-top-color: #2e7d32;
+  border-radius: 50%;
+  animation: employeeShiftSpinner 0.8s linear infinite;
+}
+
+@keyframes employeeShiftSpinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   NO EMPLOYEES
+========================================= */
+
+.employee-shift-page .no-employees {
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.employee-shift-page .no-employees h3 {
+  margin: 0 0 8px 0;
+  color: #1e3a1e;
+  font-size: 18px;
+}
+
+.employee-shift-page .no-employees p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+.employee-shift-page .shift-table-wrapper::-webkit-scrollbar {
+  height: 8px;
+}
+
+.employee-shift-page .shift-table-wrapper::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 10px;
+}
+
+.employee-shift-page .shift-table-wrapper::-webkit-scrollbar-thumb {
+  background: #86c89a;
+  border-radius: 10px;
+}
+
+.employee-shift-page .shift-table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #2e7d32;
+}
+
+/* =========================================
+   DARK MODE
+   IMPORTANT:
+   ThemeProvider adds .dark to <html>
+========================================= */
+
+html.dark .employee-shift-page {
+  background: linear-gradient(135deg, #0f172a, #13251d);
+  color: #e5e7eb;
+}
+
+html.dark .employee-shift-page .employee-shift-card {
+  background: #111827;
+  border-color: #263a32;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+}
+
+/* =========================================
+   DARK HEADER
+========================================= */
+
+html.dark .employee-shift-page .shift-page-header h2 {
+  color: #f0fdf4;
+}
+
+html.dark .employee-shift-page .shift-page-header p {
+  color: #cbd5e1;
+}
+
+html.dark .employee-shift-page .employee-count {
+  color: #d1d5db;
+}
+
+/* =========================================
+   DARK TABLE WRAPPER
+========================================= */
+
+html.dark .employee-shift-page .shift-table-wrapper {
+  border-color: #31513f;
+  background: #111827;
+}
+
+/* =========================================
+   DARK TABLE
+========================================= */
+
+html.dark .employee-shift-page .shift-table {
+  background: #111827;
+}
+
+html.dark .employee-shift-page .shift-table th {
+  background-color: #19382a;
+  color: #86efac;
+  border-bottom-color: #31513f;
+}
+
+html.dark .employee-shift-page .shift-table td {
+  background-color: #111827;
+  color: #d1d5db;
+  border-bottom-color: #263a32;
+}
+
+html.dark .employee-shift-page .shift-table tbody tr {
+  background-color: #111827;
+}
+
+html.dark .employee-shift-page .shift-table tbody tr:hover {
+  background-color: #1b3027;
+}
+
+/* =========================================
+   DARK EMPLOYEE
+========================================= */
+
+html.dark .employee-shift-page .serial-number {
+  color: #9ca3af;
+}
+
+html.dark .employee-shift-page .employee-avatar {
+  background: #163d2a;
+  color: #4ade80;
+}
+
+html.dark .employee-shift-page .employee-details strong {
+  color: #f0fdf4;
+}
+
+html.dark .employee-shift-page .employee-details small {
+  color: #9ca3af;
+}
+
+/* =========================================
+   DARK BIOMETRIC
+========================================= */
+
+html.dark .employee-shift-page .biometric-badge {
+  color: #d1d5db;
+}
+
+html.dark .employee-shift-page .not-available {
+  color: #6b7280;
+}
+
+/* =========================================
+   DARK DEPARTMENT
+========================================= */
+
+html.dark .employee-shift-page .department-text {
+  color: #94a3b8;
+}
+
+/* =========================================
+   DARK SHIFT
+========================================= */
+
+html.dark .employee-shift-page .shift-badge {
+  background: #164e35;
+  color: #bbf7d0;
+}
+
+html.dark .employee-shift-page .shift-badge.unassigned {
+  background: #374151;
+  color: #d1d5db;
+}
+
+/* =========================================
+   DARK TIMING
+========================================= */
+
+html.dark .employee-shift-page .timing-badge {
+  background: #164e35;
+  color: #bbf7d0;
+}
+
+html.dark .employee-shift-page .timing-badge.unavailable {
+  background: #374151;
+  color: #d1d5db;
+}
+
+/* =========================================
+   DARK LOADING
+========================================= */
+
+html.dark .employee-shift-page .shift-loading p {
+  color: #9ca3af;
+}
+
+html.dark .employee-shift-page .loading-spinner {
+  border-color: #263a32;
+  border-top-color: #4ade80;
+}
+
+/* =========================================
+   DARK NO EMPLOYEES
+========================================= */
+
+html.dark .employee-shift-page .no-employees h3 {
+  color: #f0fdf4;
+}
+
+html.dark .employee-shift-page .no-employees p {
+  color: #9ca3af;
+}
+
+/* =========================================
+   DARK SCROLLBAR
+========================================= */
+
+html.dark .employee-shift-page .shift-table-wrapper::-webkit-scrollbar-track {
+  background: #1f2937;
+}
+
+html.dark .employee-shift-page .shift-table-wrapper::-webkit-scrollbar-thumb {
+  background: #27633f;
+}
+
+html.dark .employee-shift-page .shift-table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: #22c55e;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 992px) {
+  .employee-shift-page {
+    padding: 24px 16px;
+  }
+
+  .employee-shift-page .employee-shift-card {
+    padding: 24px;
+  }
+
+  .employee-shift-page .shift-page-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+
+  .employee-shift-page .shift-page-header p {
+    font-size: 14px;
+  }
+
+  .employee-shift-page .shift-table {
+    min-width: 820px;
+  }
+
+  .employee-shift-page .shift-table th,
+  .employee-shift-page .shift-table td {
+    padding: 12px 13px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
 @media (max-width: 768px) {
-  .employee-shift-card {
-    padding: 20px 15px;
-    overflow-x: auto;
+  .employee-shift-page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 16px 10px;
+  }
+
+  .employee-shift-page .employee-shift-card {
+    padding: 20px 14px;
+    border-radius: 12px;
+  }
+
+  .employee-shift-page .shift-page-header {
+    margin-bottom: 18px;
+  }
+
+  .employee-shift-page .shift-page-header h2 {
+    font-size: 1.3rem;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+
+  .employee-shift-page .shift-page-header p {
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+
+  .employee-shift-page .employee-count {
+    font-size: 13px;
+  }
+
+  /*
+     Table remains wide because there are
+     6 columns. User can scroll horizontally.
+  */
+
+  .employee-shift-page .shift-table {
+    min-width: 820px;
+  }
+
+  .employee-shift-page .shift-table th {
+    padding: 11px 12px;
+    font-size: 12px;
+  }
+
+  .employee-shift-page .shift-table td {
+    padding: 11px 12px;
+    font-size: 12px;
+  }
+
+  .employee-shift-page .employee-info {
+    min-width: 220px;
+    gap: 9px;
+  }
+
+  .employee-shift-page .employee-avatar {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    font-size: 13px;
+  }
+
+  .employee-shift-page .employee-details strong {
+    font-size: 12px;
+  }
+
+  .employee-shift-page .employee-details small {
+    font-size: 10px;
+  }
+
+  .employee-shift-page .biometric-badge,
+  .employee-shift-page .department-text {
+    font-size: 11px;
+  }
+
+  .employee-shift-page .shift-badge,
+  .employee-shift-page .timing-badge {
+    font-size: 11px;
+    padding: 5px 9px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .employee-shift-page {
+    padding: 10px 7px;
+  }
+
+  .employee-shift-page .employee-shift-card {
+    padding: 16px 10px;
+    border-radius: 10px;
+  }
+
+  .employee-shift-page .shift-page-header h2 {
+    font-size: 1.15rem;
+  }
+
+  .employee-shift-page .shift-page-header p {
+    font-size: 12px;
+  }
+
+  .employee-shift-page .employee-count {
+    font-size: 12px;
+  }
+
+  .employee-shift-page .shift-table {
+    min-width: 780px;
+  }
+
+  .employee-shift-page .shift-table th,
+  .employee-shift-page .shift-table td {
+    padding: 9px 10px;
+    font-size: 11px;
+  }
+
+  .employee-shift-page .employee-info {
+    min-width: 200px;
+  }
+
+  .employee-shift-page .employee-avatar {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    font-size: 12px;
+  }
+
+  .employee-shift-page .employee-details strong {
+    font-size: 11px;
+  }
+
+  .employee-shift-page .employee-details small {
+    font-size: 9px;
+  }
+
+  .employee-shift-page .shift-badge,
+  .employee-shift-page .timing-badge {
+    font-size: 10px;
+    padding: 4px 8px;
   }
 }

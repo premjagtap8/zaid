@@ -1,35 +1,53 @@
-
 :root {
   --bg-main: #f4f9f5;
   --card-bg: #ffffff;
   --primary-green: #2e7d32;
   --primary-green-hover: #1b5e20;
+  --primary-active: #14471a;
   --light-green-bg: #e8f5e9;
   --accent-green: #4caf50;
   --border-color: #c8e6c9;
   --text-dark: #1e3a1e;
+  --text-body: #33473a;
   --text-muted: #557255;
   --danger-red: #d32f2f;
   --danger-hover: #b71c1c;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
   --shadow: 0 4px 12px rgba(46, 125, 50, 0.08);
+  --shadow-lg: 0 10px 26px rgba(46, 125, 50, 0.14);
+  --transition: all 0.2s ease;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+/* =========================================
+   PAGE WRAPPER
+========================================= */
+
 .attendance-container {
-  padding: 30px;
+  padding: clamp(1rem, 3vw, 30px);
   background-color: var(--bg-main);
-  min-height: 100vh;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text-dark);
 }
 
 .attendance-title {
   color: var(--primary-green);
   margin-bottom: 24px;
-  font-size: 26px;
-  font-weight: 700;
+  font-size: clamp(1.3rem, 3vw, 26px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
   border-bottom: 3px solid var(--border-color);
-  padding-bottom: 10px;
+  padding-bottom: 12px;
 }
+
+/* =========================================
+   FORM CARDS
+========================================= */
 
 .attendance-forms-wrapper {
   display: flex;
@@ -40,28 +58,30 @@
 
 .attendance-card {
   flex: 1;
-  min-width: 320px;
+  min-width: 300px;
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 24px;
+  border-radius: var(--radius-md);
+  padding: clamp(1.1rem, 3vw, 24px);
   box-shadow: var(--shadow);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: var(--transition);
 }
 
 .attendance-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(46, 125, 50, 0.12);
+  box-shadow: var(--shadow-lg);
 }
 
 .attendance-card h3 {
   margin-top: 0;
   margin-bottom: 12px;
   color: var(--primary-green);
-  font-size: 18px;
+  font-size: 1.05rem;
+  font-weight: 700;
 }
 
-.attendance-card p {
+.attendance-card p,
+.card-subtitle {
   color: var(--text-muted);
   font-size: 13px;
   margin-bottom: 18px;
@@ -73,7 +93,7 @@
 
 .form-group label {
   display: block;
-  font-size: 14px;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-dark);
   margin-bottom: 6px;
@@ -81,83 +101,240 @@
 
 .form-control {
   width: 100%;
-  padding: 10px 12px;
-  border: 1px solid var(--border-color);
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 11px 13px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.92rem;
   background-color: #fafdfa;
   color: var(--text-dark);
   outline: none;
   box-sizing: border-box;
-  transition: border-color 0.2s ease;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+.form-control:hover {
+  border-color: var(--accent-green);
 }
 
 .form-control:focus {
   border-color: var(--accent-green);
   background-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.15);
+}
+
+select.form-control {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23557255' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  padding-right: 2.2rem;
+  cursor: pointer;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.btn-primary-green,
+.btn-accent-green {
+  width: 100%;
+  padding: 12px;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
 }
 
 .btn-primary-green {
-  width: 100%;
-  padding: 11px;
-  background-color: var(--primary-green);
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  background: linear-gradient(135deg, var(--primary-green), var(--primary-green-hover));
+  box-shadow: 0 6px 14px rgba(46, 125, 50, 0.26);
 }
 
 .btn-primary-green:hover {
-  background-color: var(--primary-green-hover);
+  background: linear-gradient(135deg, var(--primary-green-hover), var(--primary-active));
+  transform: translateY(-1px);
 }
 
 .btn-accent-green {
-  width: 100%;
-  padding: 11px;
-  background-color: var(--accent-green);
-  color: #ffffff;
-  border: none;
-  border-radius: 6px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+  background: linear-gradient(135deg, var(--accent-green), var(--primary-green));
+  box-shadow: 0 6px 14px rgba(76, 175, 80, 0.26);
 }
 
 .btn-accent-green:hover {
-  background-color: var(--primary-green);
+  background: linear-gradient(135deg, var(--primary-green), var(--primary-green-hover));
+  transform: translateY(-1px);
+}
+
+.btn-primary-green:active,
+.btn-accent-green:active {
+  transform: translateY(0);
 }
 
 .btn-danger {
-  padding: 6px 12px;
+  padding: 7px 14px;
   background-color: var(--danger-red);
   color: #ffffff;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: var(--transition);
+  white-space: nowrap;
 }
 
 .btn-danger:hover {
   background-color: var(--danger-hover);
+  transform: translateY(-1px);
 }
+
+/* =========================================
+   FILTER CARD
+========================================= */
+
+.filter-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-title h4 {
+  margin: 0 0 4px 0;
+  font-size: 1.05rem;
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+.filter-title span {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.filter-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.filter-item label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  white-space: nowrap;
+}
+
+.filter-item select {
+  padding: 8px 14px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  background: #fafdfa;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: var(--transition);
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23557255' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.7rem center;
+  padding-right: 2rem;
+}
+
+.filter-item select:hover,
+.filter-item select:focus {
+  border-color: var(--accent-green);
+  outline: none;
+}
+
+/* =========================================
+   STATS CARDS
+========================================= */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  padding: 1.25rem;
+  border-radius: var(--radius-md);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.stat-card h4 {
+  margin: 0 0 6px 0;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+.stat-card span {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.stat-present { background: #e8f5e9; color: #2e7d32; }
+.stat-absent { background: #ffebee; color: #c62828; }
+.stat-leave { background: #fff3e0; color: #ef6c00; }
+.stat-halfday { background: #e1f5fe; color: #0277bd; }
+
+/* =========================================
+   SECTION HEADERS
+========================================= */
+
+.section-header {
+  margin-bottom: 0.85rem;
+}
+
+.records-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+/* =========================================
+   TABLE
+========================================= */
 
 .table-wrapper {
   background-color: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   overflow: hidden;
   box-shadow: var(--shadow);
 }
 
 .attendance-table {
   width: 100%;
+  min-width: 760px;
   border-collapse: collapse;
   text-align: left;
 }
@@ -166,16 +343,23 @@
   background-color: var(--light-green-bg);
   color: var(--primary-green);
   padding: 14px 16px;
-  font-size: 14px;
+  font-size: 0.78rem;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
   border-bottom: 2px solid var(--border-color);
+  white-space: nowrap;
 }
 
 .attendance-table td {
-  padding: 12px 16px;
-  font-size: 14px;
+  padding: 13px 16px;
+  font-size: 0.88rem;
   border-bottom: 1px solid #eef7f0;
   color: var(--text-dark);
+}
+
+.attendance-table tbody tr {
+  transition: background 0.15s ease;
 }
 
 .attendance-table tbody tr:hover {
@@ -188,10 +372,10 @@
 
 .badge-mode {
   display: inline-block;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 600;
+  padding: 4px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
   background-color: var(--light-green-bg);
   color: var(--primary-green);
 }
@@ -199,64 +383,129 @@
 .no-data {
   text-align: center;
   color: var(--text-muted);
-  padding: 20px;
+  padding: 24px;
 }
 
-/* Filter Card */
-.filter-card {
-  background: #ffffff;
-  border-radius: 8px;
-  padding: 1rem 1.5rem;
-  margin: 1.5rem 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-}
-.filter-title h4 { margin: 0 0 4px 0; font-size: 1.1rem; }
-.filter-title span { font-size: 0.85rem; color: #666; }
-.filter-controls { display: flex; gap: 1rem; }
-.filter-item { display: flex; align-items: center; gap: 0.5rem; }
-.filter-item select {
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  background: #fff;
-  font-size: 0.95rem;
-}
+/* =========================================
+   STATUS HIGHLIGHTS
+========================================= */
 
-/* Stats Cards */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-.stat-card {
-  padding: 1.2rem;
-  border-radius: 8px;
-  text-align: center;
-}
-.stat-card h4 { margin: 0 0 6px 0; font-size: 0.85rem; text-transform: uppercase; }
-.stat-card span { font-size: 1.8rem; font-weight: bold; }
-
-.stat-present { background: #e8f5e9; color: #2e7d32; }
-.stat-absent { background: #ffebee; color: #c62828; }
-.stat-leave { background: #fff3e0; color: #ef6c00; }
-.stat-halfday { background: #e1f5fe; color: #0277bd; }
-
-/* Status Highlights */
 .text-success { color: #2e7d32; font-weight: 600; }
 .text-danger { color: #c62828; font-weight: 600; }
 .text-warning { color: #ef6c00; font-weight: 600; }
 
 .badge-status {
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  display: inline-block;
+  padding: 4px 9px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
+
 .status-present { background: #d4edda; color: #155724; }
 .status-absent { background: #f8d7da; color: #721c24; }
 .status-leave { background: #fff3cd; color: #856404; }
 .status-late { background: #e2e3e5; color: #383d41; }
+.status-half_day { background: #dbeafe; color: #1e40af; }
+
+.checkout-done {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primary-green);
+}
+
+/* =========================================
+   TABLE SCROLL FOR MOBILE
+========================================= */
+
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+
+  .attendance-forms-wrapper {
+    gap: 18px;
+  }
+
+  .attendance-card {
+    min-width: 100%;
+  }
+
+  .filter-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .filter-controls {
+    width: 100%;
+  }
+
+  .filter-item {
+    flex: 1;
+    min-width: 140px;
+  }
+
+  .filter-item select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+
+  .attendance-container {
+    padding: 14px;
+  }
+
+  .attendance-title {
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+
+  .attendance-card {
+    padding: 18px;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .stat-card {
+    padding: 1rem;
+  }
+
+  .stat-card span {
+    font-size: 1.5rem;
+  }
+
+  .filter-controls {
+    flex-direction: column;
+  }
+
+  .filter-item {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .attendance-table th,
+  .attendance-table td {
+    padding: 10px 12px;
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 420px) {
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

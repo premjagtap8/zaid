@@ -2170,7 +2170,7 @@ const AdminOffers = () => {
 
                       <td>
 
-                        <span className="discount-badge">
+                        <span className="discount-badge1">
 
                           {offer.discountType ===
                           "PERCENTAGE"

@@ -1480,7 +1480,7 @@ function WalkInInvoice({ order, onClose }) {
                     </button>
 
                     <button
-                        className="close-btn"
+                        className="close-btn1"
                         onClick={onClose}
                     >
                         CLOSE

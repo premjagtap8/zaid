@@ -1,7 +1,60 @@
+/* =========================================
+   VARIABLES & THEME CONFIGURATION
+========================================= */
+:root {
+  --bg-primary: #f6f7fb;
+  --bg-card: #ffffff;
+  --bg-subtle: #f9fafb;
+  --bg-hover: #f3f4f6;
+  --border-color: #e5e7eb;
+  --border-input: #d1d5db;
+  
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --text-heading: #111827;
+
+  --accent-green: #22c55e;
+  --accent-green-hover: #16a34a;
+  --accent-green-light: #e8f5ee;
+  --accent-green-badge-bg: #dcfce7;
+  --accent-green-badge-text: #15803d;
+}
+
+/* Dark Mode Theme Adjustments matching App Dashboard Theme */
+html.dark,
+body.dark,
+.dark-mode,
+.dark {
+  --bg-primary: #0f172a;
+  --bg-card: #1e293b;
+  --bg-subtle: #090d16;
+  --bg-hover: #334155;
+  --border-color: #334155;
+  --border-input: #475569;
+
+  /* Enhanced contrast text colors for dark mode */
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #cbd5e1; /* Boosted from dark gray to high-visibility light silver */
+  --text-heading: #ffffff;
+
+  --accent-green-light: rgba(34, 197, 94, 0.15);
+  --accent-green-badge-bg: rgba(34, 197, 94, 0.2);
+  --accent-green-badge-text: #4ade80;
+}
+
+
+/* =========================================
+   LEAVE MANAGEMENT MAIN
+========================================= */
+
 .leave-management {
   padding: 24px;
   min-height: 100vh;
-  background: #f6f7fb;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 
@@ -20,12 +73,12 @@
   margin: 0;
   font-size: 28px;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--text-heading) !important;
 }
 
 .leave-header p {
   margin: 6px 0 0;
-  color: #6b7280;
+  color: var(--text-muted) !important;
   font-size: 14px;
 }
 
@@ -33,7 +86,7 @@
   width: 52px;
   height: 52px;
   border-radius: 14px;
-  background: #e8f5ee;
+  background: var(--accent-green-light);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +106,8 @@
 }
 
 .leave-summary-card {
-  background: #ffffff;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 14px;
   padding: 20px;
   display: flex;
@@ -73,31 +127,35 @@
 }
 
 .summary-icon.pending {
-  background: #fff7df;
+  background: rgba(234, 179, 8, 0.15);
+  color: #eab308;
 }
 
 .summary-icon.approved {
-  background: #e7f8ed;
+  background: var(--accent-green-badge-bg);
+  color: var(--accent-green-badge-text);
 }
 
 .summary-icon.rejected {
-  background: #fdeaea;
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
 }
 
 .summary-icon.holiday {
-  background: #e9f1ff;
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
 }
 
 .leave-summary-card span {
   display: block;
   font-size: 13px;
-  color: #6b7280;
+  color: var(--text-muted) !important;
   margin-bottom: 5px;
 }
 
 .leave-summary-card strong {
   font-size: 24px;
-  color: #111827;
+  color: var(--text-heading) !important;
 }
 
 
@@ -108,7 +166,8 @@
 .leave-tabs {
   display: flex;
   gap: 8px;
-  background: #ffffff;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   padding: 8px;
   border-radius: 12px;
   margin-bottom: 20px;
@@ -122,17 +181,19 @@
   border-radius: 8px;
   cursor: pointer;
   font-size: 14px;
-  color: #6b7280;
+  color: var(--text-muted) !important;
   font-weight: 600;
+  transition: all 0.2s ease;
 }
 
 .leave-tab:hover {
-  background: #f3f4f6;
+  background: var(--bg-hover);
+  color: var(--text-heading) !important;
 }
 
 .leave-tab.active {
-  background: #22c55e;
-  color: #ffffff;
+  background: var(--accent-green) !important;
+  color: #ffffff !important;
 }
 
 
@@ -141,10 +202,12 @@
 ========================================= */
 
 .leave-content {
-  background: #ffffff;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 14px;
   min-height: 400px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+  color: var(--text-primary);
 }
 
 .leave-section {
@@ -153,7 +216,7 @@
 
 
 /* =========================================
-   SECTION HEADER
+   SECTION HEADER & TEXT CONTRAST FIXES
 ========================================= */
 
 .section-header {
@@ -163,16 +226,28 @@
   margin-bottom: 25px;
 }
 
-.section-header h2 {
+.section-header h2,
+.leave-content h2,
+.leave-section h2 {
   margin: 0;
-  color: #1f2937;
+  color: var(--text-heading) !important;
   font-size: 20px;
+  font-weight: 700;
 }
 
-.section-header p {
+.section-header p,
+.leave-content p,
+.leave-section p {
   margin: 6px 0 0;
-  color: #6b7280;
+  color: var(--text-muted) !important;
   font-size: 13px;
+}
+
+/* Specific fix for request counter and sub-texts */
+.leave-content span,
+.leave-section span,
+.leave-content div {
+  color: var(--text-primary);
 }
 
 
@@ -182,21 +257,23 @@
 
 .primary-btn {
   border: none;
-  background: #22c55e;
-  color: #ffffff;
+  background: var(--accent-green) !important;
+  color: #ffffff !important;
   padding: 11px 18px;
   border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .primary-btn:hover {
-  background: #16a34a;
+  background: var(--accent-green-hover) !important;
 }
 
 .edit-btn {
-  border: 1px solid #d1d5db;
-  background: #ffffff;
+  border: 1px solid var(--border-input);
+  background: var(--bg-card);
+  color: var(--text-primary) !important;
   padding: 7px 14px;
   border-radius: 7px;
   cursor: pointer;
@@ -204,7 +281,7 @@
 }
 
 .edit-btn:hover {
-  background: #f3f4f6;
+  background: var(--bg-hover);
 }
 
 
@@ -213,16 +290,17 @@
 ========================================= */
 
 .leave-filter {
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-input);
   border-radius: 8px;
   padding: 10px 14px;
   outline: none;
-  background: #ffffff;
+  background: var(--bg-card);
+  color: var(--text-primary) !important;
 }
 
 
 /* =========================================
-   EMPTY STATE
+   EMPTY STATE (LEAVE REQUESTS & HOLIDAYS)
 ========================================= */
 
 .empty-state {
@@ -232,29 +310,56 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  color: var(--text-primary);
 }
 
 .empty-icon {
   width: 70px;
   height: 70px;
   border-radius: 50%;
-  background: #f3f4f6;
+  background: var(--bg-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 30px;
   margin-bottom: 15px;
+  color: var(--text-heading) !important;
 }
 
 .empty-state h3 {
   margin: 0 0 7px;
-  color: #374151;
+  color: var(--text-heading) !important;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .empty-state p {
   margin: 0;
-  color: #9ca3af;
+  color: var(--text-muted) !important;
   font-size: 14px;
+}
+
+/* Fix for Refresh text inside leave section empty state */
+.empty-state button,
+.leave-content button:not(.primary-btn):not(.leave-tab) {
+  background: transparent;
+  border: 1px solid var(--border-input);
+  color: var(--text-heading) !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.empty-state button:hover,
+.leave-content button:not(.primary-btn):not(.leave-tab):hover {
+  background: var(--bg-hover);
+  color: var(--text-heading) !important;
 }
 
 
@@ -269,7 +374,8 @@
 }
 
 .policy-card {
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
   border-radius: 12px;
   padding: 18px;
 }
@@ -284,11 +390,12 @@
 .policy-card-header h3 {
   margin: 0;
   font-size: 15px;
+  color: var(--text-heading) !important;
 }
 
 .active-badge {
-  background: #dcfce7;
-  color: #15803d;
+  background: var(--accent-green-badge-bg);
+  color: var(--accent-green-badge-text);
   padding: 5px 10px;
   border-radius: 20px;
   font-size: 11px;
@@ -303,90 +410,29 @@
 
 .policy-info span {
   display: block;
-  color: #6b7280;
+  color: var(--text-muted) !important;
   font-size: 12px;
   margin-bottom: 5px;
 }
 
 .policy-info strong {
   font-size: 18px;
-  color: #111827;
+  color: var(--text-heading) !important;
 }
 
 .policy-footer {
   margin-top: 20px;
   padding-top: 15px;
-  border-top: 1px solid #eeeeee;
+  border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .policy-footer span {
-  color: #6b7280;
+  color: var(--text-muted) !important;
   font-size: 12px;
 }
-
-
-/* =========================================
-   RESPONSIVE
-========================================= */
-
-@media (max-width: 1000px) {
-
-  .leave-summary {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .policy-grid {
-    grid-template-columns: 1fr;
-  }
-
-}
-
-
-@media (max-width: 650px) {
-
-  .leave-management {
-    padding: 15px;
-  }
-
-  .leave-header h1 {
-    font-size: 22px;
-  }
-
-  .leave-summary {
-    grid-template-columns: 1fr;
-  }
-
-  .leave-tabs {
-    overflow-x: auto;
-  }
-
-  .leave-tab {
-    white-space: nowrap;
-    padding: 10px 14px;
-  }
-
-  .section-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* =====================================================
@@ -396,7 +442,8 @@
 .holiday-management-page {
   padding: 24px;
   min-height: 100vh;
-  background: #f6f7fb;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
 
@@ -412,30 +459,32 @@
 .holiday-page-header h1 {
   margin: 0;
   font-size: 28px;
-  color: #1f2937;
+  color: var(--text-heading) !important;
+  font-weight: 700;
 }
 
 .holiday-page-header p {
   margin: 6px 0 0;
-  color: #6b7280;
+  color: var(--text-muted) !important;
   font-size: 14px;
 }
 
 
-/* BUTTON */
+/* BUTTONS */
 
 .holiday-add-btn {
   border: none;
-  background: #22c55e;
-  color: white;
+  background: var(--accent-green) !important;
+  color: #ffffff !important;
   padding: 11px 18px;
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
+  transition: background-color 0.2s ease;
 }
 
 .holiday-add-btn:hover {
-  background: #16a34a;
+  background: var(--accent-green-hover) !important;
 }
 
 .holiday-add-btn:disabled {
@@ -444,12 +493,35 @@
 }
 
 
+/* REFRESH BUTTON */
+
+.holiday-refresh-btn {
+  background: var(--bg-card);
+  color: var(--text-heading) !important;
+  border: 1px solid var(--border-input);
+  padding: 9px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.holiday-refresh-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-heading) !important;
+}
+
+
 /* ERROR */
 
 .holiday-error {
-  background: #fee2e2;
-  color: #b91c1c;
-  border: 1px solid #fecaca;
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.3);
   padding: 12px 15px;
   border-radius: 8px;
   margin-bottom: 20px;
@@ -466,7 +538,8 @@
 }
 
 .holiday-summary-card {
-  background: white;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
@@ -474,21 +547,22 @@
 
 .holiday-summary-card span {
   display: block;
-  color: #6b7280;
+  color: var(--text-muted) !important;
   font-size: 13px;
   margin-bottom: 7px;
 }
 
 .holiday-summary-card strong {
   font-size: 26px;
-  color: #111827;
+  color: var(--text-heading) !important;
 }
 
 
 /* TABLE CARD */
 
 .holiday-table-card {
-  background: white;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 14px;
   box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
   overflow: hidden;
@@ -499,31 +573,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .holiday-table-header h2 {
   margin: 0;
   font-size: 20px;
-  color: #1f2937;
+  color: var(--text-heading) !important;
+  font-weight: 700;
 }
 
 .holiday-table-header p {
   margin: 5px 0 0;
   font-size: 13px;
-  color: #6b7280;
-}
-
-.holiday-refresh-btn {
-  background: white;
-  border: 1px solid #d1d5db;
-  padding: 9px 15px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.holiday-refresh-btn:hover {
-  background: #f3f4f6;
+  color: var(--text-muted) !important;
 }
 
 
@@ -541,24 +604,24 @@
 }
 
 .holiday-table th {
-  background: #f9fafb;
-  color: #6b7280;
+  background: var(--bg-subtle);
+  color: var(--text-muted) !important;
   font-size: 12px;
   text-transform: uppercase;
   text-align: left;
   padding: 14px 18px;
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--border-color);
 }
 
 .holiday-table td {
   padding: 16px 18px;
-  border-bottom: 1px solid #f0f0f0;
-  color: #374151;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary) !important;
   font-size: 14px;
 }
 
 .holiday-table tbody tr:hover {
-  background: #fafafa;
+  background: var(--bg-hover);
 }
 
 
@@ -573,7 +636,7 @@
 .holiday-calendar-icon {
   width: 38px;
   height: 38px;
-  background: #e8f5ee;
+  background: var(--accent-green-light);
   border-radius: 9px;
   display: flex;
   align-items: center;
@@ -581,14 +644,14 @@
 }
 
 .holiday-name strong {
-  color: #111827;
+  color: var(--text-heading) !important;
 }
 
 
 /* DESCRIPTION */
 
 .holiday-description {
-  color: #6b7280;
+  color: var(--text-muted) !important;
   max-width: 220px;
   display: block;
   overflow: hidden;
@@ -608,13 +671,13 @@
 }
 
 .holiday-type.permanent {
-  background: #e0e7ff;
-  color: #4338ca;
+  background: rgba(99, 102, 241, 0.15);
+  color: #818cf8;
 }
 
 .holiday-type.special {
-  background: #fff7df;
-  color: #a16207;
+  background: rgba(234, 179, 8, 0.15);
+  color: #eab308;
 }
 
 
@@ -629,13 +692,13 @@
 }
 
 .holiday-status.active {
-  background: #dcfce7;
-  color: #15803d;
+  background: var(--accent-green-badge-bg);
+  color: var(--accent-green-badge-text);
 }
 
 .holiday-status.inactive {
-  background: #fee2e2;
-  color: #b91c1c;
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
 }
 
 
@@ -653,39 +716,37 @@
   cursor: pointer;
   font-size: 12px;
   font-weight: 600;
+  transition: all 0.2s ease;
 }
 
 .holiday-edit-btn {
-  border: 1px solid #d1d5db;
-  background: white;
-  color: #374151;
+  border: 1px solid var(--border-input);
+  background: var(--bg-card);
+  color: var(--text-primary) !important;
 }
 
 .holiday-edit-btn:hover {
-  background: #f3f4f6;
+  background: var(--bg-hover);
 }
 
 .holiday-delete-btn {
-  border: 1px solid #fecaca;
-  background: #fff5f5;
-  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
 }
 
 .holiday-delete-btn:hover {
-  background: #fee2e2;
+  background: rgba(239, 68, 68, 0.2);
 }
 
 
-/* LOADING */
+/* LOADING & EMPTY STATES */
 
 .holiday-loading {
   padding: 80px 20px;
   text-align: center;
-  color: #6b7280;
+  color: var(--text-muted) !important;
 }
-
-
-/* EMPTY */
 
 .holiday-empty {
   padding: 80px 20px;
@@ -698,20 +759,21 @@
   margin: auto;
   margin-bottom: 15px;
   border-radius: 50%;
-  background: #f3f4f6;
+  background: var(--bg-subtle);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 30px;
+  color: var(--text-muted) !important;
 }
 
 .holiday-empty h3 {
   margin: 0 0 7px;
-  color: #374151;
+  color: var(--text-heading) !important;
 }
 
 .holiday-empty p {
-  color: #9ca3af;
+  color: var(--text-muted) !important;
   font-size: 14px;
   margin-bottom: 20px;
 }
@@ -724,7 +786,8 @@
 .holiday-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -735,16 +798,18 @@
 .holiday-modal {
   width: 100%;
   max-width: 520px;
-  background: white;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 15px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   max-height: 90vh;
   overflow-y: auto;
+  color: var(--text-primary);
 }
 
 .holiday-modal-header {
   padding: 20px 22px;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -752,13 +817,14 @@
 
 .holiday-modal-header h2 {
   margin: 0;
-  color: #1f2937;
+  color: var(--text-heading) !important;
   font-size: 20px;
+  font-weight: 700;
 }
 
 .holiday-modal-header p {
   margin: 5px 0 0;
-  color: #6b7280;
+  color: var(--text-muted) !important;
   font-size: 13px;
 }
 
@@ -766,9 +832,13 @@
   border: none;
   background: transparent;
   font-size: 28px;
-  color: #6b7280;
+  color: var(--text-muted) !important;
   cursor: pointer;
   line-height: 1;
+}
+
+.holiday-modal-close:hover {
+  color: var(--text-heading) !important;
 }
 
 
@@ -787,11 +857,11 @@
   margin-bottom: 7px;
   font-size: 13px;
   font-weight: 600;
-  color: #374151;
+  color: var(--text-heading) !important;
 }
 
 .holiday-form-group label span {
-  color: #dc2626;
+  color: #ef4444;
   margin-left: 3px;
 }
 
@@ -800,7 +870,9 @@
 .holiday-form-group textarea {
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--border-input);
+  background: var(--bg-card);
+  color: var(--text-primary) !important;
   border-radius: 8px;
   padding: 11px 12px;
   outline: none;
@@ -811,7 +883,7 @@
 .holiday-form-group input:focus,
 .holiday-form-group select:focus,
 .holiday-form-group textarea:focus {
-  border-color: #22c55e;
+  border-color: var(--accent-green);
 }
 
 .holiday-form-group textarea {
@@ -831,12 +903,12 @@
 .holiday-checkbox input {
   width: 17px;
   height: 17px;
-  accent-color: #22c55e;
+  accent-color: var(--accent-green);
 }
 
 .holiday-checkbox label {
   font-size: 13px;
-  color: #374151;
+  color: var(--text-primary) !important;
 }
 
 
@@ -858,19 +930,23 @@
 }
 
 .holiday-cancel-btn {
-  background: white;
-  border: 1px solid #d1d5db;
-  color: #374151;
+  background: var(--bg-card);
+  border: 1px solid var(--border-input);
+  color: var(--text-primary) !important;
+}
+
+.holiday-cancel-btn:hover {
+  background: var(--bg-hover);
 }
 
 .holiday-save-btn {
-  background: #22c55e;
-  border: 1px solid #22c55e;
-  color: white;
+  background: var(--accent-green) !important;
+  border: 1px solid var(--accent-green) !important;
+  color: white !important;
 }
 
 .holiday-save-btn:hover {
-  background: #16a34a;
+  background: var(--accent-green-hover) !important;
 }
 
 .holiday-save-btn:disabled,
@@ -881,46 +957,67 @@
 
 
 /* =====================================================
-   RESPONSIVE
+   RESPONSIVE LAYOUT
 ===================================================== */
 
-@media (max-width: 900px) {
-
-  .holiday-summary {
+@media (max-width: 1000px) {
+  .leave-summary {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .policy-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
+@media (max-width: 900px) {
+  .holiday-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-@media (max-width: 600px) {
-
+@media (max-width: 650px) {
+  .leave-management,
   .holiday-management-page {
     padding: 15px;
   }
 
+  .leave-header h1,
+  .holiday-page-header h1 {
+    font-size: 22px;
+  }
+
+  .leave-header,
   .holiday-page-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
   }
 
-  .holiday-page-header h1 {
-    font-size: 23px;
-  }
-
+  .leave-summary,
   .holiday-summary {
     grid-template-columns: 1fr;
   }
 
+  .leave-tabs {
+    overflow-x: auto;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .leave-tab {
+    white-space: nowrap;
+    padding: 10px 14px;
+  }
+
+  .section-header,
   .holiday-table-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 15px;
   }
 
   .holiday-modal {
     max-height: 95vh;
   }
-
 }

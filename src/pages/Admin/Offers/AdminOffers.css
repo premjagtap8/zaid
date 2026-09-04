@@ -4,9 +4,14 @@
 
 .offers-page {
   min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
   padding: 28px;
   background: #f8fafc;
   color: #0f172a;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 /* =====================================================
@@ -24,6 +29,7 @@
 .offers-header h1 {
   margin: 0;
   font-size: 30px;
+  line-height: 1.2;
   font-weight: 800;
   color: #0f172a;
 }
@@ -39,23 +45,29 @@
   border: none;
   cursor: pointer;
   background: #4f46e5;
-  color: white;
+  color: #ffffff;
   font-weight: 700;
   border-radius: 12px;
   padding: 13px 20px;
   font-size: 14px;
-  transition: 0.2s ease;
+  min-height: 44px;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .add-offer-btn:hover,
 .empty-add-btn:hover {
   background: #4338ca;
   transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.2);
 }
 
 .add-offer-btn span {
   font-size: 20px;
   margin-right: 7px;
+  vertical-align: -1px;
 }
 
 /* =====================================================
@@ -64,7 +76,7 @@
 
 .offers-loading {
   min-height: 350px;
-  background: white;
+  background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 18px;
   display: flex;
@@ -99,7 +111,7 @@
 ===================================================== */
 
 .offers-empty {
-  background: white;
+  background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 18px;
   min-height: 350px;
@@ -129,7 +141,9 @@
 ===================================================== */
 
 .offers-card {
-  background: white;
+  width: 100%;
+  box-sizing: border-box;
+  background: #ffffff;
   border: 1px solid #e2e8f0;
   border-radius: 18px;
   overflow: hidden;
@@ -145,6 +159,7 @@
   margin: 0;
   font-size: 18px;
   font-weight: 800;
+  color: #0f172a;
 }
 
 .offers-card-header p {
@@ -160,6 +175,7 @@
 .offers-table-wrapper {
   width: 100%;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .offers-table {
@@ -178,6 +194,7 @@
   padding: 15px 18px;
   font-weight: 800;
   border-bottom: 1px solid #e2e8f0;
+  white-space: nowrap;
 }
 
 .offers-table td {
@@ -186,8 +203,17 @@
   vertical-align: middle;
 }
 
+/*
+   IMPORTANT:
+   Do not make the entire row black on hover.
+   Use a very subtle background instead.
+*/
+.offers-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
 .offers-table tbody tr:hover {
-  background: #fafafa;
+  background: #f8fafc;
 }
 
 /* =====================================================
@@ -205,6 +231,7 @@
   margin-top: 4px;
   color: #64748b;
   font-size: 12px;
+  line-height: 1.5;
 }
 
 /* =====================================================
@@ -226,6 +253,7 @@
   border-radius: 7px;
   font-size: 11px;
   font-weight: 600;
+  line-height: 1.3;
 }
 
 .more-tag {
@@ -250,14 +278,17 @@
    DISCOUNT
 ===================================================== */
 
-.discount-badge {
+.discount-badge1 {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 7px 10px;
   background: #eef2ff;
   color: #4f46e5;
   border-radius: 8px;
   font-size: 13px;
   font-weight: 800;
+  white-space: nowrap;
 }
 
 /* =====================================================
@@ -277,6 +308,7 @@
 .status-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 7px;
   border: none;
   cursor: pointer;
@@ -284,11 +316,13 @@
   border-radius: 999px;
   font-size: 11px;
   font-weight: 800;
+  white-space: nowrap;
 }
 
 .status-dot {
   width: 7px;
   height: 7px;
+  flex-shrink: 0;
   border-radius: 50%;
   background: currentColor;
 }
@@ -307,10 +341,27 @@
    ACTIONS
 ===================================================== */
 
+/*
+   KEEP THIS CLASS NAME EXACTLY:
+   action-buttons
+
+   Do not rename it to action-button because
+   other CSS in the project may already use that name.
+*/
+
 .action-buttons {
   display: flex;
-  justify-content: flex-end;
-  gap: 7px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* Make sure Actions column has enough room */
+.offers-table th:last-child,
+.offers-table td:last-child {
+  min-width: 145px;
 }
 
 .edit-btn,
@@ -318,9 +369,15 @@
   border: none;
   cursor: pointer;
   border-radius: 8px;
-  padding: 8px 11px;
+  padding: 8px 12px;
+  min-height: 34px;
   font-size: 12px;
   font-weight: 700;
+  line-height: 1;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .edit-btn {
@@ -330,6 +387,7 @@
 
 .edit-btn:hover {
   background: #dbeafe;
+  color: #1d4ed8;
 }
 
 .delete-btn {
@@ -339,6 +397,7 @@
 
 .delete-btn:hover {
   background: #fee2e2;
+  color: #b91c1c;
 }
 
 /* =====================================================
@@ -349,11 +408,12 @@
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: rgba(15, 23, 42, 0.58);
+  background: rgba(15, 23, 42, 0.68);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 .offer-modal {
@@ -361,9 +421,13 @@
   max-width: 700px;
   max-height: 92vh;
   overflow-y: auto;
-  background: white;
+  background: #ffffff;
+  color: #0f172a;
   border-radius: 20px;
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 /* =====================================================
@@ -374,6 +438,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  gap: 15px;
   padding: 22px 24px;
   border-bottom: 1px solid #e2e8f0;
 }
@@ -382,6 +447,7 @@
   margin: 0;
   font-size: 21px;
   font-weight: 800;
+  color: #0f172a;
 }
 
 .modal-header p {
@@ -393,6 +459,7 @@
 .modal-close {
   width: 35px;
   height: 35px;
+  flex-shrink: 0;
   border: none;
   border-radius: 9px;
   cursor: pointer;
@@ -400,10 +467,14 @@
   color: #475569;
   font-size: 24px;
   line-height: 1;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .modal-close:hover {
   background: #e2e8f0;
+  color: #0f172a;
 }
 
 /* =====================================================
@@ -433,11 +504,19 @@
   padding: 12px 13px;
   border: 1px solid #cbd5e1;
   border-radius: 10px;
-  background: white;
+  background: #ffffff;
   color: #0f172a;
   font-size: 14px;
   outline: none;
-  transition: 0.2s ease;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.form-group input::placeholder {
+  color: #94a3b8;
 }
 
 .form-group input:focus,
@@ -456,6 +535,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 }
 
 .label-row span {
@@ -473,6 +553,7 @@
   border: 1px solid #cbd5e1;
   border-radius: 12px;
   padding: 8px;
+  background: #ffffff;
 }
 
 .product-option {
@@ -482,7 +563,7 @@
   padding: 11px;
   border-radius: 9px;
   cursor: pointer;
-  transition: 0.15s ease;
+  transition: background-color 0.15s ease;
 }
 
 .product-option:hover {
@@ -503,11 +584,13 @@
   display: flex;
   flex-direction: column;
   gap: 3px;
+  min-width: 0;
 }
 
 .product-option-info strong {
   font-size: 13px;
   color: #0f172a;
+  overflow-wrap: anywhere;
 }
 
 .product-option-info span {
@@ -538,9 +621,14 @@
   border: none;
   cursor: pointer;
   padding: 12px 18px;
+  min-height: 42px;
   border-radius: 10px;
   font-weight: 700;
   font-size: 13px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .cancel-btn {
@@ -550,11 +638,12 @@
 
 .cancel-btn:hover {
   background: #e2e8f0;
+  color: #334155;
 }
 
 .save-btn {
   background: #4f46e5;
-  color: white;
+  color: #ffffff;
 }
 
 .save-btn:hover {
@@ -568,21 +657,746 @@
 }
 
 /* =====================================================
-   RESPONSIVE
+   DARK MODE
+===================================================== */
+
+/*
+   These selectors support the common ways your app may
+   apply the dark theme:
+
+   .dark
+   body.dark
+   [data-theme="dark"]
+   .offers-page.dark
+
+   Your ThemeContext/theme switch should apply one of
+   these to the parent/root element.
+*/
+
+.dark .offers-page,
+body.dark .offers-page,
+[data-theme="dark"] .offers-page,
+.offers-page.dark {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+/* -----------------------------
+   DARK HEADER
+----------------------------- */
+
+.dark .offers-page .offers-header h1,
+body.dark .offers-page .offers-header h1,
+[data-theme="dark"] .offers-page .offers-header h1,
+.offers-page.dark .offers-header h1 {
+  color: #f8fafc;
+}
+
+.dark .offers-page .offers-header p,
+body.dark .offers-page .offers-header p,
+[data-theme="dark"] .offers-page .offers-header p,
+.offers-page.dark .offers-header p {
+  color: #94a3b8;
+}
+
+/* -----------------------------
+   DARK BUTTONS
+----------------------------- */
+
+.dark .offers-page .add-offer-btn,
+body.dark .offers-page .add-offer-btn,
+[data-theme="dark"] .offers-page .add-offer-btn,
+.offers-page.dark .add-offer-btn {
+  background: #6366f1;
+  color: #ffffff;
+}
+
+.dark .offers-page .add-offer-btn:hover,
+body.dark .offers-page .add-offer-btn:hover,
+[data-theme="dark"] .offers-page .add-offer-btn:hover,
+.offers-page.dark .add-offer-btn:hover {
+  background: #818cf8;
+  color: #ffffff;
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.25);
+}
+
+/* -----------------------------
+   DARK LOADING
+----------------------------- */
+
+.dark .offers-page .offers-loading,
+body.dark .offers-page .offers-loading,
+[data-theme="dark"] .offers-page .offers-loading,
+.offers-page.dark .offers-loading {
+  background: #111c30;
+  border-color: #26344a;
+}
+
+.dark .offers-page .offers-loading p,
+body.dark .offers-page .offers-loading p,
+[data-theme="dark"] .offers-page .offers-loading p,
+.offers-page.dark .offers-loading p {
+  color: #94a3b8;
+}
+
+.dark .offers-page .offers-spinner,
+body.dark .offers-page .offers-spinner,
+[data-theme="dark"] .offers-page .offers-spinner,
+.offers-page.dark .offers-spinner {
+  border-color: #334155;
+  border-top-color: #818cf8;
+}
+
+/* -----------------------------
+   DARK EMPTY
+----------------------------- */
+
+.dark .offers-page .offers-empty,
+body.dark .offers-page .offers-empty,
+[data-theme="dark"] .offers-page .offers-empty,
+.offers-page.dark .offers-empty {
+  background: #111c30;
+  border-color: #26344a;
+}
+
+.dark .offers-page .offers-empty h2,
+body.dark .offers-page .offers-empty h2,
+[data-theme="dark"] .offers-page .offers-empty h2,
+.offers-page.dark .offers-empty h2 {
+  color: #f8fafc;
+}
+
+.dark .offers-page .offers-empty p,
+body.dark .offers-page .offers-empty p,
+[data-theme="dark"] .offers-page .offers-empty p,
+.offers-page.dark .offers-empty p {
+  color: #94a3b8;
+}
+
+/* -----------------------------
+   DARK CARD
+----------------------------- */
+
+.dark .offers-page .offers-card,
+body.dark .offers-page .offers-card,
+[data-theme="dark"] .offers-page .offers-card,
+.offers-page.dark .offers-card {
+  background: #111c30;
+  border-color: #26344a;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.18);
+}
+
+.dark .offers-page .offers-card-header,
+body.dark .offers-page .offers-card-header,
+[data-theme="dark"] .offers-page .offers-card-header,
+.offers-page.dark .offers-card-header {
+  border-bottom-color: #26344a;
+}
+
+.dark .offers-page .offers-card-header h2,
+body.dark .offers-page .offers-card-header h2,
+[data-theme="dark"] .offers-page .offers-card-header h2,
+.offers-page.dark .offers-card-header h2 {
+  color: #f8fafc;
+}
+
+.dark .offers-page .offers-card-header p,
+body.dark .offers-page .offers-card-header p,
+[data-theme="dark"] .offers-page .offers-card-header p,
+.offers-page.dark .offers-card-header p {
+  color: #94a3b8;
+}
+
+/* -----------------------------
+   DARK TABLE
+----------------------------- */
+
+.dark .offers-page .offers-table th,
+body.dark .offers-page .offers-table th,
+[data-theme="dark"] .offers-page .offers-table th,
+.offers-page.dark .offers-table th {
+  background: #162238;
+  color: #94a3b8;
+  border-bottom-color: #26344a;
+}
+
+.dark .offers-page .offers-table td,
+body.dark .offers-page .offers-table td,
+[data-theme="dark"] .offers-page .offers-table td,
+.offers-page.dark .offers-table td {
+  border-bottom-color: #26344a;
+}
+
+/*
+   IMPORTANT:
+   Hover stays a dark navy shade.
+   It will NOT become black.
+*/
+
+.dark .offers-page .offers-table tbody tr:hover,
+body.dark .offers-page .offers-table tbody tr:hover,
+[data-theme="dark"] .offers-page .offers-table tbody tr:hover,
+.offers-page.dark .offers-table tbody tr:hover {
+  background: #17263d;
+}
+
+/* -----------------------------
+   DARK OFFER TEXT
+----------------------------- */
+
+.dark .offers-page .offer-title,
+body.dark .offers-page .offer-title,
+[data-theme="dark"] .offers-page .offer-title,
+.offers-page.dark .offer-title {
+  color: #f8fafc;
+}
+
+.dark .offers-page .offer-description,
+body.dark .offers-page .offer-description,
+[data-theme="dark"] .offers-page .offer-description,
+.offers-page.dark .offer-description {
+  color: #94a3b8;
+}
+
+/* -----------------------------
+   DARK PRODUCT TAG
+----------------------------- */
+
+.dark .offers-page .product-tag,
+body.dark .offers-page .product-tag,
+[data-theme="dark"] .offers-page .product-tag,
+.offers-page.dark .product-tag {
+  background: #1e293b;
+  color: #dbeafe;
+}
+
+.dark .offers-page .more-tag,
+body.dark .offers-page .more-tag,
+[data-theme="dark"] .offers-page .more-tag,
+.offers-page.dark .more-tag {
+  color: #94a3b8;
+}
+
+.dark .offers-page .no-product,
+body.dark .offers-page .no-product,
+[data-theme="dark"] .offers-page .no-product,
+.offers-page.dark .no-product {
+  color: #64748b;
+}
+
+.dark .offers-page .product-count,
+body.dark .offers-page .product-count,
+[data-theme="dark"] .offers-page .product-count,
+.offers-page.dark .product-count {
+  color: #64748b;
+}
+
+/* -----------------------------
+   DARK DISCOUNT
+----------------------------- */
+
+.dark .offers-page .discount-badge1,
+body.dark .offers-page .discount-badge1,
+[data-theme="dark"] .offers-page .discount-badge1,
+.offers-page.dark .discount-badge1 {
+  background: #25215c;
+  color: #a5b4fc;
+}
+
+/* -----------------------------
+   DARK DATE
+----------------------------- */
+
+.dark .offers-page .date-text,
+body.dark .offers-page .date-text,
+[data-theme="dark"] .offers-page .date-text,
+.offers-page.dark .date-text {
+  color: #cbd5e1;
+}
+
+/* -----------------------------
+   DARK STATUS
+----------------------------- */
+
+.dark .offers-page .status-active,
+body.dark .offers-page .status-active,
+[data-theme="dark"] .offers-page .status-active,
+.offers-page.dark .status-active {
+  color: #4ade80;
+  background: #123d2a;
+}
+
+.dark .offers-page .status-inactive,
+body.dark .offers-page .status-inactive,
+[data-theme="dark"] .offers-page .status-inactive,
+.offers-page.dark .status-inactive {
+  color: #94a3b8;
+  background: #1e293b;
+}
+
+/* -----------------------------
+   DARK ACTION BUTTONS
+----------------------------- */
+
+.dark .offers-page .edit-btn,
+body.dark .offers-page .edit-btn,
+[data-theme="dark"] .offers-page .edit-btn,
+.offers-page.dark .edit-btn {
+  background: #172554;
+  color: #93c5fd;
+}
+
+.dark .offers-page .edit-btn:hover,
+body.dark .offers-page .edit-btn:hover,
+[data-theme="dark"] .offers-page .edit-btn:hover,
+.offers-page.dark .edit-btn:hover {
+  background: #1e3a8a;
+  color: #bfdbfe;
+}
+
+.dark .offers-page .delete-btn,
+body.dark .offers-page .delete-btn,
+[data-theme="dark"] .offers-page .delete-btn,
+.offers-page.dark .delete-btn {
+  background: #451a1a;
+  color: #fca5a5;
+}
+
+.dark .offers-page .delete-btn:hover,
+body.dark .offers-page .delete-btn:hover,
+[data-theme="dark"] .offers-page .delete-btn:hover,
+.offers-page.dark .delete-btn:hover {
+  background: #5f2020;
+  color: #fecaca;
+}
+
+/* =====================================================
+   DARK MODAL
+===================================================== */
+
+.dark .offers-page .offer-modal,
+body.dark .offers-page .offer-modal,
+[data-theme="dark"] .offers-page .offer-modal,
+.offers-page.dark .offer-modal {
+  background: #111c30;
+  color: #e2e8f0;
+  border: 1px solid #26344a;
+}
+
+/* Modal header */
+
+.dark .offers-page .modal-header,
+body.dark .offers-page .modal-header,
+[data-theme="dark"] .offers-page .modal-header,
+.offers-page.dark .modal-header {
+  border-bottom-color: #26344a;
+}
+
+.dark .offers-page .modal-header h2,
+body.dark .offers-page .modal-header h2,
+[data-theme="dark"] .offers-page .modal-header h2,
+.offers-page.dark .modal-header h2 {
+  color: #f8fafc;
+}
+
+.dark .offers-page .modal-header p,
+body.dark .offers-page .modal-header p,
+[data-theme="dark"] .offers-page .modal-header p,
+.offers-page.dark .modal-header p {
+  color: #94a3b8;
+}
+
+/* Close button */
+
+.dark .offers-page .modal-close,
+body.dark .offers-page .modal-close,
+[data-theme="dark"] .offers-page .modal-close,
+.offers-page.dark .modal-close {
+  background: #1e293b;
+  color: #cbd5e1;
+}
+
+.dark .offers-page .modal-close:hover,
+body.dark .offers-page .modal-close:hover,
+[data-theme="dark"] .offers-page .modal-close:hover,
+.offers-page.dark .modal-close:hover {
+  background: #334155;
+  color: #ffffff;
+}
+
+/* -----------------------------
+   DARK FORM
+----------------------------- */
+
+.dark .offers-page .form-group label,
+body.dark .offers-page .form-group label,
+[data-theme="dark"] .offers-page .form-group label,
+.offers-page.dark .form-group label {
+  color: #cbd5e1;
+}
+
+.dark .offers-page .form-group input,
+.dark .offers-page .form-group select,
+body.dark .offers-page .form-group input,
+body.dark .offers-page .form-group select,
+[data-theme="dark"] .offers-page .form-group input,
+[data-theme="dark"] .offers-page .form-group select,
+.offers-page.dark .form-group input,
+.offers-page.dark .form-group select {
+  background: #0f172a;
+  border-color: #334155;
+  color: #f8fafc;
+}
+
+.dark .offers-page .form-group input::placeholder,
+body.dark .offers-page .form-group input::placeholder,
+[data-theme="dark"] .offers-page .form-group input::placeholder,
+.offers-page.dark .form-group input::placeholder {
+  color: #64748b;
+}
+
+.dark .offers-page .form-group input:focus,
+.dark .offers-page .form-group select:focus,
+body.dark .offers-page .form-group input:focus,
+body.dark .offers-page .form-group select:focus,
+[data-theme="dark"] .offers-page .form-group input:focus,
+[data-theme="dark"] .offers-page .form-group select:focus,
+.offers-page.dark .form-group input:focus,
+.offers-page.dark .form-group select:focus {
+  border-color: #818cf8;
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.14);
+}
+
+.dark .offers-page .label-row span,
+body.dark .offers-page .label-row span,
+[data-theme="dark"] .offers-page .label-row span,
+.offers-page.dark .label-row span {
+  color: #94a3b8;
+}
+
+/* -----------------------------
+   DARK PRODUCT SELECTOR
+----------------------------- */
+
+.dark .offers-page .products-selector,
+body.dark .offers-page .products-selector,
+[data-theme="dark"] .offers-page .products-selector,
+.offers-page.dark .products-selector {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+.dark .offers-page .product-option:hover,
+body.dark .offers-page .product-option:hover,
+[data-theme="dark"] .offers-page .product-option:hover,
+.offers-page.dark .product-option:hover {
+  background: #17263d;
+}
+
+.dark .offers-page .product-option.selected,
+body.dark .offers-page .product-option.selected,
+[data-theme="dark"] .offers-page .product-option.selected,
+.offers-page.dark .product-option.selected {
+  background: #25215c;
+}
+
+.dark .offers-page .product-option-info strong,
+body.dark .offers-page .product-option-info strong,
+[data-theme="dark"] .offers-page .product-option-info strong,
+.offers-page.dark .product-option-info strong {
+  color: #f8fafc;
+}
+
+.dark .offers-page .product-option-info span,
+body.dark .offers-page .product-option-info span,
+[data-theme="dark"] .offers-page .product-option-info span,
+.offers-page.dark .product-option-info span {
+  color: #94a3b8;
+}
+
+.dark .offers-page .no-products,
+body.dark .offers-page .no-products,
+[data-theme="dark"] .offers-page .no-products,
+.offers-page.dark .no-products {
+  color: #94a3b8;
+}
+
+/* -----------------------------
+   DARK MODAL BUTTONS
+----------------------------- */
+
+.dark .offers-page .cancel-btn,
+body.dark .offers-page .cancel-btn,
+[data-theme="dark"] .offers-page .cancel-btn,
+.offers-page.dark .cancel-btn {
+  background: #1e293b;
+  color: #cbd5e1;
+}
+
+.dark .offers-page .cancel-btn:hover,
+body.dark .offers-page .cancel-btn:hover,
+[data-theme="dark"] .offers-page .cancel-btn:hover,
+.offers-page.dark .cancel-btn:hover {
+  background: #334155;
+  color: #ffffff;
+}
+
+.dark .offers-page .save-btn,
+body.dark .offers-page .save-btn,
+[data-theme="dark"] .offers-page .save-btn,
+.offers-page.dark .save-btn {
+  background: #6366f1;
+  color: #ffffff;
+}
+
+.dark .offers-page .save-btn:hover,
+body.dark .offers-page .save-btn:hover,
+[data-theme="dark"] .offers-page .save-btn:hover,
+.offers-page.dark .save-btn:hover {
+  background: #818cf8;
+}
+
+/* =====================================================
+   RESPONSIVE - TABLET
+===================================================== */
+
+@media (max-width: 1024px) {
+  .offers-page {
+    padding: 22px;
+  }
+
+  .offers-header h1 {
+    font-size: 28px;
+  }
+
+  .offers-table {
+    min-width: 900px;
+  }
+
+  .offers-table th,
+  .offers-table td {
+    padding: 14px;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE - MOBILE
 ===================================================== */
 
 @media (max-width: 768px) {
   .offers-page {
-    padding: 18px;
+    padding: 16px;
   }
 
+  /* Header */
+
   .offers-header {
-    align-items: flex-start;
+    align-items: stretch;
     flex-direction: column;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .offers-header h1 {
+    font-size: 26px;
+  }
+
+  .offers-header p {
+    font-size: 14px;
   }
 
   .add-offer-btn {
     width: 100%;
+    justify-content: center;
+  }
+
+  /* Card */
+
+  .offers-card {
+    border-radius: 14px;
+  }
+
+  .offers-card-header {
+    padding: 17px;
+  }
+
+  .offers-card-header h2 {
+    font-size: 17px;
+  }
+
+  /* -------------------------------------------------
+     Convert table into mobile cards
+  ------------------------------------------------- */
+
+  .offers-table-wrapper {
+    overflow-x: visible;
+  }
+
+  .offers-table {
+    min-width: 0;
+    width: 100%;
+    display: block;
+  }
+
+  .offers-table thead {
+    display: none;
+  }
+
+  .offers-table tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .offers-table tbody tr {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .offers-table tbody tr:hover {
+    background: #f8fafc;
+  }
+
+  .offers-table td {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 0;
+    border-bottom: none;
+    text-align: right;
+  }
+
+  /*
+     Labels for each table field
+  */
+
+  .offers-table td::before {
+    flex: 0 0 90px;
+    text-align: left;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #64748b;
+  }
+
+  .offers-table td:nth-child(1)::before {
+    content: "Offer";
+  }
+
+  .offers-table td:nth-child(2)::before {
+    content: "Products";
+  }
+
+  .offers-table td:nth-child(3)::before {
+    content: "Discount";
+  }
+
+  .offers-table td:nth-child(4)::before {
+    content: "Start Date";
+  }
+
+  .offers-table td:nth-child(5)::before {
+    content: "End Date";
+  }
+
+  .offers-table td:nth-child(6)::before {
+    content: "Status";
+  }
+
+  .offers-table td:nth-child(7)::before {
+    content: "Actions";
+  }
+
+  /* Offer */
+
+  .offer-title {
+    font-size: 14px;
+    text-align: right;
+    overflow-wrap: anywhere;
+  }
+
+  .offer-description {
+    max-width: 180px;
+    text-align: right;
+  }
+
+  /* Products */
+
+  .offers-table td:nth-child(2) {
+    align-items: flex-start;
+  }
+
+  .product-tags {
+    justify-content: flex-end;
+    max-width: 190px;
+  }
+
+  .product-count {
+    text-align: right;
+  }
+
+  /* Dates */
+
+  .date-text {
+    white-space: normal;
+    text-align: right;
+  }
+
+  /* Status */
+
+  .status-btn {
+    margin-left: auto;
+  }
+
+  /* -------------------------------------------------
+     ACTION BUTTONS
+  ------------------------------------------------- */
+
+  .offers-table td:nth-child(7) {
+    align-items: flex-start;
+    padding-top: 14px;
+    margin-top: 5px;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  .action-buttons {
+    width: auto;
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    min-width: 65px;
+  }
+
+  /* Modal */
+
+  .offer-modal-overlay {
+    padding: 10px;
+    align-items: center;
+  }
+
+  .offer-modal {
+    max-height: 95vh;
+    border-radius: 16px;
+  }
+
+  .modal-header,
+  .offer-form {
+    padding: 18px;
+  }
+
+  .modal-header h2 {
+    font-size: 19px;
   }
 
   .form-grid {
@@ -590,16 +1404,95 @@
     gap: 0;
   }
 
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .cancel-btn,
+  .save-btn {
+    width: 100%;
+  }
+
+  /* Dark mobile hover */
+
+  .dark .offers-page .offers-table tbody tr:hover,
+  body.dark .offers-page .offers-table tbody tr:hover,
+  [data-theme="dark"] .offers-page .offers-table tbody tr:hover,
+  .offers-page.dark .offers-table tbody tr:hover {
+    background: #17263d;
+  }
+
+  .dark .offers-page .offers-table td:nth-child(7),
+  body.dark .offers-page .offers-table td:nth-child(7),
+  [data-theme="dark"] .offers-page .offers-table td:nth-child(7),
+  .offers-page.dark .offers-table td:nth-child(7) {
+    border-top-color: #26344a;
+  }
+}
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+  .offers-page {
+    padding: 12px;
+  }
+
+  .offers-header h1 {
+    font-size: 23px;
+  }
+
+  .offers-card-header {
+    padding: 15px;
+  }
+
+  .offers-table tbody tr {
+    padding: 14px;
+  }
+
+  .offers-table td {
+    gap: 10px;
+  }
+
+  .offers-table td::before {
+    flex-basis: 75px;
+    font-size: 9px;
+  }
+
+  .offer-title {
+    font-size: 13px;
+  }
+
+  .product-tags {
+    max-width: 165px;
+  }
+
+  .product-tag {
+    font-size: 10px;
+  }
+
+  .action-buttons {
+    gap: 6px;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    padding: 8px 10px;
+    min-width: 60px;
+    font-size: 11px;
+  }
+
   .offer-modal-overlay {
-    padding: 10px;
+    padding: 6px;
   }
 
   .offer-modal {
-    max-height: 95vh;
+    border-radius: 14px;
   }
 
   .modal-header,
   .offer-form {
-    padding: 18px;
+    padding: 15px;
   }
 }

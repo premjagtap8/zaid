@@ -301,6 +301,10 @@ function AddBrand() {
         text: res.data?.message || "Brand created successfully!",
       });
 
+       toast.success(
+        res.data?.message || "Brand created successfully!"
+      );
+
       // Reset form
       setBrand({
         name: "",
@@ -319,6 +323,11 @@ function AddBrand() {
           error.response?.data?.message ||
           "Unable to create brand. Please try again.",
       });
+
+       toast.error(
+        error.response?.data?.message ||
+        "Unable to create brand. Please try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -326,7 +335,7 @@ function AddBrand() {
 
   return (
     <div className="add-brand-page">
-      <div className="brand-card">
+      <div className="brand-card4">
         <div className="card-header">
           <h2>Add New Brand</h2>
           <p>Register a brand and link it with an existing category.</p>

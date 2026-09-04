@@ -1,239 +1,940 @@
-/* Color Variables */
+/* =========================================================
+   COLOR VARIABLES
+========================================================= */
+
 :root {
-  --bg-sage: #f2fbf5;
-  --card-bg: #ffffff;
-  --primary-green: #22c55e;
-  --primary-hover: #16a34a;
-  --light-mint: #e8f7ed;
-  --border-green: #c2ebd0;
-  --text-dark: #14532d;
-  --text-body: #374151;
-  --text-muted: #6b7280;
-  --badge-bg: #dcfce7;
-  --badge-text: #15803d;
+    --bg-sage: #f2fbf5;
+    --card-bg: #ffffff;
+
+    --primary-green: #22c55e;
+    --primary-hover: #16a34a;
+
+    --light-mint: #e8f7ed;
+    --border-green: #c2ebd0;
+
+    --text-dark: #14532d;
+    --text-body: #374151;
+    --text-muted: #6b7280;
+
+    --badge-bg: #dcfce7;
+    --badge-text: #15803d;
 }
+
+
+/* =========================================================
+   CUSTOMER LIST CONTAINER
+========================================================= */
 
 .customer-list-container {
-  min-height: 100vh;
-  background-color: var(--bg-sage);
-  padding: 2.5rem 1.5rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+    width: 100%;
+    min-height: 100vh;
+
+    background-color: var(--bg-sage);
+
+    padding: 2.5rem 1.5rem;
+
+    font-family:
+        "Segoe UI",
+        Tahoma,
+        Geneva,
+        Verdana,
+        sans-serif;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    box-sizing: border-box;
+
+    overflow-x: hidden;
 }
+
+
+/* =========================================================
+   CUSTOMER CARD
+========================================================= */
 
 .customer-card {
-  background-color: var(--card-bg);
-  width: 100%;
-  max-width: 950px;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.08);
-  border: 1px solid var(--border-green);
+    width: 100%;
+    max-width: 1180px;
+
+    background-color: var(--card-bg);
+
+    border-radius: 12px;
+
+    padding: 2rem;
+
+    box-shadow:
+        0 8px 24px rgba(34, 197, 94, 0.08);
+
+    border: 1px solid var(--border-green);
+
+    box-sizing: border-box;
+
+    overflow: hidden;
 }
 
-/* Header */
+
+/* =========================================================
+   HEADER
+========================================================= */
+
 .card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px solid var(--light-mint);
-  padding-bottom: 1rem;
-  margin-bottom: 1.5rem;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    border-bottom: 2px solid var(--light-mint);
+
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+
+    box-sizing: border-box;
+}
+
+.card-header > div {
+    min-width: 0;
 }
 
 .card-header h2 {
-  margin: 0;
-  color: var(--text-dark);
-  font-size: 1.6rem;
-  font-weight: 700;
+    margin: 0;
+
+    color: var(--text-dark);
+
+    font-size: 1.6rem;
+    font-weight: 700;
+
+    line-height: 1.3;
 }
 
 .card-header p {
-  margin: 0.25rem 0 0 0;
-  color: var(--text-muted);
-  font-size: 0.9rem;
+    margin: 0.25rem 0 0;
+
+    color: var(--text-muted);
+
+    font-size: 0.9rem;
+
+    line-height: 1.5;
 }
 
 .customer-badge {
-  background-color: var(--badge-bg);
-  color: var(--badge-text);
-  font-weight: 700;
-  font-size: 0.85rem;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  border: 1px solid var(--border-green);
+    background-color: var(--badge-bg);
+
+    color: var(--badge-text);
+
+    font-weight: 700;
+
+    font-size: 0.85rem;
+
+    padding: 0.4rem 0.8rem;
+
+    border-radius: 20px;
+
+    border: 1px solid var(--border-green);
+
+    white-space: nowrap;
+
+    flex-shrink: 0;
 }
 
-/* Toolbar */
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
 .toolbar {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+    width: 100%;
+
+    display: flex;
+
+    gap: 1rem;
+
+    margin-bottom: 1.5rem;
+
+    box-sizing: border-box;
 }
 
 .search-input {
-  flex: 1;
-  padding: 0.65rem 1rem;
-  border: 1px solid var(--border-green);
-  border-radius: 8px;
-  font-size: 0.95rem;
-  outline: none;
-  background-color: #fcfdfe;
-  transition: all 0.2s ease;
+    flex: 1;
+
+    width: 100%;
+    min-width: 0;
+
+    padding: 0.65rem 1rem;
+
+    border: 1px solid var(--border-green);
+
+    border-radius: 8px;
+
+    font-size: 0.95rem;
+
+    outline: none;
+
+    background-color: #fcfdfe;
+    color: #111827;
+
+    box-sizing: border-box;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.search-input::placeholder {
+    color: #9ca3af;
 }
 
 .search-input:focus {
-  border-color: var(--primary-green);
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
-  background-color: #ffffff;
+    border-color: var(--primary-green);
+
+    box-shadow:
+        0 0 0 3px rgba(34, 197, 94, 0.18);
+
+    background-color: #ffffff;
 }
 
 .refresh-btn {
-  background-color: var(--light-mint);
-  color: var(--text-dark);
-  border: 1px solid var(--border-green);
-  padding: 0.65rem 1.25rem;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
+    flex-shrink: 0;
+
+    background-color: var(--light-mint);
+
+    color: var(--text-dark);
+
+    border: 1px solid var(--border-green);
+
+    padding: 0.65rem 1.25rem;
+
+    border-radius: 8px;
+
+    font-weight: 600;
+
+    font-size: 0.9rem;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
 }
 
 .refresh-btn:hover {
-  background-color: #d1fae5;
+    background-color: #d1fae5;
 }
 
 .refresh-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
-/* Alert */
+
+/* =========================================================
+   ALERT
+========================================================= */
+
 .alert-error {
-  background-color: #fee2e2;
-  color: #b91c1c;
-  padding: 0.75rem 1rem;
-  border-radius: 6px;
-  margin-bottom: 1.25rem;
-  font-size: 0.9rem;
+    width: 100%;
+
+    background-color: #fee2e2;
+
+    color: #b91c1c;
+
+    padding: 0.75rem 1rem;
+
+    border-radius: 6px;
+
+    margin-bottom: 1.25rem;
+
+    font-size: 0.9rem;
+
+    line-height: 1.5;
+
+    border: 1px solid #fecaca;
+
+    box-sizing: border-box;
 }
 
-/* Table Wrapper */
+
+/* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
 .table-wrapper {
-  overflow-x: auto;
+    width: 100%;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    -webkit-overflow-scrolling: touch;
+
+    border-radius: 10px;
+
+    box-sizing: border-box;
 }
 
-.custom-table {
-  width: 100%;
-  border-collapse: collapse;
-  text-align: left;
+
+/* =========================================================
+   TABLE
+   IMPORTANT:
+   JSX uses .custom-table
+========================================================= */
+
+.custom-table1 {
+    width: 100%;
+
+    /*
+       Prevent columns from collapsing into each other.
+       On smaller screens the table can scroll horizontally.
+    */
+    min-width: 760px;
+
+    table-layout: fixed;
+
+    border-collapse: collapse;
+
+    text-align: left;
+
+    background-color: #ffffff;
+
+    box-sizing: border-box;
 }
 
-.custom-table th {
-  background-color: var(--light-mint);
-  color: var(--text-dark);
-  font-weight: 600;
-  padding: 0.85rem 1rem;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 2px solid var(--border-green);
+
+/* =========================================================
+   COLUMN WIDTHS
+========================================================= */
+
+.custom-table1 th:nth-child(1),
+.custom-table1 td:nth-child(1) {
+    width: 28%;
 }
 
-.custom-table td {
-  padding: 0.85rem 1rem;
-  border-bottom: 1px solid var(--light-mint);
-  font-size: 0.95rem;
-  color: var(--text-body);
+.custom-table1 th:nth-child(2),
+.custom-table1 td:nth-child(2) {
+    width: 32%;
 }
 
-.custom-table tbody tr:hover {
-  background-color: #f8fdf9;
+.custom-table1 th:nth-child(3),
+.custom-table1 td:nth-child(3) {
+    width: 22%;
 }
 
-/* User Avatar & Info */
+.custom-table1 th:nth-child(4),
+.custom-table1 td:nth-child(4) {
+    width: 18%;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.custom-table1 th {
+    background-color: var(--light-mint);
+
+    color: var(--text-dark);
+
+    font-weight: 600;
+
+    padding: 0.85rem 1rem;
+
+    font-size: 0.85rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.05em;
+
+    border-bottom: 2px solid var(--border-green);
+
+    white-space: normal;
+
+    line-height: 1.4;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TABLE CELLS
+========================================================= */
+
+.custom-table1 td {
+    padding: 0.95rem 1rem;
+
+    border-bottom: 1px solid var(--light-mint);
+
+    font-size: 0.95rem;
+
+    color: var(--text-body);
+
+    vertical-align: middle;
+
+    box-sizing: border-box;
+
+    /*
+       Important for long email addresses
+    */
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   TABLE ROW
+========================================================= */
+
+.custom-table1 tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.custom-table1 tbody tr:hover {
+    background-color: #f8fdf9;
+}
+
+.custom-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================================
+   USER AVATAR & NAME
+========================================================= */
+
 .user-avatar-group {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.75rem;
+
+    min-width: 0;
 }
 
 .avatar {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background-color: var(--primary-green);
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 0.85rem;
+    width: 34px;
+    height: 34px;
+
+    min-width: 34px;
+
+    border-radius: 50%;
+
+    background-color: var(--primary-green);
+
+    color: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-weight: 700;
+
+    font-size: 0.85rem;
+
+    flex-shrink: 0;
 }
 
 .user-name {
-  font-weight: 600;
-  color: var(--text-dark);
+    min-width: 0;
+
+    font-weight: 600;
+
+    color: var(--text-dark);
+
+    /*
+       Prevent long names from pushing
+       the email column.
+    */
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+
+    line-height: 1.4;
 }
+
+
+/* =========================================================
+   EMAIL / PHONE
+========================================================= */
 
 .text-muted {
-  color: var(--text-muted);
+    color: var(--text-muted);
+
+    overflow-wrap: anywhere;
+
+    word-break: break-word;
+
+    line-height: 1.4;
 }
 
-/* Status Pills */
+
+/* =========================================================
+   STATUS
+========================================================= */
+
 .status-pill {
-  padding: 0.25rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  display: inline-block;
+    padding: 0.25rem 0.6rem;
+
+    border-radius: 12px;
+
+    font-size: 0.75rem;
+
+    font-weight: 700;
+
+    display: inline-block;
+
+    white-space: nowrap;
 }
 
 .status-pill.active {
-  background-color: #dcfce7;
-  color: #15803d;
+    background-color: #dcfce7;
+    color: #15803d;
 }
 
 .status-pill.pending {
-  background-color: #fef3c7;
-  color: #b45309;
+    background-color: #fef3c7;
+    color: #b45309;
 }
 
-/* States */
+
+/* =========================================================
+   LOADING / EMPTY
+========================================================= */
+
 .loading-state,
 .empty-state {
-  text-align: center;
-  padding: 3rem 1rem;
-  color: var(--text-muted);
+    width: 100%;
+
+    text-align: center;
+
+    padding: 3rem 1rem;
+
+    color: var(--text-muted);
+
+    background-color: #ffffff;
+
+    box-sizing: border-box;
 }
 
+.loading-state p,
+.empty-state p {
+    margin: 0;
+}
+
+
+/* =========================================================
+   SPINNER
+========================================================= */
+
 .spinner {
-  width: 28px;
-  height: 28px;
-  border: 3px solid var(--border-green);
-  border-top-color: var(--primary-green);
-  border-radius: 50%;
-  margin: 0 auto 0.75rem auto;
-  animation: spin 0.8s linear infinite;
+    width: 28px;
+    height: 28px;
+
+    border: 3px solid var(--border-green);
+
+    border-top-color: var(--primary-green);
+
+    border-radius: 50%;
+
+    margin: 0 auto 0.75rem auto;
+
+    animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-/* Mobile responsive */
+
+/* =========================================================
+   DARK THEME
+========================================================= */
+
+html.dark .customer-list-container {
+    background-color: #0f172a;
+    color: #f8fafc;
+}
+
+html.dark .customer-card {
+    background-color: #172033;
+
+    border-color: #293548;
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+html.dark .card-header {
+    border-bottom-color: #293548;
+}
+
+html.dark .card-header h2 {
+    color: #f8fafc;
+}
+
+html.dark .card-header p {
+    color: #94a3b8;
+}
+
+html.dark .customer-badge {
+    background-color: rgba(34, 197, 94, 0.15);
+
+    color: #4ade80;
+
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+html.dark .search-input {
+    background-color: #0f172a;
+
+    color: #f8fafc;
+
+    border-color: #344158;
+}
+
+html.dark .search-input::placeholder {
+    color: #64748b;
+}
+
+html.dark .search-input:focus {
+    background-color: #111c30;
+
+    border-color: #22c55e;
+
+    box-shadow:
+        0 0 0 3px rgba(34, 197, 94, 0.15);
+}
+
+html.dark .refresh-btn {
+    background-color: rgba(34, 197, 94, 0.12);
+
+    color: #4ade80;
+
+    border-color: rgba(34, 197, 94, 0.3);
+}
+
+html.dark .refresh-btn:hover {
+    background-color: rgba(34, 197, 94, 0.2);
+}
+
+html.dark .alert-error {
+    background-color: rgba(239, 68, 68, 0.12);
+
+    color: #fca5a5;
+
+    border-color: rgba(239, 68, 68, 0.25);
+}
+
+
+/* =========================================================
+   DARK TABLE
+========================================================= */
+
+html.dark .table-wrapper {
+    background-color: #172033;
+}
+
+html.dark .custom-table1 {
+    background-color: #172033;
+}
+
+html.dark .custom-table1 th {
+    background-color: #1e293b;
+
+    color: #e2e8f0;
+
+    border-bottom-color: #344158;
+}
+
+html.dark .custom-table1 td {
+    color: #cbd5e1;
+
+    border-bottom-color: #293548;
+}
+
+html.dark .custom-table1 tbody tr:hover {
+    background-color: #1e293b;
+}
+
+html.dark .user-name {
+    color: #f1f5f9;
+}
+
+html.dark .text-muted {
+    color: #94a3b8;
+}
+
+html.dark .status-pill.active {
+    background-color: rgba(34, 197, 94, 0.15);
+
+    color: #4ade80;
+}
+
+html.dark .status-pill.pending {
+    background-color: rgba(245, 158, 11, 0.15);
+
+    color: #fbbf24;
+}
+
+html.dark .loading-state,
+html.dark .empty-state {
+    background-color: #172033;
+
+    color: #94a3b8;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .customer-list-container {
+        padding: 2rem 1.25rem;
+    }
+
+    .customer-card {
+        padding: 1.5rem;
+    }
+
+    .custom-table1 {
+        min-width: 720px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
 @media (max-width: 640px) {
-  .toolbar {
-    flex-direction: column;
-  }
-  .card-header {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
+
+    .customer-list-container {
+        width: 100%;
+
+        min-height: 100vh;
+
+        padding: 16px 10px;
+
+        display: block;
+
+        box-sizing: border-box;
+    }
+
+
+    /* -------------------------
+       CARD
+    ------------------------- */
+
+    .customer-card {
+        width: 100%;
+
+        padding: 16px;
+
+        border-radius: 10px;
+
+        box-sizing: border-box;
+    }
+
+
+    /* -------------------------
+       HEADER
+    ------------------------- */
+
+    .card-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 10px;
+
+        margin-bottom: 18px;
+    }
+
+    .card-header h2 {
+        font-size: 1.35rem;
+    }
+
+    .card-header p {
+        font-size: 0.85rem;
+    }
+
+    .customer-badge {
+        font-size: 0.8rem;
+
+        padding: 0.35rem 0.7rem;
+    }
+
+
+    /* -------------------------
+       TOOLBAR
+    ------------------------- */
+
+    .toolbar {
+        flex-direction: column;
+
+        gap: 10px;
+
+        margin-bottom: 18px;
+    }
+
+    .search-input {
+        width: 100%;
+
+        padding: 0.7rem 0.85rem;
+
+        font-size: 0.9rem;
+    }
+
+    .refresh-btn {
+        width: 100%;
+
+        padding: 0.7rem 1rem;
+
+        font-size: 0.85rem;
+    }
+
+
+    /* -------------------------
+       TABLE
+    ------------------------- */
+
+    .table-wrapper {
+        width: 100%;
+
+        overflow-x: auto;
+
+        border-radius: 8px;
+    }
+
+    /*
+       Keep the table wide enough to maintain
+       proper column spacing.
+
+       User can scroll horizontally on mobile
+       instead of having overlapping content.
+    */
+    .custom-table1 {
+        width: 760px;
+
+        min-width: 760px;
+    }
+
+    .custom-table1 th {
+        padding: 0.75rem 0.8rem;
+
+        font-size: 0.75rem;
+    }
+
+    .custom-table1 td {
+        padding: 0.75rem 0.8rem;
+
+        font-size: 0.85rem;
+    }
+
+
+    /* -------------------------
+       USER
+    ------------------------- */
+
+    .user-avatar-group {
+        gap: 0.6rem;
+
+        min-width: 0;
+    }
+
+    .avatar {
+        width: 32px;
+        height: 32px;
+
+        min-width: 32px;
+
+        font-size: 0.8rem;
+    }
+
+    .user-name {
+        font-size: 0.85rem;
+    }
+
+
+    /* -------------------------
+       STATES
+    ------------------------- */
+
+    .loading-state,
+    .empty-state {
+        padding: 2.5rem 1rem;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .customer-list-container {
+        padding: 12px 8px;
+    }
+
+    .customer-card {
+        padding: 13px;
+    }
+
+    .card-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .card-header p {
+        font-size: 0.8rem;
+    }
+
+    .customer-badge {
+        font-size: 0.75rem;
+
+        padding: 0.3rem 0.6rem;
+    }
+
+    .search-input {
+        font-size: 0.85rem;
+    }
+
+    .refresh-btn {
+        font-size: 0.8rem;
+    }
+
+    .custom-table1 {
+        width: 700px;
+
+        min-width: 700px;
+    }
+
+    .custom-table1 th {
+        padding: 0.7rem;
+
+        font-size: 0.7rem;
+    }
+
+    .custom-table1 td {
+        padding: 0.7rem;
+
+        font-size: 0.8rem;
+    }
+
+    .user-avatar-group {
+        min-width: 0;
+    }
 }

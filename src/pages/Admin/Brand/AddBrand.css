@@ -220,6 +220,71 @@ background:#0056b3;
   --error-text: #b91c1c;
 }
 
+/* Dark mode overrides — html.dark is toggled by ThemeProvider */
+.dark .add-brand-page {
+  --bg-sage: #0b1120;
+  --card-bg: #111a14;
+  --primary-green: #22c55e;
+  --primary-hover: #4ade80;
+  --light-mint: #1b2e22;
+  --border-green: #24432f;
+  --text-dark: #ecfdf3;
+  --text-body: #d1d5db;
+  --text-muted: #9ca3af;
+  --success-bg: #0f2e1d;
+  --success-text: #86efac;
+  --error-bg: #3a1414;
+  --error-text: #fca5a5;
+}
+
+.dark .add-brand-page .brand-card4 {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.dark .add-brand-page .form-group input[type='text'],
+.dark .add-brand-page .form-group select,
+.dark .add-brand-page .form-group textarea {
+  background-color: #0f1a13;
+  border-color: var(--border-green);
+  color: var(--text-body);
+}
+
+.dark .add-brand-page .form-group input[type='text']::placeholder,
+.dark .add-brand-page .form-group textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.dark .add-brand-page .form-group input[type='text']:focus,
+.dark .add-brand-page .form-group select:focus,
+.dark .add-brand-page .form-group textarea:focus {
+  background-color: #10241a;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.25);
+}
+
+.dark .add-brand-page .brand-preview {
+  background-color: #0f1a13;
+}
+
+.dark .add-brand-page .alert-box.error {
+  border-color: #7f1d1d;
+}
+
+.dark .add-brand-page .remove-logo-btn {
+  background-color: #3a1414;
+  color: #fca5a5;
+  border-color: #7f1d1d;
+}
+
+.dark .add-brand-page .remove-logo-btn:hover {
+  background-color: #4c1d1d;
+  color: #fecaca;
+}
+
+.dark .add-brand-page .btn-submit:disabled {
+  background-color: #14532d;
+  color: #9ca3af;
+}
+
 .add-brand-page {
   min-height: 100vh;
   background-color: var(--bg-sage);
@@ -230,7 +295,7 @@ background:#0056b3;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.brand-card {
+.brand-card4 {
   background-color: var(--card-bg);
   width: 100%;
   max-width: 650px;
@@ -337,6 +402,7 @@ background:#0056b3;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .file-input {
@@ -358,6 +424,10 @@ background:#0056b3;
 
 .file-upload-btn:hover {
   background-color: #d1fae5;
+}
+
+.dark .add-brand-page .file-upload-btn:hover {
+  background-color: #234d35;
 }
 
 .file-name-display {
@@ -386,6 +456,7 @@ background:#0056b3;
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .brand-preview {
@@ -462,9 +533,53 @@ background:#0056b3;
   background-color: #d1fae5;
 }
 
+.dark .add-brand-page .btn-cancel:hover {
+  background-color: #234d35;
+}
+
 /* Mobile Responsive */
 @media (max-width: 580px) {
   .form-grid {
     grid-template-columns: 1fr;
   }
+}
+
+@media (max-width: 480px) {
+  .add-brand-page {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .brand-card4 {
+    padding: 1.25rem;
+    border-radius: 10px;
+  }
+
+  .card-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .card-header p {
+    font-size: 0.82rem;
+  }
+
+  .file-name-display {
+    max-width: 100%;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .btn-submit,
+  .btn-cancel {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/* Force label visibility in dark mode — guards against any conflicting global label styles */
+.dark .add-brand-page .form-group label,
+.dark .add-brand-page .preview-title {
+  color: #ecfdf3 !important;
 }

@@ -1,73 +1,197 @@
-.admin-orders{
-
-    width:95%;
-
-    margin:auto;
-
-    padding:30px;
-
+:root {
+  --primary-blue: #1976d2;
+  --primary-blue-hover: #1565c0;
+  --primary-blue-active: #0d47a1;
+  --success-green: #28a745;
+  --success-hover: #218838;
+  --bg-page: #f6f8fb;
+  --card-bg: #ffffff;
+  --border-soft: #e5e9f0;
+  --text-dark: #1e293b;
+  --text-body: #475569;
+  --text-muted: #64748b;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 6px 18px rgba(16, 24, 40, 0.07);
+  --shadow-lg: 0 14px 32px rgba(16, 24, 40, 0.1);
+  --transition: all 0.2s ease;
 }
 
-.admin-orders h1{
-
-    margin-bottom:25px;
-
+* {
+  box-sizing: border-box;
 }
 
-.admin-orders table{
+/* =========================================
+   PAGE WRAPPER
+========================================= */
 
-    width:100%;
-
-    border-collapse:collapse;
-
-    background:#fff;
-
+.admin-orders {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 30px);
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-dark);
 }
 
-.admin-orders th{
-
-    background:#1976d2;
-
-    color:white;
-
-    padding:15px;
-
-    text-align:left;
-
+.admin-orders h1 {
+  margin: 0 0 22px 0;
+  font-size: clamp(1.3rem, 3vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-dark);
+  border-bottom: 2px solid var(--border-soft);
+  padding-bottom: 14px;
 }
 
-.admin-orders td{
+/* =========================================
+   TABLE CARD + SCROLL WRAPPER
+========================================= */
 
-    padding:15px;
-
-    border-bottom:1px solid #ddd;
-
+.admin-orders {
+  /* wraps the table in a card via a pseudo-container below */
 }
 
-.admin-orders tr:hover{
-
-    background:#f8f8f8;
-
+.admin-orders table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
 }
 
-.view-btn{
-
-    padding:8px 15px;
-
-    background:#28a745;
-
-    color:white;
-
-    border:none;
-
-    cursor:pointer;
-
-    border-radius:5px;
-
+/* Scrollable wrapper effect without editing JSX:
+   apply overflow directly on the table's container context */
+.admin-orders {
+  overflow-x: auto;
 }
 
-.view-btn:hover{
+.admin-orders table {
+  display: table;
+}
 
-    background:#218838;
+/* =========================================
+   TABLE HEAD
+========================================= */
 
+.admin-orders th {
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-hover));
+  color: #ffffff;
+  padding: 15px 18px;
+  text-align: left;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+}
+
+.admin-orders th:first-child {
+  border-top-left-radius: var(--radius-lg);
+}
+
+.admin-orders th:last-child {
+  border-top-right-radius: var(--radius-lg);
+}
+
+/* =========================================
+   TABLE BODY
+========================================= */
+
+.admin-orders td {
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 0.9rem;
+  color: var(--text-body);
+  vertical-align: middle;
+}
+
+.admin-orders tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-orders tr {
+  transition: background 0.15s ease;
+}
+
+.admin-orders tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* Empty state */
+.admin-orders td[colspan] {
+  text-align: center;
+  padding: 40px 18px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* =========================================
+   VIEW BUTTON
+========================================= */
+
+.view-btn {
+  padding: 9px 18px;
+  background: linear-gradient(135deg, var(--success-green), var(--success-hover));
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.25);
+  transition: var(--transition);
+}
+
+.view-btn:hover {
+  background: linear-gradient(135deg, var(--success-hover), #1e7e34);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(40, 167, 69, 0.32);
+}
+
+.view-btn:active {
+  transform: translateY(0);
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 900px) {
+  .admin-orders {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .admin-orders {
+    padding: 0.85rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .admin-orders h1 {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+  }
+
+  .admin-orders table {
+    min-width: 640px;
+  }
+
+  .admin-orders th,
+  .admin-orders td {
+    padding: 12px 14px;
+    font-size: 0.85rem;
+  }
+
+  .view-btn {
+    padding: 7px 14px;
+    font-size: 0.8rem;
+  }
 }

@@ -1,113 +1,155 @@
-/* Color Palette Variables */
+/* ===================================================
+   Color Palette / Design Tokens
+=================================================== */
 :root {
-  --bg-sage: #f2fbf5;
+  --bg-sage: #f4faf6;
   --card-bg: #ffffff;
   --primary-green: #22c55e;
   --primary-hover: #16a34a;
-  --light-mint: #e8f7ed;
-  --border-green: #c2ebd0;
+  --primary-active: #15803d;
+  --light-mint: #eafbf0;
+  --border-green: #d3ede0;
+  --border-soft: #e5e7eb;
   --text-dark: #14532d;
   --text-body: #374151;
   --text-muted: #6b7280;
-  --danger-bg: #fee2e2;
-  --danger-text: #b91c1c;
+  --shadow-sm: 0 1px 2px rgba(16, 24, 40, 0.05);
+  --shadow-md: 0 4px 12px rgba(16, 24, 40, 0.06);
+  --shadow-lg: 0 12px 32px rgba(20, 83, 45, 0.08);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --transition: all 0.18s ease;
 }
 
-.add-product-container {
-  min-height: 100vh;
-  background-color: var(--bg-sage);
-  padding: 2.5rem 1.5rem;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+* {
+  box-sizing: border-box;
 }
 
-.add-product-card {
-  background-color: var(--card-bg);
+/* ===================================================
+   Page Shell (fills parent, no full-viewport hijacking)
+=================================================== */
+.add-product {
   width: 100%;
-  max-width: 900px;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.08);
-  border: 1px solid var(--border-green);
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Page Header */
+/* ===================================================
+   Header
+=================================================== */
 .page-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
   border-bottom: 2px solid var(--light-mint);
-  padding-bottom: 1.25rem;
+  padding-bottom: 1.1rem;
   margin-bottom: 1.5rem;
 }
 
 .page-header h2 {
   margin: 0;
   color: var(--text-dark);
-  font-size: 1.6rem;
-  font-weight: 700;
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .page-header p {
-  margin: 0.25rem 0 0 0;
+  margin: 0;
   color: var(--text-muted);
   font-size: 0.9rem;
 }
 
-/* Form Layout */
+/* ===================================================
+   Form Layout
+=================================================== */
 .product-form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .form-section {
-  background-color: #fcfdfe;
+  background-color: var(--card-bg);
   border: 1px solid var(--border-green);
-  border-radius: 10px;
-  padding: 1.5rem;
+  border-radius: var(--radius-lg);
+  padding: clamp(1.25rem, 3vw, 1.75rem);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+}
+
+.form-section:hover {
+  box-shadow: var(--shadow-lg);
 }
 
 .form-section h3 {
   margin: 0 0 1.25rem 0;
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--text-dark);
   font-weight: 700;
-  border-bottom: 1px solid var(--light-mint);
-  padding-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-/* Form Grid System */
+.form-section h3::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary-green);
+  display: inline-block;
+}
+
+/* ===================================================
+   Grid + Fields
+=================================================== */
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
+  gap: 1.1rem;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+  min-width: 0;
 }
 
 .form-group label {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--text-dark);
 }
 
 .form-group input[type='text'],
 .form-group input[type='number'],
+.form-group input[type='file'],
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 0.65rem 0.85rem;
-  border: 1px solid var(--border-green);
-  border-radius: 6px;
+  padding: 0.7rem 0.9rem;
+  border: 1.5px solid var(--border-soft);
+  border-radius: var(--radius-sm);
   font-size: 0.95rem;
   color: var(--text-body);
-  background-color: #ffffff;
-  box-sizing: border-box;
-  transition: all 0.2s ease;
+  background-color: #fbfdfc;
+  transition: var(--transition);
+  font-family: inherit;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #9ca3af;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: var(--border-green);
 }
 
 .form-group input:focus,
@@ -115,122 +157,152 @@
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary-green);
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.14);
+}
+
+.form-group select:disabled,
+.form-group input:disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.form-group select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.85rem center;
+  padding-right: 2.2rem;
 }
 
 .form-group textarea {
   resize: vertical;
+  min-height: 90px;
+  line-height: 1.5;
 }
 
-/* Custom File Upload Button */
-.file-upload-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.file-input-hidden {
-  display: none;
-}
-
-.file-upload-label {
-  background-color: var(--light-mint);
-  color: var(--text-dark);
-  border: 1px solid var(--border-green);
-  padding: 0.65rem 1.25rem;
-  border-radius: 6px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.file-upload-label:hover {
-  background-color: #d1fae5;
-}
-
-.file-count-text {
-  font-size: 0.85rem;
+.subcategory-help {
+  font-size: 0.78rem;
   color: var(--text-muted);
+  margin-top: 0.15rem;
 }
 
-/* Multiple Image Preview Container */
-.image-preview {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.preview-item {
-  position: relative;
-  display: inline-block;
-}
-
-.preview-img {
-  width: 90px;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid var(--border-green);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.remove-img-btn {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  background-color: var(--danger-text);
-  color: #ffffff;
-  border: none;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  font-size: 0.75rem;
-  font-weight: bold;
+/* ===================================================
+   File Input
+=================================================== */
+.form-group input[type='file'] {
+  padding: 0.55rem;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: var(--light-mint);
+  border-style: dashed;
+  border-color: var(--border-green);
 }
 
-.remove-img-btn:hover {
-  background-color: #ef4444;
-}
-
-/* Submit Actions */
-.submit-section {
-  display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
-  padding-top: 0.5rem;
-}
-
-.submit-btn {
+.form-group input[type='file']::file-selector-button {
   background-color: var(--primary-green);
-  color: #ffffff;
+  color: #fff;
   border: none;
-  padding: 0.75rem 2rem;
-  border-radius: 8px;
-  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
   font-weight: 600;
+  font-size: 0.85rem;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  margin-right: 0.75rem;
+  transition: var(--transition);
 }
 
-.submit-btn:hover {
+.form-group input[type='file']::file-selector-button:hover {
   background-color: var(--primary-hover);
 }
 
+/* ===================================================
+   Image Previews
+=================================================== */
+.image-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 1.1rem;
+}
+
+.preview-img {
+  width: 84px;
+  height: 84px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-green);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.preview-img:hover {
+  transform: scale(1.04);
+  box-shadow: var(--shadow-md);
+}
+
+/* ===================================================
+   Submit Bar
+=================================================== */
+.submit-section {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.85rem;
+  padding-top: 0.25rem;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, var(--primary-green), var(--primary-hover));
+  color: #ffffff;
+  border: none;
+  padding: 0.85rem 2.25rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.98rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(34, 197, 94, 0.28);
+  transition: var(--transition);
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--primary-hover), var(--primary-active));
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.34);
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
 .submit-btn:disabled {
-  background-color: #86efac;
+  background: #a7f3c4;
+  box-shadow: none;
   cursor: not-allowed;
 }
 
-/* Mobile Responsiveness */
+/* ===================================================
+   Responsive Breakpoints
+=================================================== */
 @media (max-width: 640px) {
   .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .submit-section {
+    justify-content: stretch;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+
+  .preview-img {
+    width: 72px;
+    height: 72px;
   }
 }

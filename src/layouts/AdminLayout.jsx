@@ -22,7 +22,7 @@ const AdminLayout = () => {
                 ADMIN PAGE CONTENT
             ===================================== */}
 
-            <main className="admin-main">
+            <main className="admin-content">
 
                 <Outlet />
 
