@@ -1309,6 +1309,10 @@ import OrderSuccess from "./pages/Shop/OrderSuccess/OrderSuccess";
 import MyOrders from "./pages/Shop/MyOrders/MyOrders";
 import OrderDetails from "./pages/Shop/OrderDetails/OrderDetails";
 import TrackOrder from "./pages/Shop/TrackOrder/TrackOrder";
+import Compare from "./pages/Compare.jsx";
+
+
+
 
 // ===============================
 // ADMIN ORDERS
@@ -1823,6 +1827,15 @@ function App() {
                         path="/"
                         element={<Home />}
                     />
+
+                    <Route
+                        path="/compare"
+                        element={<Compare />}
+                    />
+
+
+
+                    
 
                     <Route
                         path="/about-us"

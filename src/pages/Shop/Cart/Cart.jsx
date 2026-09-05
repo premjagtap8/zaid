@@ -409,6 +409,12 @@ const Cart = () => {
 
             }
 
+
+             // dispatch here — item count actually changed
+    window.dispatchEvent(new CustomEvent("cart-updated"));
+
+
+
         }
         catch (error) {
 

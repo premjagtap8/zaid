@@ -561,6 +561,9 @@ const Wishlist = () => {
           )
       );
 
+        // NEW: tell Header to refresh its wishlist count
+    window.dispatchEvent(new CustomEvent("wishlist-updated"));
+
     } catch (error) {
 
       console.error(
