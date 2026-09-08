@@ -1148,27 +1148,47 @@ function MyProfile() {
                 DOB
             ================================== */}
 
-            <input
+            {/* ==================================
+    DOB
+================================== */}
 
-                type="date"
+<div className="dob-field">
 
-                name="dob"
+    <label htmlFor="dob">
+        Date of Birth
+    </label>
 
-                value={
+    <input
 
+        id="dob"
+
+        type="date"
+
+        name="dob"
+
+        lang="en-GB"
+
+        value={
+
+            profile.dob
+
+                ? String(
                     profile.dob
+                ).substring(0, 10)
 
-                        ? String(
-                            profile.dob
-                        ).substring(0, 10)
+                : ""
 
-                        : ""
+        }
 
-                }
+        onChange={handleChange}
 
-                onChange={handleChange}
+    />
 
-            />
+</div>
+
+           
+
+            
 
 
             {/* ==================================

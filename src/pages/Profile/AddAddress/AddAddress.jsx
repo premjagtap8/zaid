@@ -192,6 +192,8 @@ const AddAddress = () => {
 
     const navigate = useNavigate();
 
+    const [errors, setErrors] = useState({});
+
     const [formData, setFormData] = useState({
 
         type: "HOME",
@@ -214,6 +216,55 @@ const AddAddress = () => {
 
     });
 
+
+    // ==========================================
+    // VALIDATE FORM
+    // ==========================================
+
+    const validateForm = () => {
+
+        const newErrors = {};
+
+        const fullName = formData.fullName.trim();
+
+        if (fullName.length < 3 || fullName.length > 50) {
+            newErrors.fullName = "Full name must be between 3 and 50 characters";
+        }
+        else if (!/^[A-Za-z]+([\s'-][A-Za-z]+)*$/.test(fullName)) {
+            newErrors.fullName = "Full name should only contain letters, spaces, hyphens, or apostrophes";
+        }
+
+        if (!/^[6-9]\d{9}$/.test(formData.phone)) {
+            newErrors.phone = "Enter a valid 10-digit mobile number";
+        }
+
+        if (formData.addressLine.trim().length < 5) {
+            newErrors.addressLine = "Address must be at least 5 characters";
+        }
+
+        if (!/^[A-Za-z\s]{2,}$/.test(formData.city.trim())) {
+            newErrors.city = "Enter a valid city name";
+        }
+
+        if (!/^[A-Za-z\s]{2,}$/.test(formData.state.trim())) {
+            newErrors.state = "Enter a valid state name";
+        }
+
+        if (!/^\d{6}$/.test(formData.pincode)) {
+            newErrors.pincode = "Enter a valid 6-digit pincode";
+        }
+
+        if (formData.country.trim().length === 0) {
+            newErrors.country = "Country is required";
+        }
+
+        setErrors(newErrors);
+
+        return Object.keys(newErrors).length === 0;
+
+    };
+
+
     const handleChange = (e) => {
 
         setFormData({
@@ -229,6 +280,10 @@ const AddAddress = () => {
     const handleSubmit = async (e) => {
 
         e.preventDefault();
+
+        if (!validateForm()) {
+            return;
+        }
 
         try {
 
@@ -275,66 +330,108 @@ const AddAddress = () => {
 
                 </select>
 
-                <input
-                    type="text"
-                    name="fullName"
-                    placeholder="Full Name"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    required
-                />
+                <div className="field-wrap">
 
-                <input
-                    type="text"
-                    name="phone"
-                    placeholder="Phone Number"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                />
+                    <input
+                        type="text"
+                        name="fullName"
+                        placeholder="Full Name"
+                        value={formData.fullName}
+                        onChange={handleChange}
+                        required
+                    />
 
-                <textarea
-                    name="addressLine"
-                    placeholder="Address"
-                    value={formData.addressLine}
-                    onChange={handleChange}
-                    required
-                />
+                    {errors.fullName && <p className="form-error">{errors.fullName}</p>}
 
-                <input
-                    type="text"
-                    name="city"
-                    placeholder="City"
-                    value={formData.city}
-                    onChange={handleChange}
-                    required
-                />
+                </div>
 
-                <input
-                    type="text"
-                    name="state"
-                    placeholder="State"
-                    value={formData.state}
-                    onChange={handleChange}
-                    required
-                />
+                <div className="field-wrap">
 
-                <input
-                    type="text"
-                    name="pincode"
-                    placeholder="Pincode"
-                    value={formData.pincode}
-                    onChange={handleChange}
-                    required
-                />
+                    <input
+                        type="text"
+                        name="phone"
+                        placeholder="Phone Number"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        required
+                    />
 
-                <input
-                    type="text"
-                    name="country"
-                    placeholder="Country"
-                    value={formData.country}
-                    onChange={handleChange}
-                />
+                    {errors.phone && <p className="form-error">{errors.phone}</p>}
+
+                </div>
+
+                <div className="field-wrap field-wrap-full">
+
+                    <textarea
+                        name="addressLine"
+                        placeholder="Address"
+                        value={formData.addressLine}
+                        onChange={handleChange}
+                        required
+                    />
+
+                    {errors.addressLine && <p className="form-error">{errors.addressLine}</p>}
+
+                </div>
+
+                <div className="field-wrap">
+
+                    <input
+                        type="text"
+                        name="city"
+                        placeholder="City"
+                        value={formData.city}
+                        onChange={handleChange}
+                        required
+                    />
+
+                    {errors.city && <p className="form-error">{errors.city}</p>}
+
+                </div>
+
+                <div className="field-wrap">
+
+                    <input
+                        type="text"
+                        name="state"
+                        placeholder="State"
+                        value={formData.state}
+                        onChange={handleChange}
+                        required
+                    />
+
+                    {errors.state && <p className="form-error">{errors.state}</p>}
+
+                </div>
+
+                <div className="field-wrap">
+
+                    <input
+                        type="text"
+                        name="pincode"
+                        placeholder="Pincode"
+                        value={formData.pincode}
+                        onChange={handleChange}
+                        required
+                    />
+
+                    {errors.pincode && <p className="form-error">{errors.pincode}</p>}
+
+                </div>
+
+                <div className="field-wrap">
+
+                    <input
+                        type="text"
+                        name="country"
+                        placeholder="Country"
+                        value={formData.country}
+                        onChange={handleChange}
+                    />
+
+                    {errors.country && <p className="form-error">{errors.country}</p>}
+
+                </div>
 
                 <input
                     type="text"

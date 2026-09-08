@@ -16,7 +16,7 @@ import { getActiveOffers } from "../../services/offerService";
 import { addToCart } from "../../services/cartService";
 import { addToWishlist } from "../../services/wishlistService";
 
-import { getInventory } from "../../services/inventoryService";
+import {  getShopInventory } from "../../services/inventoryService";
 
 
 // =====================================================
@@ -810,7 +810,7 @@ const Shop = () => {
   const loadInventory = async () => {
     try {
       const response =
-        await getInventory();
+        await  getShopInventory();
 
       console.log("data received from the inventory and it is printed below");
 
