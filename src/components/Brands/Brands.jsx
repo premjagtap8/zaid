@@ -9,6 +9,7 @@ import toshibaLogo from "../../assets/images/Toshiba-Logo.png";
 import samsungLogo from "../../assets/images/Samsung-Logo.png";
 import appleLogo from "../../assets/images/Apple-Logo.png";
 import hpLogo from "../../assets/images/Hp-logo.png";
+import { useNavigate } from "react-router-dom";
 
 const brands = [
   { name: "Dell", logo: dellLogo, heightClass: "max-h-10 sm:max-h-12" },
@@ -20,6 +21,7 @@ const brands = [
 ];
 
 const BrowseByBrands = () => {
+  const navigate=useNavigate()
   return (
     <section className="w-full pt-4 md:pt-6 pb-12 md:pb-16 bg-gradient-to-b from-white via-slate-50/50 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 relative overflow-hidden transition-colors duration-300">
       {/* Decorative Background Accent Blur matching Hero section */}
@@ -40,7 +42,9 @@ const BrowseByBrands = () => {
         {/* Brands Grid Layout */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-5">
           {brands.map((brand, index) => (
-            <div
+            <div onClick={()=>{
+              navigate(`/shop?brand=${brand.name}`)
+            }}
               key={index}
               className="group relative bg-white dark:bg-slate-900 rounded-2xl p-4 border border-gray-100 dark:border-slate-800 shadow-xs hover:shadow-xl dark:hover:shadow-slate-950/50 hover:border-green-500/60 dark:hover:border-green-500/60 hover:-translate-y-1.5 transition-all duration-300 ease-out flex items-center justify-center h-28 sm:h-32 cursor-pointer"
             >

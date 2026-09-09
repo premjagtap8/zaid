@@ -148,11 +148,15 @@ export default function Hero() {
   <ArrowRight size={15} />
 </button>
 
-                <button className="flex h-10 items-center justify-center rounded-xl border border-white/25 bg-black/20 px-5 text-xs font-semibold text-white backdrop-blur-md transition-all hover:bg-white/10 active:scale-[0.98]">
+                <button onClick={()=>{
+                    navigate('/rental')
+                }} className="flex h-10 items-center justify-center rounded-xl border border-white/25 bg-black/20 px-5 text-xs font-semibold text-white backdrop-blur-md transition-all hover:bg-white/10 active:scale-[0.98]">
                   Rent Now
                 </button>
 
-                <button className="flex h-10 items-center justify-center rounded-xl bg-white px-5 text-xs font-semibold text-gray-900 transition-all hover:bg-gray-100 active:scale-[0.98]">
+                <button onClick={()=>{
+                    navigate("/repair")
+                }} className="flex h-10 items-center justify-center rounded-xl bg-white px-5 text-xs font-semibold text-gray-900 transition-all hover:bg-gray-100 active:scale-[0.98]">
                   Book a Repair
                 </button>
               </div>
@@ -226,7 +230,11 @@ export default function Hero() {
                   <div className="h-px flex-1 bg-white/10"></div>
                 </div>
 
-                <button className="flex h-9 w-full items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 text-xs font-semibold text-white transition hover:bg-white/10 active:scale-[0.99]">
+                <button onClick={()=>{
+
+                  navigate("https://api.whatsapp.com/send/?phone=919876543210&text=Hi+Zaid+Infotech%2C+I+have+a+query%21&type=phone_number&app_absent=0")
+              
+                }}   className="flex h-9 w-full items-center justify-center gap-2 rounded-lg border border-white/10 bg-white/5 text-xs font-semibold text-white transition hover:bg-white/10 active:scale-[0.99]">
                   <MessageCircle size={14} className="text-emerald-400" />
                   WhatsApp Us
                 </button>

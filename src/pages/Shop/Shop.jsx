@@ -789,6 +789,47 @@ const Shop = () => {
 
 
   // ===================================================
+// READ SEARCH FROM URL
+// ===================================================
+
+useEffect(() => {
+  const searchFromUrl = searchParams.get("search");
+
+  setSearch(searchFromUrl || "");
+}, [searchParams]);
+
+
+
+  // ===================================================
+// READ SEARCH FROM URL
+// =====
+
+
+useEffect(()=>{
+  const brandFromUrl=searchParams.get("brand")
+  setBrand(brandFromUrl || "")
+
+},[searchParams])
+
+
+
+  // ===================================================
+// READ category from  FROM URL
+// ===================================================
+
+useEffect(()=>{
+  const categoryFromUrl=searchParams.get("category")
+  console.log("category name is written below")
+  console.log(categoryFromUrl)
+  setCategory(categoryFromUrl)
+
+ 
+},[])
+
+
+
+
+  // ===================================================
   // LOAD
   // ===================================================
 

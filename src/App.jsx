@@ -1290,6 +1290,7 @@ import StockHistory from "./pages/Inventory/StockHistory";
 
 import Shop from "./pages/Shop/Shop";
 import Cart from "./pages/Shop/Cart/Cart";
+//import {Cartt} from "./pages/Shop/Cart/Cartt";
 import Wishlist from "./pages/Shop/Wishlist/Wishlist";
 
 // ===============================
@@ -1447,19 +1448,35 @@ import RepairRates from "./pages/Receptionist/RepairRates.jsx";
 import TechinicaStaff from "./pages/Receptionist/TechinicaStaff.jsx";
 import ReceptionistLayout from "./pages/Receptionist/ReceptionistLayout.jsx";
 import RepairCustomer from "./pages/Receptionist/RepairCustomer.jsx";
+import { useState, useEffect, useRef } from "react";
+
 
 // ===============================
 // AUTH
 // ===============================
 
 import VerifyEmail from "./pages/auth/VerifyEmail";
+import Rentall from "./pages/Rentall.jsx";
 
 // =====================================================
 // APP
 // =====================================================
 
 function App() {
+    const fixedHeaderRef = useRef(null);
+const [headerHeight, setHeaderHeight] = useState(150);
     const location = useLocation();
+
+    useEffect(() => {
+    const updateHeight = () => {
+        if (fixedHeaderRef.current) {
+            setHeaderHeight(fixedHeaderRef.current.offsetHeight);
+        }
+    };
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+}, []);
 
     // =====================================================
     // ADMIN ROUTES
@@ -1780,6 +1797,7 @@ function App() {
                     ========================================= */}
 
                     <div
+                    ref={fixedHeaderRef}  
                         className="
                             fixed
                             top-0
@@ -1797,7 +1815,7 @@ function App() {
                         HEADER + TOPBAR SPACE
                     ========================================= */}
 
-                    <div className="h-[150px] w-full flex-shrink-0"></div>
+                    <div style={{ height: headerHeight }}  className=" w-full flex-shrink-0"></div>
                 </>
             )}
 
@@ -1884,7 +1902,7 @@ function App() {
 
                     <Route
                         path="/rental"
-                        element={<Rental />}
+                        element={<Rentall />}
                     />
 
                     {/* =================================================
@@ -2460,7 +2478,7 @@ function App() {
 
                     <Route
                         path="/cart"
-                        element={<Cart />}
+                        element={<Cart/>}
                     />
 
                     {/* =================================================

@@ -1,6 +1,7 @@
 import React, {
     useEffect,
-    useState
+    useState,
+    useMemo
 } from "react";
 
 import { toast } from "react-toastify";
@@ -54,6 +55,14 @@ const Cart = () => {
 
 
     // ==================================================
+    // INVENTORY / STOCK STATES
+    // ==================================================
+
+    const [inventoryList, setInventoryList] =
+        useState([]);
+
+
+    // ==================================================
     // COUPON STATES
     // ==================================================
 
@@ -80,7 +89,7 @@ const Cart = () => {
 
 
     // ==================================================
-    // LOAD CART
+    // LOAD CART + INVENTORY (PARALLEL)
     // ==================================================
 
     useEffect(() => {
@@ -97,18 +106,33 @@ const Cart = () => {
             setLoading(true);
 
 
-            const res =
-                await getCart();
+            const [cartRes, inventoryRes] =
+                await Promise.all([
+
+                    getCart(),
+
+                    fetch(
+                        `${API_URL}/inventory/shop`
+                    ).then(
+                        (res) => res.json()
+                    )
+
+                ]);
 
 
             console.log(
                 "CART RESPONSE:",
-                res.data
+                cartRes.data
+            );
+
+            console.log(
+                "INVENTORY RESPONSE:",
+                inventoryRes
             );
 
 
             const items =
-                res.data?.data?.items || [];
+                cartRes.data?.data?.items || [];
 
 
             setCartItems(
@@ -119,16 +143,31 @@ const Cart = () => {
 
             );
 
+
+            const inventoryItems =
+                inventoryRes?.data || [];
+
+
+            setInventoryList(
+
+                Array.isArray(inventoryItems)
+                    ? inventoryItems
+                    : []
+
+            );
+
         }
         catch (error) {
 
             console.error(
-                "GET CART ERROR:",
+                "CART/INVENTORY LOAD ERROR:",
                 error
             );
 
 
             setCartItems([]);
+
+            setInventoryList([]);
 
         }
         finally {
@@ -138,6 +177,94 @@ const Cart = () => {
         }
 
     };
+
+
+    // ==================================================
+    // STOCK LOOKUP MAP
+    // productId -> { status, availableStock }
+    // ==================================================
+
+    const stockMap = useMemo(() => {
+
+        const map = new Map();
+
+
+        inventoryList.forEach((inv) => {
+
+            const prodId =
+                inv?.product?._id ||
+                inv?.product;
+
+
+            if (prodId) {
+
+                map.set(
+                    prodId,
+                    {
+                        status:
+                            inv.status,
+
+                        availableStock:
+                            Number(
+                                inv.availableStock || 0
+                            )
+                    }
+                );
+
+            }
+
+        });
+
+
+        return map;
+
+    }, [inventoryList]);
+
+
+    // ==================================================
+    // STOCK CHECK HELPERS
+    // ==================================================
+
+    const getStockInfo = (productId) => {
+
+        if (!productId) {
+            return null;
+        }
+
+        return (
+            stockMap.get(productId) ||
+            null
+        );
+
+    };
+
+
+    const isItemOutOfStock = (item) => {
+
+        const productId =
+            item.product?._id;
+
+
+        const stockInfo =
+            getStockInfo(productId);
+
+
+        // Not found in inventory at all -> treat as unavailable
+        if (!stockInfo) {
+            return true;
+        }
+
+
+        return (
+            stockInfo.status !== "IN_STOCK" ||
+            stockInfo.availableStock <= 0
+        );
+
+    };
+
+
+    const hasOutOfStockItems =
+        cartItems.some(isItemOutOfStock);
 
 
     // ==================================================
@@ -654,6 +781,23 @@ const Cart = () => {
     const handleProceedCheckout = () => {
 
         // ==================================================
+        // STOCK GUARD
+        // Block navigation if any cart item is out of stock,
+        // even if the button is somehow triggered anyway.
+        // ==================================================
+
+        if (hasOutOfStockItems) {
+
+            toast.error(
+                "Please remove out of stock items before proceeding to checkout"
+            );
+
+            return;
+
+        }
+
+
+        // ==================================================
         // NO COUPON
         // ==================================================
 
@@ -852,10 +996,18 @@ const Cart = () => {
                                     productId;
 
 
+                                const outOfStock =
+                                    isItemOutOfStock(item);
+
+
                                 return (
 
                                     <div
-                                        className="cart-row"
+                                        className={
+                                            outOfStock
+                                                ? "cart-row cart-row-out-of-stock"
+                                                : "cart-row"
+                                        }
                                         key={
                                             productId ||
                                             index
@@ -923,6 +1075,15 @@ const Cart = () => {
 
                                                 </p>
 
+
+                                                {outOfStock && (
+
+                                                    <span className="out-of-stock-badge">
+                                                        Out Of Stock
+                                                    </span>
+
+                                                )}
+
                                             </div>
 
                                         </div>
@@ -950,6 +1111,7 @@ const Cart = () => {
 
                                                 disabled={
                                                     isUpdating ||
+                                                    outOfStock ||
                                                     quantity <= 1
                                                 }
 
@@ -979,7 +1141,8 @@ const Cart = () => {
                                                 type="button"
 
                                                 disabled={
-                                                    isUpdating
+                                                    isUpdating ||
+                                                    outOfStock
                                                 }
 
                                                 onClick={() =>
@@ -1254,6 +1417,19 @@ const Cart = () => {
 
 
                         {/* ==================================================
+                            OUT OF STOCK WARNING
+                        ================================================== */}
+
+                        {hasOutOfStockItems && (
+
+                            <div className="out-of-stock-warning">
+                                Some items in your cart are out of stock. Please remove them to proceed to checkout.
+                            </div>
+
+                        )}
+
+
+                        {/* ==================================================
                             CHECKOUT
                         ================================================== */}
 
@@ -1262,11 +1438,19 @@ const Cart = () => {
 
                             className="checkout-btn"
 
+                            disabled={
+                                hasOutOfStockItems
+                            }
+
                             onClick={
                                 handleProceedCheckout
                             }
                         >
-                            Proceed Checkout
+                            {
+                                hasOutOfStockItems
+                                    ? "Remove Out Of Stock Items"
+                                    : "Proceed Checkout"
+                            }
                         </button>
 
 

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import zaidInfotechLogoDark from "../../assets/images/zaidinfotechlogo-white.png";
 
+
 // Context & API Services
 import { useTheme } from "../../context/ThemeContext";
 import { useCompare } from "../../context/CompareContext";
@@ -119,6 +120,9 @@ function HeaderAction({ icon: Icon, label, badge, onClick }) {
 }
 
 export default function Header() {
+   const phoneNumber = '919876543210';
+  const message = encodeURIComponent('Hi Zaid Infotech, I have a query!');
+  
   const [category, setCategory] = useState(categories[0]);
   const [query, setQuery] = useState("");
   const [wishlistCount, setWishlistCount] = useState(0);
@@ -1037,8 +1041,13 @@ export default function Header() {
               <button
                 className="quote-button"
                 type="button"
-                onClick={() =>
-                  announce("Request a Quote")
+                onClick={() =>{
+                   announce("Request a Quote")
+                    navigate(`https://wa.me/${phoneNumber}?text=${message}`)
+
+                }
+                 
+                  
                 }
               >
                 <span>
