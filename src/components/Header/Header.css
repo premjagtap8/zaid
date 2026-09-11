@@ -452,19 +452,11 @@
     margin-left: auto;
   }
 
+  /* NEW: category-nav (HOME / BUY / RENT / ...) is hidden on mobile -
+     it was adding a whole extra row to the header, and the hamburger
+     drawer already lists the same links, so it's fully redundant here. */
   .category-nav {
-    display: flex;
-    min-height: 75px;
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding-inline: 20px;
-    scrollbar-width: thin;
-  }
-
-  .nav-item {
-    flex: 0 0 auto;
-    justify-content: flex-start;
-    min-width: 145px;
+    display: none;
   }
 }
 

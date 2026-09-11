@@ -588,7 +588,7 @@ const repairServices = [
 ];
 
 const brands = [
-  { name: 'Apple MacBook', logo: 'https://cdn.simpleicons.org/apple/000000', href: '/repair-laptop-online/', isLive: true },
+  { name: 'Apple ', logo: 'https://cdn.simpleicons.org/apple/000000', href: '/repair-laptop-online/', isLive: true },
   { name: 'Dell', logo: 'https://cdn.simpleicons.org/dell/0076CE', isLive: false },
   { name: 'HP', logo: 'https://cdn.simpleicons.org/hp/0096D6', isLive: false },
   { name: 'Lenovo', logo: 'https://cdn.simpleicons.org/lenovo/E2231A', isLive: false },

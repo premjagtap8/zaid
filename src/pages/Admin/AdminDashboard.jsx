@@ -240,6 +240,7 @@ import axios from "axios";
 
 import DashboardCard from "../../components/Admin/DashboardCard/DashboardCard";
 import DashboardTable from "../../components/Admin/DashboardTable/DashboardTable";
+import { getUsers } from "../../services/userService";
 
 import "./AdminDashboard.css";
 
@@ -268,6 +269,8 @@ export default function AdminDashboard() {
 
   const [customers] = useState(initialCustomers);
 
+  const [customerCount,setCustomerCount]=useState(0)
+
   const [counts, setCounts] = useState({
     orderCount: 0,
     employeeCount: 0,
@@ -276,7 +279,35 @@ export default function AdminDashboard() {
   useEffect(() => {
     getOrders();
     getEmployees();
+    getCustomers()
   }, []);
+
+const getCustomers = async () => {
+  const token = localStorage.getItem("token");
+
+  if (!token) {
+    setCustomerCount(0);
+    return;
+  }
+
+  try {
+    const res = await axios.get(`${API_URL}/users`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const users = Array.isArray(res.data?.users) ? res.data.users : [];
+
+    const customers = users.filter((user) => user.role === "CUSTOMER");
+
+    setCustomerCount(customers.length);
+  } catch (error) {
+    console.error("Failed to fetch customers:", error);
+    setCustomerCount(0);
+  }
+};
+
 
   const getOrders = async () => {
     try {
@@ -313,6 +344,8 @@ export default function AdminDashboard() {
           Authorization: `Bearer ${token}`,
         },
       });
+
+      
       
 
       const employeeLength =
@@ -355,7 +388,7 @@ export default function AdminDashboard() {
 
             <DashboardCard
               title="Customers"
-              total="250"
+              total={customerCount}
               delta="8.2%"
               up={true}
               accent="accent"

@@ -525,6 +525,7 @@
   border: 1px solid var(--border);
   box-sizing: border-box;
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden; /* keeps badge/text from ever spilling past the card edge */
 }
 
 .brand-card-active {
@@ -575,15 +576,21 @@
 
 .brand-details {
   min-width: 0;
+  flex: 1;
+  overflow: hidden;
 }
 
 .brand-name {
   font-size: 0.9rem;
   font-weight: 500;
   display: block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  /* was: white-space: nowrap + text-overflow: ellipsis, which truncated
+     names like "Apple MacBook" down to "App…" on narrow cards.
+     Now the name wraps onto a second line instead of being cut off. */
+  white-space: normal;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  line-height: 1.25;
   color: var(--foreground);
 }
 
@@ -593,12 +600,59 @@
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--muted-foreground);
-  display: block;
+  display: inline-block;
   margin-top: 2px;
+  white-space: normal;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 .brand-badge-live {
   color: var(--accent-gold-text);
+}
+
+/* ---- Brand card mobile responsive fix ---- */
+@media (max-width: 480px) {
+  .brands-grid {
+    grid-template-columns: 1fr; /* single column = full row width per card */
+    gap: 0.75rem;
+  }
+
+  .brand-card {
+    padding: 0.875rem 1rem;
+    gap: 0.75rem;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+  }
+
+  .brand-badge {
+    font-size: 9.5px;
+    letter-spacing: 0.03em;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .brand-name {
+    font-size: 0.85rem;
+  }
+
+  .brand-badge {
+    font-size: 9px;
+  }
+}
+
+
+
+/* DESKTOP ONLY */
+@media (min-width: 768px) {
+  .brand-name {
+    white-space: nowrap;
+    overflow: visible;
+    word-break: normal;
+    overflow-wrap: normal;
+  }
 }
 
 /* =========================================================
