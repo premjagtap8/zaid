@@ -81,27 +81,17 @@ export default function ComparePage() {
 
         {/* Show the single selected product as a preview card, if any */}
         {!isEmpty && (
-  <div className="relative max-w-[220px] mx-auto mb-8 border border-gray-200 dark:border-slate-700 rounded-2xl p-4 bg-white dark:bg-slate-900">
-    <button
-      onClick={() =>
-        removeFromCompare(compareList[0]._id || compareList[0].id)
-      }
-      aria-label="Remove from compare"
-      className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-gray-100 dark:bg-slate-800 flex items-center justify-center text-gray-600 dark:text-slate-300 hover:bg-gray-200 dark:hover:bg-slate-700 transition"
-    >
-      <X className="w-3.5 h-3.5" />
-    </button>
-
-    <img
-      src={getProductImage(compareList[0])}
-      alt=""
-      className="w-full h-28 object-contain mb-3"
-    />
-    <p className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-1">
-      {compareList[0].title || compareList[0].name}
-    </p>
-  </div>
-)}
+          <div className="max-w-[220px] mx-auto mb-8 border border-gray-200 dark:border-slate-700 rounded-2xl p-4 bg-white dark:bg-slate-900">
+            <img
+              src={getProductImage(compareList[0])}
+              alt=""
+              className="w-full h-28 object-contain mb-3"
+            />
+            <p className="text-sm font-semibold text-gray-900 dark:text-white line-clamp-1">
+              {compareList[0].title || compareList[0].name}
+            </p>
+          </div>
+        )}
 
         <button
           onClick={() => navigate("/shop")}

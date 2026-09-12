@@ -1,29 +1,45 @@
 // import React, { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 // import axios from "axios";
+
 // import DashboardCard from "../../components/Admin/DashboardCard/DashboardCard";
 // import DashboardTable from "../../components/Admin/DashboardTable/DashboardTable";
+
 // import "./AdminDashboard.css";
 
 // const API_URL = import.meta.env.VITE_API_URL;
 
 // const initialCustomers = [
-//   { name: "Ali", email: "ali@gmail.com", status: "Active" },
-//   { name: "John", email: "john@gmail.com", status: "Active" },
-//   { name: "Sara", email: "sara@gmail.com", status: "Inactive" },
+//   {
+//     name: "Ali",
+//     email: "ali@gmail.com",
+//     status: "Active",
+//   },
+//   {
+//     name: "John",
+//     email: "john@gmail.com",
+//     status: "Active",
+//   },
+//   {
+//     name: "Sara",
+//     email: "sara@gmail.com",
+//     status: "Inactive",
+//   },
 // ];
 
 // export default function AdminDashboard() {
-//   const [customers] = useState(initialCustomers);
 //   const navigate = useNavigate();
+
+//   const [customers] = useState(initialCustomers);
 
 //   const [counts, setCounts] = useState({
 //     orderCount: 0,
-//     employeeCount: 10,
+//     employeeCount: 0,
 //   });
 
 //   useEffect(() => {
 //     getOrders();
+//     getEmployees();
 //   }, []);
 
 //   const getOrders = async () => {
@@ -36,63 +52,70 @@
 //         },
 //       });
 
-//       // Safely access data using optional chaining with fallbacks
-//       const ordersLength = res?.data?.orders?.length || 0;
-
-//       console.log(res?.data?.success);
-//       console.log(ordersLength);
+//       const ordersLength =
+//         res?.data?.orders?.length ||
+//         res?.data?.data?.orders?.length ||
+//         res?.data?.data?.length ||
+//         0;
 
 //       setCounts((prev) => ({
 //         ...prev,
 //         orderCount: ordersLength,
 //       }));
 //     } catch (error) {
-//       console.log(error);
+//       console.error("Dashboard orders error:", error);
+//     }
+//   };
+
+
+//   const getEmployees = async () => {
+//     try {
+//       const token = localStorage.getItem("token");
+
+//       const res = await axios.get(`${API_URL}/users/employees`, {
+//         headers: {
+//           Authorization: `Bearer ${token}`,
+//         },
+//       });
+      
+
+//       const employeeLength =
+//         res?.data?.data?.length ||
+//         0;
+
+//       setCounts((prev) => ({
+//         ...prev,
+//         employeeCount: employeeLength,
+//       }));
+//     } catch (error) {
+//       console.error("Cant get the employees :", error);
 //     }
 //   };
 
 //   return (
-//     <div className="app">
-//       <main>
-//         {/* Top Header Navigation */}
-//         <header className="topbar">
-//           <div className="topbar-left">
-//             <div>
-//               <h1 className="page-title">Dashboard</h1>
-//               <p className="page-sub">
+//     <div className="app admin-app">
+//       <main className="admin-main">
+//         <div className="content">
+
+//           {/* ==============================
+//               DASHBOARD HEADER
+//           ============================== */}
+//           <div className="dashboard-header">
+//             <div className="dashboard-header-left">
+//               <h1 className="dashboard-title">
+//                 Dashboard
+//               </h1>
+
+//               <p className="dashboard-subtitle">
 //                 Welcome back, here's what's happening today
 //               </p>
 //             </div>
 //           </div>
-
-//           <div className="topbar-right">
-//             {/* Search Input */}
-//             <div className="search">
-//               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-//                 <circle cx="11" cy="11" r="8" />
-//                 <path d="M21 21l-4.35-4.35" />
-//               </svg>
-//               <input type="text" placeholder="Search customers..." />
-//             </div>
-
-//             {/* Notification Bell */}
-//             <button type="button" className="icon-btn" aria-label="Notifications">
-//               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-//                 <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-//                 <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-//               </svg>
-//               <span className="dot-badge" />
-//             </button>
-
-//             {/* User Avatar */}
-//             <div className="avatar-sm">AD</div>
-//           </div>
-//         </header>
-
-//         {/* Main Content Area */}
-//         <div className="content">
-//           {/* Top 4 Stat Cards */}
+//           {/* ==============================
+//               STATS
+//           ============================== */}
 //           <div className="stats">
+
 //             <DashboardCard
 //               title="Customers"
 //               total="250"
@@ -103,9 +126,10 @@
 //               sparkPoints="0,22 10,18 20,20 30,15 40,17 50,10 60,12"
 //               onClick={() => navigate("/customers")}
 //             />
+
 //             <DashboardCard
 //               title="Employees"
-//               total="00"
+//               total={counts.employeeCount}
 //               delta="8.2%"
 //               up={true}
 //               accent="accent"
@@ -113,6 +137,7 @@
 //               sparkPoints="0,22 10,18 20,20 30,15 40,17 50,10 60,12"
 //               onClick={() => navigate("/employees")}
 //             />
+
 //             <DashboardCard
 //               title="Orders"
 //               total={counts.orderCount}
@@ -122,6 +147,7 @@
 //               iconType="orders"
 //               sparkPoints="0,15 10,20 20,12 30,22 40,16 50,24 60,18"
 //             />
+
 //             <DashboardCard
 //               title="Products"
 //               total="75"
@@ -131,6 +157,7 @@
 //               iconType="products"
 //               sparkPoints="0,20 15,20 30,19 45,18 60,17"
 //             />
+
 //             <DashboardCard
 //               title="Revenue"
 //               total="₹1.25L"
@@ -140,107 +167,246 @@
 //               iconType="revenue"
 //               sparkPoints="0,22 10,22 20,20 30,18 40,21 50,15 60,16"
 //             />
+
 //           </div>
 
-//           {/* Middle Charts Grid */}
+//           {/* ==============================
+//               CHARTS
+//           ============================== */}
 //           <div className="grid-2">
-//             {/* Revenue Trend Line Chart */}
+
+//             {/* Revenue */}
 //             <div className="panel panel-pad">
+
 //               <div className="panel-head">
 //                 <div>
-//                   <div className="panel-title">Revenue trend</div>
-//                   <div className="panel-sub">Last 14 days</div>
+//                   <div className="panel-title">
+//                     Revenue trend
+//                   </div>
+
+//                   <div className="panel-sub">
+//                     Last 14 days
+//                   </div>
 //                 </div>
-//                 <span className="pill">+12.4%</span>
+
+//                 <span className="pill">
+//                   +12.4%
+//                 </span>
 //               </div>
 
 //               <div className="chart-wrap">
-//                 <svg viewBox="0 0 500 150" width="100%" height="100%" preserveAspectRatio="none">
+
+//                 <svg
+//                   viewBox="0 0 500 150"
+//                   width="100%"
+//                   height="100%"
+//                   preserveAspectRatio="none"
+//                 >
 //                   <defs>
-//                     <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
-//                       <stop offset="0%" className="chart-fill-start" />
-//                       <stop offset="100%" className="chart-fill-end" />
+//                     <linearGradient
+//                       id="areaFill"
+//                       x1="0"
+//                       y1="0"
+//                       x2="0"
+//                       y2="1"
+//                     >
+//                       <stop
+//                         offset="0%"
+//                         className="chart-fill-start"
+//                       />
+
+//                       <stop
+//                         offset="100%"
+//                         className="chart-fill-end"
+//                       />
 //                     </linearGradient>
 //                   </defs>
 
-//                   <line x1="0" y1="30" x2="500" y2="30" className="chart-grid-line" />
-//                   <line x1="0" y1="75" x2="500" y2="75" className="chart-grid-line" />
-//                   <line x1="0" y1="120" x2="500" y2="120" className="chart-grid-line" />
+//                   <line
+//                     x1="0"
+//                     y1="30"
+//                     x2="500"
+//                     y2="30"
+//                     className="chart-grid-line"
+//                   />
+
+//                   <line
+//                     x1="0"
+//                     y1="75"
+//                     x2="500"
+//                     y2="75"
+//                     className="chart-grid-line"
+//                   />
+
+//                   <line
+//                     x1="0"
+//                     y1="120"
+//                     x2="500"
+//                     y2="120"
+//                     className="chart-grid-line"
+//                   />
 
 //                   <polygon
-//                     points="0,110 40,95 80,100 120,85 160,92 200,70 240,80 280,65 320,72 360,60 400,45 440,55 480,62 480,150 0,150"
+//                     points="
+//                       0,110
+//                       40,95
+//                       80,100
+//                       120,85
+//                       160,92
+//                       200,70
+//                       240,80
+//                       280,65
+//                       320,72
+//                       360,60
+//                       400,45
+//                       440,55
+//                       480,62
+//                       480,150
+//                       0,150
+//                     "
 //                     className="revenue-area"
 //                   />
+
 //                   <polyline
-//                     points="0,110 40,95 80,100 120,85 160,92 200,70 240,80 280,65 320,72 360,60 400,45 440,55 480,62"
-//                     fill="none"
-//                     strokeWidth="2.5"
+//                     points="
+//                       0,110
+//                       40,95
+//                       80,100
+//                       120,85
+//                       160,92
+//                       200,70
+//                       240,80
+//                       280,65
+//                       320,72
+//                       360,60
+//                       400,45
+//                       440,55
+//                       480,62
+//                     "
 //                     className="revenue-line"
 //                   />
+
 //                   <polyline
-//                     points="0,135 40,135 80,130 120,128 160,133 200,120 240,122 280,115 320,117 360,110 400,102 440,110 480,112"
-//                     fill="none"
-//                     strokeWidth="1.5"
-//                     strokeDasharray="4 4"
+//                     points="
+//                       0,135
+//                       40,135
+//                       80,130
+//                       120,128
+//                       160,133
+//                       200,120
+//                       240,122
+//                       280,115
+//                       320,117
+//                       360,110
+//                       400,102
+//                       440,110
+//                       480,112
+//                     "
 //                     className="orders-line"
 //                   />
 //                 </svg>
+
 //               </div>
 
 //               <div className="legend">
-//                 <span><i className="legend-revenue" /> Revenue</span>
-//                 <span><i className="legend-orders" /> Orders</span>
+//                 <span>
+//                   <i className="legend-revenue" />
+//                   Revenue
+//                 </span>
+
+//                 <span>
+//                   <i className="legend-orders" />
+//                   Orders
+//                 </span>
 //               </div>
+
 //             </div>
 
-//             {/* Product Mix Pie/Donut Chart */}
+//             {/* Product Mix */}
 //             <div className="panel panel-pad">
-//               <div className="panel-title">Product mix</div>
-//               <div className="panel-sub">By category</div>
+
+//               <div className="panel-title">
+//                 Product mix
+//               </div>
+
+//               <div className="panel-sub">
+//                 By category
+//               </div>
 
 //               <div className="donut-wrap">
+
 //                 <div className="donut" />
+
 //                 <div className="donut-legend">
+
 //                   <div className="donut-row">
 //                     <span className="donut-dot donut-accent" />
-//                     <span className="donut-label">Ultrabooks</span>
-//                     <span className="donut-val">42%</span>
+//                     <span className="donut-label">
+//                       Ultrabooks
+//                     </span>
+//                     <span className="donut-val">
+//                       42%
+//                     </span>
 //                   </div>
+
 //                   <div className="donut-row">
 //                     <span className="donut-dot donut-blue" />
-//                     <span className="donut-label">Business</span>
-//                     <span className="donut-val">26%</span>
+//                     <span className="donut-label">
+//                       Business
+//                     </span>
+//                     <span className="donut-val">
+//                       26%
+//                     </span>
 //                   </div>
+
 //                   <div className="donut-row">
 //                     <span className="donut-dot donut-violet" />
-//                     <span className="donut-label">2-in-1</span>
-//                     <span className="donut-val">18%</span>
+//                     <span className="donut-label">
+//                       2-in-1
+//                     </span>
+//                     <span className="donut-val">
+//                       18%
+//                     </span>
 //                   </div>
+
 //                   <div className="donut-row">
 //                     <span className="donut-dot donut-warning" />
-//                     <span className="donut-label">Gaming</span>
-//                     <span className="donut-val">14%</span>
+//                     <span className="donut-label">
+//                       Gaming
+//                     </span>
+//                     <span className="donut-val">
+//                       14%
+//                     </span>
 //                   </div>
+
 //                 </div>
 //               </div>
 //             </div>
+
 //           </div>
 
-//           {/* Bottom Customers Table */}
-//           <DashboardTable customers={customers} />
+//           {/* ==============================
+//               CUSTOMER TABLE
+//           ============================== */}
+//           <DashboardTable
+//             customers={customers}
+//           />
+
 //         </div>
 //       </main>
 //     </div>
 //   );
 // }
 
-import React, { useState, useEffect } from "react";
+
+
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { FaHome, FaBell } from "react-icons/fa";
 
 import DashboardCard from "../../components/Admin/DashboardCard/DashboardCard";
 import DashboardTable from "../../components/Admin/DashboardTable/DashboardTable";
-import { getUsers } from "../../services/userService";
 
 import "./AdminDashboard.css";
 
@@ -269,45 +435,20 @@ export default function AdminDashboard() {
 
   const [customers] = useState(initialCustomers);
 
-  const [customerCount,setCustomerCount]=useState(0)
-
   const [counts, setCounts] = useState({
     orderCount: 0,
     employeeCount: 0,
   });
 
-  useEffect(() => {
-    getOrders();
-    getEmployees();
-    getCustomers()
-  }, []);
+  // =====================================================
+  // NOTIFICATION STATE
+  // =====================================================
 
-const getCustomers = async () => {
-  const token = localStorage.getItem("token");
+  const [unreadNotifications, setUnreadNotifications] = useState(0);
 
-  if (!token) {
-    setCustomerCount(0);
-    return;
-  }
-
-  try {
-    const res = await axios.get(`${API_URL}/users`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    const users = Array.isArray(res.data?.users) ? res.data.users : [];
-
-    const customers = users.filter((user) => user.role === "CUSTOMER");
-
-    setCustomerCount(customers.length);
-  } catch (error) {
-    console.error("Failed to fetch customers:", error);
-    setCustomerCount(0);
-  }
-};
-
+  // =====================================================
+  // GET ORDERS
+  // =====================================================
 
   const getOrders = async () => {
     try {
@@ -334,6 +475,9 @@ const getCustomers = async () => {
     }
   };
 
+  // =====================================================
+  // GET EMPLOYEES
+  // =====================================================
 
   const getEmployees = async () => {
     try {
@@ -344,9 +488,6 @@ const getCustomers = async () => {
           Authorization: `Bearer ${token}`,
         },
       });
-
-      
-      
 
       const employeeLength =
         res?.data?.data?.length ||
@@ -361,16 +502,141 @@ const getCustomers = async () => {
     }
   };
 
+  // =====================================================
+  // GET ADMIN NOTIFICATIONS
+  // =====================================================
+
+  const getAdminNotifications = useCallback(async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        return;
+      }
+
+      const res = await axios.get(
+        `${API_URL}/notifications/my`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // -------------------------------------------------
+      // Handle different backend response structures
+      // -------------------------------------------------
+
+      const notifications =
+        res?.data?.notifications ||
+        res?.data?.data?.notifications ||
+        res?.data?.data ||
+        [];
+
+      // -------------------------------------------------
+      // If backend directly gives unreadCount
+      // -------------------------------------------------
+
+      if (
+        typeof res?.data?.unreadCount === "number"
+      ) {
+        setUnreadNotifications(res.data.unreadCount);
+        return;
+      }
+
+      if (
+        typeof res?.data?.data?.unreadCount === "number"
+      ) {
+        setUnreadNotifications(
+          res.data.data.unreadCount
+        );
+        return;
+      }
+
+      // -------------------------------------------------
+      // Otherwise calculate unread notifications
+      // -------------------------------------------------
+
+      if (Array.isArray(notifications)) {
+        const unread = notifications.filter(
+          (notification) =>
+            notification?.isRead === false ||
+            notification?.read === false ||
+            notification?.status === "UNREAD"
+        ).length;
+
+        setUnreadNotifications(unread);
+      } else {
+        setUnreadNotifications(0);
+      }
+    } catch (error) {
+      console.error(
+        "Dashboard notifications error:",
+        error
+      );
+    }
+  }, []);
+
+  // =====================================================
+  // INITIAL API CALLS
+  // =====================================================
+
+  useEffect(() => {
+    getOrders();
+    getEmployees();
+    getAdminNotifications();
+  }, [getAdminNotifications]);
+
+  // =====================================================
+  // NOTIFICATION AUTO REFRESH
+  // Same idea as your Admin Sidebar
+  // =====================================================
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      return;
+    }
+
+    const interval = setInterval(() => {
+      getAdminNotifications();
+    }, 15000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [getAdminNotifications]);
+
+  // =====================================================
+  // GO TO HOME
+  // =====================================================
+
+  const handleHomeClick = () => {
+    navigate("/");
+  };
+
+  // =====================================================
+  // GO TO NOTIFICATIONS
+  // =====================================================
+
+  const handleNotificationClick = () => {
+    navigate("/notifications");
+  };
+
   return (
     <div className="app admin-app">
       <main className="admin-main">
         <div className="content">
 
-          {/* ==============================
+          {/* =================================================
               DASHBOARD HEADER
-          ============================== */}
+          ================================================= */}
+
           <div className="dashboard-header">
+
             <div className="dashboard-header-left">
+
               <h1 className="dashboard-title">
                 Dashboard
               </h1>
@@ -378,17 +644,60 @@ const getCustomers = async () => {
               <p className="dashboard-subtitle">
                 Welcome back, here's what's happening today
               </p>
+
             </div>
+
+            {/* =================================================
+                HEADER ACTIONS
+            ================================================= */}
+
+            <div className="dashboard-header-actions">
+
+              {/* HOME BUTTON */}
+
+              <button
+                type="button"
+                className="dashboard-home-btn"
+                onClick={handleHomeClick}
+                title="Go to Home"
+                aria-label="Go to Home"
+              >
+                <FaHome />
+              </button>
+
+              {/* NOTIFICATION BUTTON */}
+
+              <button
+                type="button"
+                className="dashboard-notification-btn"
+                onClick={handleNotificationClick}
+                title="Notifications"
+                aria-label="Notifications"
+              >
+                <FaBell />
+
+                {unreadNotifications > 0 && (
+                  <span className="dashboard-notification-badge">
+                    {unreadNotifications > 99
+                      ? "99+"
+                      : unreadNotifications}
+                  </span>
+                )}
+              </button>
+
+            </div>
+
           </div>
 
-          {/* ==============================
+          {/* =================================================
               STATS
-          ============================== */}
+          ================================================= */}
+
           <div className="stats">
 
             <DashboardCard
               title="Customers"
-              total={customerCount}
+              total="250"
               delta="8.2%"
               up={true}
               accent="accent"
@@ -440,16 +749,20 @@ const getCustomers = async () => {
 
           </div>
 
-          {/* ==============================
+          {/* =================================================
               CHARTS
-          ============================== */}
+          ================================================= */}
+
           <div className="grid-2">
 
             {/* Revenue */}
+
             <div className="panel panel-pad">
 
               <div className="panel-head">
+
                 <div>
+
                   <div className="panel-title">
                     Revenue trend
                   </div>
@@ -457,11 +770,13 @@ const getCustomers = async () => {
                   <div className="panel-sub">
                     Last 14 days
                   </div>
+
                 </div>
 
                 <span className="pill">
                   +12.4%
                 </span>
+
               </div>
 
               <div className="chart-wrap">
@@ -472,7 +787,9 @@ const getCustomers = async () => {
                   height="100%"
                   preserveAspectRatio="none"
                 >
+
                   <defs>
+
                     <linearGradient
                       id="areaFill"
                       x1="0"
@@ -480,6 +797,7 @@ const getCustomers = async () => {
                       x2="0"
                       y2="1"
                     >
+
                       <stop
                         offset="0%"
                         className="chart-fill-start"
@@ -489,7 +807,9 @@ const getCustomers = async () => {
                         offset="100%"
                         className="chart-fill-end"
                       />
+
                     </linearGradient>
+
                   </defs>
 
                   <line
@@ -574,11 +894,13 @@ const getCustomers = async () => {
                     "
                     className="orders-line"
                   />
+
                 </svg>
 
               </div>
 
               <div className="legend">
+
                 <span>
                   <i className="legend-revenue" />
                   Revenue
@@ -588,11 +910,13 @@ const getCustomers = async () => {
                   <i className="legend-orders" />
                   Orders
                 </span>
+
               </div>
 
             </div>
 
             {/* Product Mix */}
+
             <div className="panel panel-pad">
 
               <div className="panel-title">
@@ -610,54 +934,73 @@ const getCustomers = async () => {
                 <div className="donut-legend">
 
                   <div className="donut-row">
+
                     <span className="donut-dot donut-accent" />
+
                     <span className="donut-label">
                       Ultrabooks
                     </span>
+
                     <span className="donut-val">
                       42%
                     </span>
+
                   </div>
 
                   <div className="donut-row">
+
                     <span className="donut-dot donut-blue" />
+
                     <span className="donut-label">
                       Business
                     </span>
+
                     <span className="donut-val">
                       26%
                     </span>
+
                   </div>
 
                   <div className="donut-row">
+
                     <span className="donut-dot donut-violet" />
+
                     <span className="donut-label">
                       2-in-1
                     </span>
+
                     <span className="donut-val">
                       18%
                     </span>
+
                   </div>
 
                   <div className="donut-row">
+
                     <span className="donut-dot donut-warning" />
+
                     <span className="donut-label">
                       Gaming
                     </span>
+
                     <span className="donut-val">
                       14%
                     </span>
+
                   </div>
 
                 </div>
+
               </div>
+
             </div>
 
           </div>
 
-          {/* ==============================
+          {/* =================================================
               CUSTOMER TABLE
-          ============================== */}
+          ================================================= */}
+
           <DashboardTable
             customers={customers}
           />
