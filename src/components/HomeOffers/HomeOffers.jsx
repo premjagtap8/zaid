@@ -246,7 +246,7 @@
 
 
 import React, { useEffect, useState } from "react";
-import { getOffers } from "../../services/offerService";
+import { getActiveOffers } from "../../services/offerService";
 import "./HomeOffers.css";
 import { useNavigate } from "react-router-dom";
 
@@ -309,7 +309,7 @@ const HomeOffers = () => {
     try {
       setLoading(true);
 
-      const response = await getOffers();
+      const response = await getActiveOffers();
 
       const responseData = response?.data;
       let offerData = [];

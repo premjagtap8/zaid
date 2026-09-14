@@ -1,0 +1,764 @@
+/* =====================================================
+   RENTAL DETAILS PAGE
+===================================================== */
+
+.rental-details-page3 {
+    width: 100%;
+    min-height: 100vh;
+    background: #ffffff;
+    color: #111827;
+    padding: 28px 20px 70px;
+    box-sizing: border-box;
+}
+
+
+/* =====================================================
+   BREADCRUMB
+===================================================== */
+
+.breadcrumb-wrapper3 {
+    max-width: 1380px;
+    margin: 0 auto 28px;
+}
+
+.breadcrumb3 {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+.breadcrumb-current3 {
+    max-width: 320px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #111827;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   MAIN DETAILS
+===================================================== */
+
+.details-container3 {
+    width: 100%;
+    max-width: 1380px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(0, 0.95fr);
+
+    gap: 60px;
+    align-items: start;
+}
+
+
+/* =====================================================
+   LEFT SIDE
+===================================================== */
+
+.left-side3 {
+    width: 100%;
+    min-width: 0;
+}
+
+.main-image-box3 {
+    position: relative;
+
+    width: 100%;
+    min-height: 560px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 28px;
+
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.main-image3 {
+    width: 100%;
+    height: 560px;
+
+    object-fit: contain;
+    padding: 35px;
+
+    box-sizing: border-box;
+
+    transition: transform 0.35s ease;
+}
+
+.main-image3:hover {
+    transform: scale(1.025);
+}
+
+
+/* =====================================================
+   NO IMAGE
+===================================================== */
+
+.no-image3 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: #9ca3af;
+
+    min-height: 400px;
+}
+
+.no-image3 span {
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+.no-image3 p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* =====================================================
+   THUMBNAILS
+===================================================== */
+
+.thumbnail-list3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-top: 18px;
+
+    overflow-x: auto;
+    padding: 3px 2px 8px;
+}
+
+.thumbnail-button3 {
+    flex: 0 0 auto;
+
+    width: 82px;
+    height: 82px;
+
+    padding: 5px;
+
+    border-radius: 15px;
+
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.thumbnail-button3:hover {
+    transform: translateY(-2px);
+    border-color: #9ca3af;
+}
+
+.thumbnail-button3.active {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.12);
+}
+
+.thumbnail3 {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    border-radius: 10px;
+}
+
+
+/* =====================================================
+   RIGHT SIDE
+===================================================== */
+
+.right-side3 {
+    width: 100%;
+    min-width: 0;
+    padding-top: 4px;
+}
+
+
+/* =====================================================
+   CATEGORY
+===================================================== */
+
+.category-label3 {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 12px;
+
+    margin-bottom: 12px;
+
+    border-radius: 999px;
+
+    background: #eef2ff;
+    color: #4f46e5;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+
+/* =====================================================
+   PRODUCT TITLE
+===================================================== */
+
+.product-title3 {
+    margin: 0;
+
+    font-size: clamp(28px, 3vw, 46px);
+
+    line-height: 1.12;
+
+    font-weight: 850;
+
+    letter-spacing: -1.3px;
+
+    color: #111827;
+}
+
+
+/* =====================================================
+   META
+===================================================== */
+
+.product-meta3 {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 12px 25px;
+
+    margin-top: 16px;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+.product-meta3 strong {
+    color: #374151;
+}
+
+
+/* =====================================================
+   PRICE
+===================================================== */
+
+.price-box3 {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 22px;
+}
+
+.price3 {
+    color: #111827;
+
+    font-size: 34px;
+    line-height: 1;
+
+    font-weight: 850;
+    letter-spacing: -0.8px;
+}
+
+.price-unit3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #64748b;
+    margin-left: 4px;
+}
+
+.mrp3 {
+    color: #94a3b8;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    text-decoration: line-through;
+}
+
+
+/* =====================================================
+   SHORT DESCRIPTION
+===================================================== */
+
+.short-desc3 {
+    margin: 22px 0 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   ACTION BUTTON
+===================================================== */
+
+.action-buttons3 {
+    margin-top: 26px;
+}
+
+.quote-btn3 {
+    width: 100%;
+    max-width: 320px;
+
+    min-height: 50px;
+
+    border: none;
+
+    border-radius: 13px;
+
+    padding: 0 22px;
+
+    background: #4f46e5;
+
+    color: #ffffff;
+
+    font-size: 14px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.quote-btn3:hover {
+    background: #4338ca;
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   INFORMATION CARDS
+===================================================== */
+
+.product-info-cards3 {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    padding-top: 22px;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+.info-card3 {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+
+    padding: 11px;
+
+    border-radius: 13px;
+
+    background: #f8fafc;
+}
+
+.info-icon3 {
+    font-size: 17px;
+}
+
+.info-card3 strong {
+    display: block;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    color: #374151;
+}
+
+.info-card3 p {
+    margin: 3px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 9px;
+    line-height: 1.4;
+}
+
+
+/* =====================================================
+   CONTENT SECTION
+===================================================== */
+
+.content-section3 {
+    width: 100%;
+    max-width: 1380px;
+
+    margin: 70px auto 0;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 25px;
+}
+
+.content-card3 {
+    padding: 28px;
+
+    border-radius: 22px;
+
+    border: 1px solid #e5e7eb;
+
+    background: #ffffff;
+}
+
+.content-card3 h2 {
+    margin: 0 0 20px;
+
+    font-size: 20px;
+    font-weight: 850;
+
+    color: #111827;
+}
+
+.description-content3 p {
+    margin: 0;
+
+    color: #64748b;
+
+    font-size: 14px;
+    line-height: 1.9;
+
+    white-space: pre-line;
+}
+
+.empty-content3 {
+    color: #94a3b8 !important;
+}
+
+
+/* =====================================================
+   SPECIFICATION TABLE
+===================================================== */
+
+.specification-table-wrapper3 {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.specification-table3 {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    font-size: 13px;
+}
+
+.specification-table3 th,
+.specification-table3 td {
+    padding: 13px 14px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.specification-table3 th {
+    color: #374151;
+
+    font-weight: 800;
+
+    background: #f8fafc;
+}
+
+.specification-table3 td {
+    color: #64748b;
+}
+
+.specification-table3 tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.rental-details-loading3 {
+    min-height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #ffffff;
+
+    color: #64748b;
+}
+
+.rental-spinner3 {
+    width: 35px;
+    height: 35px;
+
+    border-radius: 50%;
+
+    border: 3px solid #e5e7eb;
+    border-top-color: #4f46e5;
+
+    animation: rentalSpin3 0.8s linear infinite;
+
+    margin-bottom: 13px;
+}
+
+@keyframes rentalSpin3 {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rental-details-loading3 p {
+    margin: 0;
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   NOT FOUND
+===================================================== */
+
+.rental-details-not-found3 {
+    min-height: 70vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 30px;
+
+    background: #ffffff;
+}
+
+.not-found-icon3 {
+    font-size: 55px;
+    margin-bottom: 12px;
+}
+
+.rental-details-not-found3 h2 {
+    margin: 0;
+
+    color: #111827;
+
+    font-size: 25px;
+    font-weight: 850;
+}
+
+.rental-details-not-found3 p {
+    margin: 8px 0 20px;
+
+    color: #64748b;
+
+    font-size: 13px;
+}
+
+.rental-details-not-found3 button {
+    border: none;
+
+    padding: 11px 20px;
+
+    border-radius: 10px;
+
+    background: #4f46e5;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.rental-details-not-found3 button:hover {
+    background: #4338ca;
+}
+
+
+/* =====================================================
+   RESPONSIVE - TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+    .details-container3 {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .main-image-box3 {
+        min-height: 500px;
+    }
+
+    .main-image3 {
+        height: 500px;
+    }
+
+    .right-side3 {
+        max-width: 850px;
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVE - 850
+===================================================== */
+
+@media (max-width: 850px) {
+    .content-section3 {
+        grid-template-columns: 1fr;
+    }
+
+    .product-info-cards3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVE - MOBILE
+===================================================== */
+
+@media (max-width: 650px) {
+    .rental-details-page3 {
+        padding: 20px 12px 50px;
+    }
+
+    .breadcrumb-wrapper3 {
+        margin-bottom: 20px;
+    }
+
+    .breadcrumb3 {
+        font-size: 11px;
+        gap: 6px;
+    }
+
+    .breadcrumb-current3 {
+        max-width: 170px;
+    }
+
+    .details-container3 {
+        gap: 30px;
+    }
+
+    .main-image-box3 {
+        min-height: 350px;
+        border-radius: 20px;
+    }
+
+    .main-image3 {
+        height: 350px;
+        padding: 22px;
+    }
+
+    .thumbnail-list3 {
+        gap: 8px;
+    }
+
+    .thumbnail-button3 {
+        width: 65px;
+        height: 65px;
+    }
+
+    .product-title3 {
+        font-size: 29px;
+        letter-spacing: -0.7px;
+    }
+
+    .product-meta3 {
+        flex-direction: column;
+        gap: 7px;
+    }
+
+    .price3 {
+        font-size: 29px;
+    }
+
+    .mrp3 {
+        font-size: 14px;
+    }
+
+    .quote-btn3 {
+        max-width: 100%;
+    }
+
+    .product-info-cards3 {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .content-section3 {
+        margin-top: 45px;
+        gap: 15px;
+    }
+
+    .content-card3 {
+        padding: 20px;
+        border-radius: 18px;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 400px) {
+    .main-image-box3 {
+        min-height: 300px;
+    }
+
+    .main-image3 {
+        height: 300px;
+    }
+
+    .product-title3 {
+        font-size: 25px;
+    }
+}

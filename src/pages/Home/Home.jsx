@@ -29,6 +29,15 @@ import HomeOffers from "../../components/HomeOffers/HomeOffers";
 
 function Home() {
 
+    const user=JSON.parse(localStorage.getItem("user"))
+    
+   
+   
+    const role=user?.role
+   
+    console.log(role)
+
+
     return (
 
         <div className="min-h-screen bg-white dark:bg-slate-950">
@@ -51,7 +60,7 @@ function Home() {
                     active offer show hoga.
                 ================================= */}
 
-                <HomeOffers />
+               {!["ADMIN", "INVENTORY"].includes(role) && <HomeOffers />}
 
 
                 {/* ================================

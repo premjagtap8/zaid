@@ -1,0 +1,1791 @@
+/* ==========================================================================
+   Rental Page
+   Light green theme + rental-specific class names
+   ========================================================================== */
+
+:root {
+  --rental-green: #16b878;
+  --rental-green-dark: #0f8f62;
+  --rental-green-light: #f5fbf8;
+  --rental-green-soft: #e8f7f0;
+
+  --rental-navy: #0f172a;
+  --rental-text: #172033;
+  --rental-muted: #64748b;
+  --rental-border: #e2e8f0;
+  --rental-white: #ffffff;
+  --rental-bg: #f8faf9;
+
+  --rental-warning: #dc2626;
+}
+
+
+/* ==========================================================================
+   PAGE
+   ========================================================================== */
+
+.rental-page {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--rental-bg);
+  color: var(--rental-text);
+  overflow-x: hidden;
+}
+
+.rental-main {
+  width: 100%;
+}
+
+
+/* ==========================================================================
+   HERO
+   ========================================================================== */
+
+.rental-hero {
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at 75% 35%,
+      rgba(22, 184, 120, 0.06),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #f8fafc 0%,
+      #ffffff 55%,
+      #f5fbf8 100%
+    );
+
+  border-bottom: 1px solid #e2e8f0;
+
+  padding: 65px 5.5% 45px;
+}
+
+.rental-hero-content {
+  width: min(1500px, 100%);
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(420px, 1fr);
+
+  align-items: center;
+
+  gap: 60px;
+}
+
+.rental-hero-left {
+  min-width: 0;
+}
+
+
+/* ==========================================================================
+   HERO EYEBROW
+   ========================================================================== */
+
+.rental-hero-eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 7px 14px;
+
+  margin-bottom: 18px;
+
+  border-radius: 999px;
+
+  background: var(--rental-green-soft);
+
+  color: var(--rental-green-dark);
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.8px;
+
+  white-space: nowrap;
+}
+
+
+/* ==========================================================================
+   HERO TITLE
+   ========================================================================== */
+
+.rental-hero-title {
+  margin: 0;
+
+  color: var(--rental-navy);
+
+  /*
+    Large responsive heading.
+
+    IMPORTANT:
+    Positive letter-spacing is intentional.
+    The old negative letter-spacing was causing
+    LAPTOP / RENTAL characters to touch.
+  */
+  font-size: clamp(56px, 6.2vw, 96px);
+
+  /*
+    Comfortable line spacing.
+  */
+  line-height: 1.08;
+
+  /*
+    DO NOT change this back to a negative value.
+  */
+  letter-spacing: 1.5px;
+
+  font-weight: 800;
+
+  max-width: 100%;
+
+  overflow-wrap: normal;
+
+  word-break: normal;
+}
+
+.rental-hero-title span {
+  display: block;
+
+  margin-top: 12px;
+
+  color: var(--rental-green);
+
+  line-height: 1.08;
+
+  letter-spacing: 1.5px;
+
+  font-weight: 800;
+}
+
+
+/* ==========================================================================
+   HERO DESCRIPTION
+   ========================================================================== */
+
+.rental-hero-description {
+  max-width: 610px;
+
+  margin: 25px 0 18px;
+
+  color: #475569;
+
+  font-size: 16px;
+
+  line-height: 1.65;
+}
+
+
+/* ==========================================================================
+   HERO POINTS
+   ========================================================================== */
+
+.rental-hero-points {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 13px;
+
+  color: #27785b;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+
+  line-height: 1.5;
+}
+
+.rental-hero-points i {
+  color: var(--rental-green);
+
+  font-size: 18px;
+
+  font-style: normal;
+}
+
+
+/* ==========================================================================
+   HERO PRICE
+   ========================================================================== */
+
+.rental-hero-price {
+  width: min(520px, 100%);
+
+  margin-top: 25px;
+
+  padding: 19px 25px;
+
+  border-left: 6px solid var(--rental-green);
+
+  border-radius: 0 16px 16px 0;
+
+  background: var(--rental-navy);
+
+  box-shadow:
+    0 16px 35px rgba(15, 23, 42, 0.12);
+}
+
+.rental-price-label {
+  display: block;
+
+  color: #a7e6ca;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+.rental-price-value {
+  margin-top: 4px;
+
+  color: #ffffff;
+
+  font-size: clamp(35px, 4vw, 52px);
+
+  line-height: 1;
+
+  font-weight: 900;
+}
+
+.rental-price-value span {
+  color: #a7e6ca;
+
+  font-size: 15px;
+
+  font-weight: 800;
+
+  letter-spacing: 1px;
+}
+
+.rental-hero-price p {
+  margin: 8px 0 0;
+
+  color: #cbd5e1;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+
+/* ==========================================================================
+   HERO IMAGE
+   ========================================================================== */
+
+.rental-hero-right {
+  min-width: 0;
+}
+
+.rental-hero-image-wrap {
+  position: relative;
+
+  width: min(680px, 100%);
+
+  margin-left: auto;
+
+  padding: 15px 0 18px 15px;
+}
+
+.rental-hero-image-accent {
+  position: absolute;
+
+  right: 0;
+
+  top: 35px;
+
+  width: 78%;
+
+  height: 82%;
+
+  border-radius: 28px;
+
+  background: #dff4ea;
+
+  transform: rotate(4deg);
+}
+
+.rental-hero-image {
+  position: relative;
+
+  z-index: 2;
+
+  display: block;
+
+  width: 100%;
+
+  height: 410px;
+
+  object-fit: cover;
+
+  border: 7px solid #ffffff;
+
+  border-radius: 26px;
+
+  box-shadow:
+    0 25px 55px rgba(15, 23, 42, 0.14);
+}
+
+.rental-hero-image-card {
+  position: absolute;
+
+  z-index: 3;
+
+  right: 22px;
+
+  bottom: -5px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  padding: 17px 22px;
+
+  border-radius: 15px;
+
+  background: var(--rental-navy);
+
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.18);
+}
+
+.rental-hero-image-card strong {
+  color: #8eddbb;
+
+  font-size: 18px;
+
+  letter-spacing: 1.5px;
+}
+
+.rental-hero-image-card span {
+  margin-top: 4px;
+
+  color: #ffffff;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+}
+
+
+/* ==========================================================================
+   FEATURES
+   ========================================================================== */
+
+.rental-features {
+  width: min(1400px, 90%);
+
+  margin: 0 auto;
+
+  padding: 25px 0;
+
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 14px;
+}
+
+.rental-feature {
+  min-height: 82px;
+
+  padding: 13px 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--rental-border);
+
+  border-radius: 13px;
+
+  box-shadow:
+    0 5px 18px rgba(15, 23, 42, 0.04);
+}
+
+.rental-feature-icon {
+  width: 40px;
+
+  height: 40px;
+
+  flex: 0 0 40px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 11px;
+
+  background: var(--rental-green-soft);
+
+  color: var(--rental-green-dark);
+
+  font-size: 20px;
+
+  font-weight: 900;
+}
+
+.rental-feature strong {
+  display: block;
+
+  color: var(--rental-navy);
+
+  font-size: 11px;
+
+  line-height: 1.3;
+
+  letter-spacing: 0.7px;
+}
+
+.rental-feature span {
+  display: block;
+
+  margin-top: 4px;
+
+  color: var(--rental-muted);
+
+  font-size: 10px;
+
+  line-height: 1.4;
+}
+
+
+/* ==========================================================================
+   COMMON SECTION HEADING
+   ========================================================================== */
+
+.rental-products-section,
+.rental-terms-section,
+.rental-documents-section,
+.rental-contact-section {
+  width: min(1400px, 90%);
+
+  margin: 0 auto;
+
+  padding: 30px 0 42px;
+}
+
+.rental-section-heading {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  margin-bottom: 24px;
+
+  padding: 17px 22px;
+
+  border-radius: 13px;
+
+  background: #eef9f4;
+
+  color: var(--rental-navy);
+
+  border: 1px solid #d9eee5;
+
+  box-shadow:
+    0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
+.rental-section-heading-icon {
+  width: 40px;
+
+  height: 40px;
+
+  flex: 0 0 40px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #dff4ea;
+
+  color: var(--rental-green-dark);
+
+  font-size: 19px;
+
+  font-weight: 900;
+}
+
+.rental-section-heading span {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: var(--rental-green-dark);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+}
+
+.rental-section-heading h2 {
+  margin: 0;
+
+  color: var(--rental-navy);
+
+  font-size: clamp(21px, 2.2vw, 30px);
+
+  line-height: 1.25;
+
+  font-weight: 900;
+
+  letter-spacing: 0;
+}
+
+.rental-section-heading-green {
+  margin-bottom: 10px;
+}
+
+
+/* ==========================================================================
+   PRODUCTS
+   ========================================================================== */
+
+.rental-products-container {
+  width: 100%;
+
+  position: relative;
+
+  clear: both;
+}
+
+.rental-products-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 22px;
+}
+
+.rental-product-card {
+  min-width: 0;
+
+  overflow: hidden;
+
+  display: flex;
+
+  flex-direction: column;
+
+  background: #ffffff;
+
+  border: 1px solid #dbe4df;
+
+  border-radius: 17px;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.07);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.rental-product-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 16px 34px rgba(15, 23, 42, 0.12);
+}
+
+
+/* ==========================================================================
+   PRODUCT IMAGE
+   ========================================================================== */
+
+.rental-product-image-box {
+  position: relative;
+
+  height: 275px;
+
+  overflow: hidden;
+
+  background: #f8fafc;
+
+  border-radius: 16px 16px 0 0;
+
+  /*
+    Extra top space gives the Available badge
+    its own area instead of sitting directly
+    over the product image.
+  */
+  padding-top: 42px;
+}
+
+.rental-product-image {
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: contain;
+
+  padding: 8px 18px 18px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+.rental-product-card:hover .rental-product-image {
+  transform: scale(1.035);
+}
+
+
+/* ==========================================================================
+   STOCK BADGE
+   ========================================================================== */
+
+.rental-stock-badge {
+  position: absolute;
+
+  top: 12px;
+
+  right: 14px;
+
+  z-index: 5;
+
+  padding: 7px 14px;
+
+  border-radius: 999px;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.4px;
+
+  white-space: nowrap;
+
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+.rental-stock-available {
+  background: #e8f7f0;
+
+  color: #0f8f62;
+
+  border: 1px solid #ccecdf;
+}
+
+.rental-stock-unavailable {
+  background: #fff1f1;
+
+  color: #b91c1c;
+
+  border: 1px solid #fecaca;
+}
+
+
+/* ==========================================================================
+   PRODUCT BODY
+   ========================================================================== */
+
+.rental-product-body {
+  min-height: 280px;
+
+  padding: 24px;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+.rental-product-top {
+  flex: 1;
+}
+
+.rental-product-brand {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  color: var(--rental-green-dark);
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.4px;
+
+  text-transform: uppercase;
+}
+
+.rental-product-title {
+  margin: 0;
+
+  color: var(--rental-navy);
+
+  font-size: clamp(19px, 1.5vw, 22px);
+
+  line-height: 1.4;
+
+  font-weight: 900;
+
+  letter-spacing: 0;
+
+  overflow-wrap: anywhere;
+}
+
+.rental-product-description {
+  margin: 12px 0 0;
+
+  color: #64748b;
+
+  font-size: 14px;
+
+  line-height: 1.55;
+}
+
+
+/* ==========================================================================
+   PRODUCT PRICE
+   ========================================================================== */
+
+.rental-product-price-row {
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 10px;
+
+  padding: 16px 0;
+
+  border-top: 1px solid #eef2f0;
+}
+
+.rental-product-price {
+  color: var(--rental-navy);
+
+  font-size: 28px;
+
+  font-weight: 900;
+}
+
+.rental-product-price-unit {
+  margin-left: 4px;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.rental-product-deposit {
+  color: #64748b;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  text-align: right;
+}
+
+
+/* ==========================================================================
+   PRODUCT BUTTON
+   ========================================================================== */
+
+.rental-product-button {
+  width: 100%;
+
+  min-height: 45px;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  background: var(--rental-green);
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.rental-product-button:hover:not(:disabled) {
+  background: var(--rental-green-dark);
+
+  transform: translateY(-1px);
+}
+
+.rental-product-button span {
+  margin-left: 8px;
+
+  font-size: 18px;
+}
+
+.rental-product-button:disabled {
+  background: #cbd5e1;
+
+  color: #64748b;
+
+  cursor: not-allowed;
+}
+
+
+/* ==========================================================================
+   EMPTY STATE
+   ========================================================================== */
+
+.rental-empty-state {
+  padding: 55px 20px;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px dashed #bfe7d3;
+
+  border-radius: 16px;
+}
+
+.rental-empty-icon {
+  font-size: 42px;
+}
+
+.rental-empty-state h3 {
+  margin: 12px 0 5px;
+
+  color: var(--rental-navy);
+
+  font-size: 19px;
+}
+
+.rental-empty-state p {
+  margin: 0;
+
+  color: var(--rental-muted);
+
+  font-size: 14px;
+}
+
+
+/* ==========================================================================
+   TERMS
+   ========================================================================== */
+
+.rental-terms-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 15px;
+}
+
+.rental-term-card {
+  display: flex;
+
+  gap: 14px;
+
+  padding: 19px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--rental-border);
+
+  border-radius: 13px;
+}
+
+.rental-term-icon {
+  width: 40px;
+
+  height: 40px;
+
+  flex: 0 0 40px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 11px;
+
+  background: var(--rental-green-soft);
+
+  color: var(--rental-green-dark);
+
+  font-weight: 900;
+}
+
+.rental-term-card h3 {
+  margin: 1px 0 6px;
+
+  color: var(--rental-navy);
+
+  font-size: 16px;
+
+  line-height: 1.35;
+}
+
+.rental-term-card p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+}
+
+.rental-term-highlight {
+  background: #f5fbf8;
+
+  border-color: #ccecdf;
+}
+
+.rental-term-warning {
+  background: #fff7f7;
+
+  border-color: #fecaca;
+}
+
+.rental-term-warning .rental-term-icon {
+  background: #fee2e2;
+
+  color: var(--rental-warning);
+}
+
+.rental-term-warning strong {
+  color: var(--rental-warning);
+}
+
+
+/* ==========================================================================
+   DOCUMENTS
+   ========================================================================== */
+
+.rental-documents-intro {
+  margin: 0 0 17px;
+
+  color: var(--rental-muted);
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+.rental-documents-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.rental-document-card {
+  padding: 23px;
+
+  background: #ffffff;
+
+  border: 1px solid #dbe4df;
+
+  border-radius: 15px;
+}
+
+.rental-document-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding-bottom: 15px;
+
+  border-bottom: 1px solid #e5eee8;
+}
+
+.rental-document-icon {
+  width: 38px;
+
+  height: 38px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 10px;
+
+  background: var(--rental-green-soft);
+
+  color: var(--rental-green-dark);
+
+  font-size: 13px;
+
+  font-weight: 900;
+}
+
+.rental-document-title h3 {
+  margin: 0;
+
+  color: var(--rental-navy);
+
+  font-size: 15px;
+
+  line-height: 1.35;
+}
+
+.rental-document-card ul {
+  margin: 15px 0 0;
+
+  padding: 0;
+
+  list-style: none;
+}
+
+.rental-document-card li {
+  position: relative;
+
+  padding: 7px 0 7px 23px;
+
+  color: #475569;
+
+  font-size: 14px;
+
+  line-height: 1.45;
+}
+
+.rental-document-card li::before {
+  content: "✓";
+
+  position: absolute;
+
+  left: 0;
+
+  color: var(--rental-green);
+
+  font-weight: 900;
+}
+
+
+/* ==========================================================================
+   BRANCHES & CONTACT
+   ========================================================================== */
+
+.rental-contact-section {
+  padding-bottom: 50px;
+}
+
+.rental-branches-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.rental-branch-card {
+  padding: 21px;
+
+  background: #ffffff;
+
+  border: 1px solid #dbe4df;
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 7px 20px rgba(15, 23, 42, 0.05);
+}
+
+.rental-branch-number {
+  display: inline-flex;
+
+  margin-bottom: 10px;
+
+  padding: 5px 9px;
+
+  border-radius: 6px;
+
+  background: var(--rental-green-soft);
+
+  color: var(--rental-green-dark);
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.2px;
+}
+
+.rental-branch-card h3 {
+  margin: 0 0 11px;
+
+  color: var(--rental-navy);
+
+  font-size: 17px;
+
+  line-height: 1.35;
+}
+
+.rental-branch-address {
+  display: flex;
+
+  gap: 9px;
+
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  line-height: 1.55;
+}
+
+.rental-branch-address span {
+  flex: 0 0 auto;
+
+  color: var(--rental-green);
+
+  font-size: 17px;
+}
+
+.rental-branch-phone-list {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 9px;
+
+  margin-top: 15px;
+
+  padding-top: 14px;
+
+  border-top: 1px solid #edf2ef;
+}
+
+.rental-branch-phone-list a {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 8px 11px;
+
+  border-radius: 8px;
+
+  background: #f5fbf8;
+
+  color: #27785b;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  text-decoration: none;
+
+  transition: background 0.2s ease;
+}
+
+.rental-branch-phone-list a:hover {
+  background: #e8f7f0;
+}
+
+
+/* ==========================================================================
+   SUPPORT
+   ========================================================================== */
+
+.rental-support-card {
+  margin-top: 20px;
+
+  padding: 22px 25px;
+
+  display: grid;
+
+  grid-template-columns:
+    0.8fr 1.2fr;
+
+  align-items: center;
+
+  gap: 25px;
+
+  border-radius: 16px;
+
+  background: var(--rental-navy);
+
+  box-shadow:
+    0 15px 32px rgba(15, 23, 42, 0.15);
+}
+
+.rental-support-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+}
+
+.rental-support-icon {
+  width: 44px;
+
+  height: 44px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 12px;
+
+  background: #e8f7f0;
+
+  color: var(--rental-green-dark);
+
+  font-size: 20px;
+}
+
+.rental-support-title > div > span {
+  color: #8eddbb;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  letter-spacing: 1.5px;
+}
+
+.rental-support-title h3 {
+  margin: 3px 0 0;
+
+  color: #ffffff;
+
+  font-size: 20px;
+
+  line-height: 1.3;
+}
+
+.rental-support-contacts {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 15px;
+}
+
+.rental-support-contacts > div {
+  padding-left: 17px;
+
+  border-left: 2px solid var(--rental-green);
+}
+
+.rental-support-contacts span {
+  display: block;
+
+  color: #cbd5e1;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+.rental-support-contacts a {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  text-decoration: none;
+}
+
+.rental-support-contacts a:hover {
+  color: #8eddbb;
+}
+
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+.rental-footer {
+  padding: 29px 20px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 6px;
+
+  background: #eef9f4;
+
+  color: var(--rental-navy);
+
+  text-align: center;
+
+  border-top: 1px solid #d9eee5;
+}
+
+.rental-footer strong {
+  font-size: 13px;
+
+  letter-spacing: 1.3px;
+}
+
+.rental-footer span {
+  color: #27785b;
+
+  font-size: 11px;
+
+  font-weight: 700;
+}
+
+.rental-footer small {
+  color: #64748b;
+
+  font-size: 11px;
+}
+
+
+/* ==========================================================================
+   RESPONSIVE - LARGE TABLET
+   ========================================================================== */
+
+@media (max-width: 1150px) {
+
+  .rental-hero-content {
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(380px, 0.9fr);
+
+    gap: 35px;
+  }
+
+  .rental-hero-title {
+    font-size: clamp(52px, 6.5vw, 82px);
+
+    /*
+      Keep positive spacing at every breakpoint.
+    */
+    letter-spacing: 1.2px;
+  }
+
+  .rental-hero-title span {
+    letter-spacing: 1.2px;
+  }
+
+  .rental-hero-image {
+    height: 340px;
+  }
+
+  .rental-features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .rental-products-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* ==========================================================================
+   RESPONSIVE - TABLET
+   ========================================================================== */
+
+@media (max-width: 850px) {
+
+  .rental-hero {
+    padding: 52px 5% 36px;
+  }
+
+  .rental-hero-content {
+    grid-template-columns: 1fr;
+
+    gap: 38px;
+  }
+
+  .rental-hero-right {
+    order: -1;
+  }
+
+  .rental-hero-image-wrap {
+    width: 100%;
+
+    max-width: 700px;
+
+    margin: 0 auto;
+
+    padding: 10px 0 15px;
+  }
+
+  .rental-hero-image {
+    height: 340px;
+  }
+
+  .rental-hero-title {
+    /*
+      Large but breathable.
+    */
+    font-size: clamp(52px, 11vw, 82px);
+
+    line-height: 1.06;
+
+    letter-spacing: 1px;
+  }
+
+  .rental-hero-title span {
+    line-height: 1.06;
+
+    letter-spacing: 1px;
+  }
+
+  .rental-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rental-terms-grid,
+  .rental-documents-grid,
+  .rental-branches-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rental-support-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ==========================================================================
+   RESPONSIVE - MOBILE
+   ========================================================================== */
+
+@media (max-width: 600px) {
+
+  .rental-hero {
+    padding: 45px 16px 32px;
+  }
+
+  .rental-hero-content {
+    gap: 30px;
+  }
+
+  .rental-hero-eyebrow {
+    font-size: 10px;
+
+    letter-spacing: 1.1px;
+  }
+
+
+  /*
+    IMPORTANT:
+    The old CSS had:
+
+      letter-spacing: -2.5px;
+
+    here.
+
+    That was overriding the desktop fix and
+    making LAPTOP RENTAL look congested again.
+
+    This version uses POSITIVE spacing.
+  */
+
+  .rental-hero-title {
+    font-size: clamp(45px, 14vw, 66px);
+
+    line-height: 1.08;
+
+    letter-spacing: 0.8px;
+
+    font-weight: 800;
+  }
+
+  .rental-hero-title span {
+    margin-top: 10px;
+
+    line-height: 1.08;
+
+    letter-spacing: 0.8px;
+
+    font-weight: 800;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     Description
+     ------------------------------------------------------------------------ */
+
+  .rental-hero-description {
+    margin-top: 20px;
+
+    font-size: 14px;
+
+    line-height: 1.65;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     Hero points
+     ------------------------------------------------------------------------ */
+
+  .rental-hero-points {
+    gap: 9px;
+
+    font-size: 11px;
+
+    letter-spacing: 0.7px;
+
+    line-height: 1.5;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     Price
+     ------------------------------------------------------------------------ */
+
+  .rental-hero-price {
+    margin-top: 20px;
+
+    padding: 16px 18px;
+  }
+
+  .rental-price-value {
+    font-size: 38px;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     Hero image
+     ------------------------------------------------------------------------ */
+
+  .rental-hero-image-wrap {
+    width: 100%;
+
+    padding: 8px 0 18px;
+  }
+
+  .rental-hero-image {
+    height: 270px;
+
+    border-width: 5px;
+
+    border-radius: 18px;
+  }
+
+  .rental-hero-image-card {
+    right: 5px;
+
+    bottom: -9px;
+
+    padding: 12px 14px;
+  }
+
+  .rental-hero-image-card strong {
+    font-size: 12px;
+  }
+
+  .rental-hero-image-card span {
+    font-size: 8px;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     Features
+     ------------------------------------------------------------------------ */
+
+  .rental-features {
+    width: calc(100% - 24px);
+
+    grid-template-columns: 1fr;
+
+    padding: 17px 0;
+  }
+
+  .rental-feature {
+    min-height: 70px;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     Sections
+     ------------------------------------------------------------------------ */
+
+  .rental-products-section,
+  .rental-terms-section,
+  .rental-documents-section,
+  .rental-contact-section {
+    width: calc(100% - 24px);
+
+    padding: 20px 0 30px;
+  }
+
+  .rental-section-heading {
+    padding: 14px 15px;
+
+    gap: 11px;
+  }
+
+  .rental-section-heading-icon {
+    width: 34px;
+
+    height: 34px;
+
+    flex-basis: 34px;
+  }
+
+  .rental-section-heading h2 {
+    font-size: 18px;
+
+    line-height: 1.3;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     Products
+     ------------------------------------------------------------------------ */
+
+  .rental-products-grid {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+  .rental-product-image-box {
+    height: 260px;
+
+    padding-top: 40px;
+  }
+
+  .rental-product-image {
+    padding: 8px 16px 16px;
+  }
+
+  .rental-stock-badge {
+    top: 10px;
+
+    right: 10px;
+
+    padding: 6px 11px;
+
+    font-size: 10px;
+  }
+
+  .rental-product-body {
+    min-height: 0;
+
+    padding: 20px;
+  }
+
+  .rental-product-title {
+    font-size: 20px;
+
+    line-height: 1.4;
+
+    letter-spacing: 0;
+  }
+
+  .rental-product-description {
+    font-size: 13px;
+
+    line-height: 1.55;
+  }
+
+  .rental-product-price {
+    font-size: 24px;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     Support
+     ------------------------------------------------------------------------ */
+
+  .rental-support-contacts {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* ------------------------------------------------------------------------
+     Footer
+     ------------------------------------------------------------------------ */
+
+  .rental-footer strong {
+    font-size: 11px;
+  }
+}
+
+
+/* ==========================================================================
+   VERY SMALL MOBILE
+   ========================================================================== */
+
+@media (max-width: 380px) {
+
+  .rental-hero-title {
+    font-size: 42px;
+
+    line-height: 1.08;
+
+    letter-spacing: 0.7px;
+  }
+
+  .rental-hero-title span {
+    letter-spacing: 0.7px;
+
+    line-height: 1.08;
+  }
+
+  .rental-hero-image {
+    height: 230px;
+  }
+
+  .rental-product-image-box {
+    height: 235px;
+  }
+
+  .rental-product-body {
+    padding: 18px;
+  }
+
+  .rental-product-title {
+    font-size: 19px;
+
+    line-height: 1.4;
+  }
+}

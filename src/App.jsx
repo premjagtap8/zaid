@@ -1221,6 +1221,8 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Repair from "./pages/Repair/Repair.jsx";
 import Rental from "./pages/Rental.jsx";
+import Rent from "./pages/Rent.jsx"
+import RentDetails from "./pages/RentDetails.jsx"
 
 // ===============================
 // ADMIN DASHBOARD
@@ -1465,6 +1467,8 @@ import RentalDocuments from "./pages/rental/RentalDocuments";
 import RentalReturn from "./pages/rental/RentalReturn";
 import WalkInRentalOrders from "./pages/rental/WalkInRentalOrders";
 import WalkInRentalDetails from "./pages/rental/WalkInRentalDetails.jsx";
+
+
 
 
 // =====================================================
@@ -1888,7 +1892,12 @@ function App() {
 
                     <Route
                         path="/rental"
-                        element={<Rental />}
+                        element={<Rent />}
+                    />
+
+                    <Route
+                        path="/rental/:id"
+                        element={<RentDetails />}
                     />
 
                     <Route
