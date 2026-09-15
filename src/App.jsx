@@ -1253,6 +1253,7 @@ import ReceptionistDashboard from "./pages/Receptionist/ReceptionistDashboard";
 import TechnicianDashboard from "./pages/Technician/TechnicianDashboard";
 import InventoryDashboard from "./pages/Inventory/InventoryDashboard";
 import AccountantDashboard from "./pages/Accountant/AccountantDashboard";
+import { useState, useEffect, useRef } from "react";
 
 // ===============================
 // CATEGORY
@@ -1291,7 +1292,7 @@ import StockHistory from "./pages/Inventory/StockHistory";
 // ===============================
 
 import Shop from "./pages/Shop/Shop";
-import Cart from "./pages/Shop/Cart/Cart";
+import {Cart} from "./pages/Shop/Cart/Carttt";
 import Wishlist from "./pages/Shop/Wishlist/Wishlist";
 
 // ===============================
@@ -1778,6 +1779,21 @@ function App() {
     // APP RENDER
     // =====================================================
 
+    const fixedHeaderRef = useRef(null);
+const [headerHeight, setHeaderHeight] = useState(150);
+
+
+useEffect(() => {
+    const updateHeight = () => {
+        if (fixedHeaderRef.current) {
+            setHeaderHeight(fixedHeaderRef.current.offsetHeight);
+        }
+    };
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+}, []);
+
     return (
         <div className="app-shell">
 
@@ -1797,6 +1813,7 @@ function App() {
                     ========================================= */}
 
                     <div
+                         ref={fixedHeaderRef}   // added
                         className="
                             fixed
                             top-0
@@ -1814,7 +1831,7 @@ function App() {
                         HEADER + TOPBAR SPACE
                     ========================================= */}
 
-                    <div className="h-[150px] w-full flex-shrink-0"></div>
+                    <div style={{ height: headerHeight }} className="w-full"></div>
                 </>
             )}
 

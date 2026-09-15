@@ -119,6 +119,9 @@ const Cart = () => {
 
                 ]);
 
+                console.log("cart response is printed below")
+                console.log(cartRes)
+
 
             console.log(
                 "CART RESPONSE:",
