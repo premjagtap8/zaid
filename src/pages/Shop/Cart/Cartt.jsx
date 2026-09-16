@@ -32,6 +32,8 @@ export function Cartt()
             console.log(data)
             console.log(data.data.items)
             const items=data.data.items
+            console.log("single item in the cart is printed below")
+            console.log(items[0].product)
             setcartList(items)
         })
         .catch((error)=>{

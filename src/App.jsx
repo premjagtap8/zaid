@@ -1292,7 +1292,7 @@ import StockHistory from "./pages/Inventory/StockHistory";
 // ===============================
 
 import Shop from "./pages/Shop/Shop";
-import {Cart} from "./pages/Shop/Cart/Carttt";
+import {Cartttt} from "./pages/Shop/Cart/Cartttt";
 import Wishlist from "./pages/Shop/Wishlist/Wishlist";
 
 // ===============================
@@ -1421,6 +1421,7 @@ import MyLeaves from "./pages/Admin/leave/MyLeaves";
 import AddSubCategory from "./pages/Admin/Category/SubCategory/AddSubCategory";
 import SubCategoryList from "./pages/Admin/Category/SubCategory/SubCategoryList";
 import EditSubCategory from "./pages/Admin/Category/SubCategory/EditSubCategory";
+import { Customers } from "./pages/Receptionist/Customers.jsx";
 
 // ===============================
 // AVAILABILITY
@@ -2495,7 +2496,7 @@ useEffect(() => {
 
                     <Route
                         path="/cart"
-                        element={<Cart />}
+                        element={<Cartttt/>}
                     />
 
                     {/* =================================================
@@ -2610,6 +2611,17 @@ useEffect(() => {
   path="rental/new"
   element={<WalkInRental />}
 />
+
+<Route
+  path="customers"
+  element={<Customers />}
+/>
+
+
+
+
+
+
 
 <Route
   path="rental/orders"
