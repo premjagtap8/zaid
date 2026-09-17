@@ -1451,6 +1451,7 @@ import TechinicaStaff from "./pages/Receptionist/TechinicaStaff.jsx";
 import ReceptionistLayout from "./pages/Receptionist/ReceptionistLayout.jsx";
 import RepairCustomer from "./pages/Receptionist/RepairCustomer.jsx";
 import WalkInRentalInvoice from  "./pages/Receptionist/WalkInRentalInvoice";
+import { AllExpenses } from "./pages/Accountant/AllExpenses.jsx";
 
 // ===============================
 // AUTH
@@ -1469,6 +1470,7 @@ import RentalDocuments from "./pages/rental/RentalDocuments";
 import RentalReturn from "./pages/rental/RentalReturn";
 import WalkInRentalOrders from "./pages/rental/WalkInRentalOrders";
 import WalkInRentalDetails from "./pages/rental/WalkInRentalDetails.jsx";
+import { AddExpense } from "./pages/Accountant/AddExpense.jsx";
 
 
 
@@ -1857,6 +1859,21 @@ useEffect(() => {
                     {/* =================================================
                         PUBLIC
                     ================================================= */}
+
+
+                     <Route
+                        path="/addExpense"
+                        element={<AddExpense />}
+                    />
+                    
+
+                     <Route
+                        path="/allExpenses"
+                        element={<AllExpenses />}
+                    />
+
+
+                    
 
                     <Route
                         path="/"

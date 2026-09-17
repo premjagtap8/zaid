@@ -53,10 +53,22 @@ const navigationItems = [
     path: "/",
   },
   {
+    label: "ABOUT US",
+    subtitle: "Why Choose Us?",
+    icon: Info,
+    path: "/about-us",
+  },
+  {
     label: "BUY",
     subtitle: "Laptops & Accessories",
     icon: Laptop,
     path: "/shop",
+  },
+  {
+    label: "REFURBISHED",
+    subtitle: "Certified Laptops",
+    icon: ShoppingCart,
+    path: "/shop?condition=refurbished",
   },
   {
     label: "RENT",
@@ -70,18 +82,8 @@ const navigationItems = [
     icon: Wrench,
     path: "/repair",
   },
-  {
-    label: "REFURBISHED",
-    subtitle: "Certified Laptops",
-    icon: ShoppingCart,
-    path: "/shop?condition=refurbished",
-  },
-  {
-    label: "ABOUT US",
-    subtitle: "Why Choose Us?",
-    icon: Info,
-    path: "/about-us",
-  },
+  
+  
   {
     label: "CONTACT",
     subtitle: "Solutions for Business",

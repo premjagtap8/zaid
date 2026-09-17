@@ -63,12 +63,25 @@ export function Cartttt()
     },[])
 
 
+    const isItemOutOfStock=(item)=>{
+        const obj=inventory.find((inv)=>{
+            inv.product._id===item.product._id
+        })
+
+        if(!obj)
+        {
+            return true
+        }
+    }
+
+
 
 
 
     return(
         <>
-            <h1>Surprise Surprise Prem Jagtap is back</h1>
+            <h1>This is cart page</h1>
+            
         </>
     )
 }
