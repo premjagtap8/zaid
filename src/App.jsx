@@ -996,8 +996,8 @@
 //                     <Route path="receptionist/walk-in-orders" element={<WalkInOrders />}/>
 //                     <Route path="receptionist/walk-in-invoice/:invoiceId" element={<WalkInInvoice />}  /> 
 //                     <Route path="staff-list" element={<TechinicaStaff/>} />
-                  
-                 
+
+
 
 //                 <Route
 //                     path="/receptionist/leave/apply"
@@ -1134,7 +1134,7 @@
 //         element={<div>Settings Content</div>}
 //     />
 // </Route>
-                
+
 
 //                 {/* =================================================
 //                     INVENTORY
@@ -1194,7 +1194,7 @@
 //                 />
 
 //                         </Routes>
- 
+
 //             </main>
 
 //             {/* <Footer /> */}
@@ -1207,7 +1207,7 @@
 
 
 import { Routes, Route, useLocation } from "react-router-dom";
-
+import { useState, useEffect, useRef } from "react";
 import TopBar from "./components/TopBar/TopBar";
 import Header from "./components/Header/Header";
 import WhatsAppWidget from "./components/WhatsAppWidget/WhatsAppWidget";
@@ -1221,15 +1221,14 @@ import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 import Repair from "./pages/Repair/Repair.jsx";
 import Rental from "./pages/Rental.jsx";
-import Rent from "./pages/Rent.jsx"
-import RentDetails from "./pages/RentDetails.jsx"
 
 // ===============================
 // ADMIN DASHBOARD
 // ===============================
 
 import AdminDashboard from "./pages/Admin/AdminDashboard";
-import Dashboard from "./pages/Admin/Dashboard/Dashboard";
+import Dashboard from "./pages/Admin/Dashboard/Dashboard.jsx";
+
 
 // ===============================
 // ADMIN CUSTOMER
@@ -1253,7 +1252,7 @@ import ReceptionistDashboard from "./pages/Receptionist/ReceptionistDashboard";
 import TechnicianDashboard from "./pages/Technician/TechnicianDashboard";
 import InventoryDashboard from "./pages/Inventory/InventoryDashboard";
 import AccountantDashboard from "./pages/Accountant/AccountantDashboard";
-import { useState, useEffect, useRef } from "react";
+
 
 // ===============================
 // CATEGORY
@@ -1292,7 +1291,7 @@ import StockHistory from "./pages/Inventory/StockHistory";
 // ===============================
 
 import Shop from "./pages/Shop/Shop";
-import {Cartttt} from "./pages/Shop/Cart/Cartttt";
+import Cart from "./pages/Shop/Cart/Cart";
 import Wishlist from "./pages/Shop/Wishlist/Wishlist";
 
 // ===============================
@@ -1421,7 +1420,6 @@ import MyLeaves from "./pages/Admin/leave/MyLeaves";
 import AddSubCategory from "./pages/Admin/Category/SubCategory/AddSubCategory";
 import SubCategoryList from "./pages/Admin/Category/SubCategory/SubCategoryList";
 import EditSubCategory from "./pages/Admin/Category/SubCategory/EditSubCategory";
-import { Customers } from "./pages/Receptionist/Customers.jsx";
 
 // ===============================
 // AVAILABILITY
@@ -1442,6 +1440,31 @@ import TechnicianDashboardAnalytic from "./pages/Technician/TechnicianDashboardA
 import TechnicianRepairHistory from "./pages/Technician/TechnicianRepairHistory.jsx";
 import InventoryManagement from "./pages/Technician/InventoryManagement.jsx";
 
+
+
+//HR 
+
+
+import HRLayout from "./pages/HR/HRLayout.jsx";
+import HrDashboard from "./pages/HR/HrDashboard.jsx"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // ===============================
 // RECEPTIONIST
 // ===============================
@@ -1450,8 +1473,7 @@ import RepairRates from "./pages/Receptionist/RepairRates.jsx";
 import TechinicaStaff from "./pages/Receptionist/TechinicaStaff.jsx";
 import ReceptionistLayout from "./pages/Receptionist/ReceptionistLayout.jsx";
 import RepairCustomer from "./pages/Receptionist/RepairCustomer.jsx";
-import WalkInRentalInvoice from  "./pages/Receptionist/WalkInRentalInvoice";
-import { AllExpenses } from "./pages/Accountant/AllExpenses.jsx";
+import WalkInRentalInvoice from "./pages/Receptionist/WalkInRentalInvoice";
 
 // ===============================
 // AUTH
@@ -1470,17 +1492,23 @@ import RentalDocuments from "./pages/rental/RentalDocuments";
 import RentalReturn from "./pages/rental/RentalReturn";
 import WalkInRentalOrders from "./pages/rental/WalkInRentalOrders";
 import WalkInRentalDetails from "./pages/rental/WalkInRentalDetails.jsx";
-import { AddExpense } from "./pages/Accountant/AddExpense.jsx";
+// import RentalReturn from "./pages/Rental/RentalReturn";
 
 
-
-
+import AdminSettings from "./pages/Admin/AdminSettings/AdminSettings.jsx";
+import TechnicianNotification from "./pages/Technician/TechnicianNotification.jsx";
 // =====================================================
 // APP
 // =====================================================
 
 function App() {
+
+    const fixedHeaderRef = useRef(null);
+    const [headerHeight, setHeaderHeight] = useState(150);
     const location = useLocation();
+
+
+
 
     // =====================================================
     // ADMIN ROUTES
@@ -1740,7 +1768,10 @@ function App() {
         location.pathname.startsWith("/accountant-dashboard/") ||
 
         location.pathname === "/employee/dashboard" ||
-        location.pathname.startsWith("/employee/dashboard/");
+        location.pathname.startsWith("/employee/dashboard/") ||
+
+        location.pathname === "/hr-dashboard" ||
+        location.pathname.startsWith("/hr-dashboard/");
 
     // =====================================================
     // HIDE WEBSITE HEADER
@@ -1782,21 +1813,6 @@ function App() {
     // APP RENDER
     // =====================================================
 
-    const fixedHeaderRef = useRef(null);
-const [headerHeight, setHeaderHeight] = useState(150);
-
-
-useEffect(() => {
-    const updateHeight = () => {
-        if (fixedHeaderRef.current) {
-            setHeaderHeight(fixedHeaderRef.current.offsetHeight);
-        }
-    };
-    updateHeight();
-    window.addEventListener("resize", updateHeight);
-    return () => window.removeEventListener("resize", updateHeight);
-}, []);
-
     return (
         <div className="app-shell">
 
@@ -1816,7 +1832,7 @@ useEffect(() => {
                     ========================================= */}
 
                     <div
-                         ref={fixedHeaderRef}   // added
+                        ref={fixedHeaderRef}
                         className="
                             fixed
                             top-0
@@ -1834,7 +1850,7 @@ useEffect(() => {
                         HEADER + TOPBAR SPACE
                     ========================================= */}
 
-                    <div style={{ height: headerHeight }} className="w-full"></div>
+                    <div style={{ height: headerHeight }} className=" w-full flex-shrink-0"></div>
                 </>
             )}
 
@@ -1861,19 +1877,8 @@ useEffect(() => {
                     ================================================= */}
 
 
-                     <Route
-                        path="/addExpense"
-                        element={<AddExpense />}
-                    />
-                    
-
-                     <Route
-                        path="/allExpenses"
-                        element={<AllExpenses />}
-                    />
 
 
-                    
 
                     <Route
                         path="/"
@@ -1927,12 +1932,7 @@ useEffect(() => {
 
                     <Route
                         path="/rental"
-                        element={<Rent />}
-                    />
-
-                    <Route
-                        path="/rental/:id"
-                        element={<RentDetails />}
+                        element={<Rental />}
                     />
 
                     <Route
@@ -2454,12 +2454,11 @@ useEffect(() => {
                             SETTINGS
                         ========================================= */}
 
+
                         <Route
                             path="/settings"
                             element={
-                                <div>
-                                    Settings Page
-                                </div>
+                                <AdminSettings />
                             }
                         />
 
@@ -2513,7 +2512,7 @@ useEffect(() => {
 
                     <Route
                         path="/cart"
-                        element={<Cartttt/>}
+                        element={<Cart />}
                     />
 
                     {/* =================================================
@@ -2586,6 +2585,78 @@ useEffect(() => {
                         element={<Payment />}
                     />
 
+
+                    {/* =================================================
+                         HR DASHBOARD
+==                   =============================================== */}
+
+                    <Route
+                        path="/hr-dashboard"
+                        element={<HRLayout />}
+                    >
+
+                        {/* Employees */}
+                        <Route
+                            index
+                            element={< HrDashboard />}
+                        />
+
+                        <Route
+                            path="employees"
+                            element={< EmployeeList />}
+                        />
+
+                        {/* Add Employee */}
+                        <Route
+                            path="employees/add"
+                            element={<AddEmployee />}
+                        />
+
+                        {/* Add Shifting */}
+                        <Route
+                            path="shifting/add"
+                            element={<ShiftManagement />}
+                        />
+
+                        {/* Employee Shift */}
+                        <Route
+                            path="employee-shift"
+                            element={<EmployeeShiftList />}
+                        />
+
+                        {/* Attendance */}
+                        <Route
+                            path="attendance"
+                            element={<AdminAttendance />}
+                        />
+
+                        {/* Leave Requests */}
+                        <Route
+                            path="leave-requests"
+                            element={<LeaveRequests />}
+                        />
+
+                        {/* Leave Policies */}
+                        <Route
+                            path="leave-policies"
+                            element={<LeavePolicies />}
+                        />
+
+                        {/* Holidays */}
+                        <Route
+                            path="holidays"
+                            element={<HolidaysManagement />}
+                        />
+
+                        {/* Salary */}
+                        <Route
+                            path="salary"
+                            element={<SalaryPage />}
+                        />
+
+                    </Route>
+
+
                     {/* =================================================
                         RECEPTIONIST
                     ================================================= */}
@@ -2620,41 +2691,38 @@ useEffect(() => {
                         />
 
 
+
+                        {/* =================================================
+                        RECEPTIONIST
+                    ================================================= */}
+
+
+
+
+
                         {/* =================================================
                             WALK-IN RENTAL
                             ================================================= */}
 
-<Route
-  path="rental/new"
-  element={<WalkInRental />}
-/>
+                        <Route
+                            path="rental/new"
+                            element={<WalkInRental />}
+                        />
 
-<Route
-  path="customers"
-  element={<Customers />}
-/>
+                        <Route
+                            path="rental/orders"
+                            element={<WalkInRentalOrders />}
+                        />
 
-
-
-
-
-
-
-<Route
-  path="rental/orders"
-  element={<WalkInRentalOrders />}
-/>
-
-<Route
-  path="rental/orders/:rentalId"
-  element={<WalkInRentalDetails />}
-/>
-<Route
-    path="walk-in-invoice/:rentalId"
-    element={<WalkInRentalInvoice />}
-/>
-
-
+                        <Route
+                            path="rental/orders/:rentalId"
+                            element={<WalkInRentalDetails />}
+                        />
+                        <Route
+                            path="walk-in-invoice/:rentalId"
+                            element={<WalkInRentalInvoice />}
+                        />
+                        <Route path="rental/orders/:rentalId/return" element={<RentalReturn />} />
 
 
                         {/* Walk-in Orders */}
@@ -2821,7 +2889,7 @@ useEffect(() => {
                     />
 
 
-                                        {/* =================================================
+                    {/* =================================================
                         RENTAL
                     ================================================= */}
 
@@ -2865,7 +2933,7 @@ useEffect(() => {
                         element={<RentalReturn />}
                     />
 
-                
+
 
                 </Routes>
 

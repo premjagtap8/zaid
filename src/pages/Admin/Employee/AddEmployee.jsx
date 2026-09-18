@@ -1747,7 +1747,7 @@ function AddEmployee() {
                 prev.hasSystemAccess
 
                     ? prev.department ===
-                      "OTHER"
+                        "OTHER"
 
                         ? "FRONT_DESK"
 
@@ -1925,6 +1925,18 @@ function AddEmployee() {
                                     Accountant
                                 </option>
 
+                                <option value="HR_EXECUTIVE">
+                                    HR
+                                </option>
+
+
+
+                                <option value="IT_SUPPORT">
+                                    IT SUPPORT
+                                </option>
+
+
+
                                 <option value="OTHER">
                                     Other
                                 </option>
@@ -1976,6 +1988,22 @@ function AddEmployee() {
                                 <option value="ACCOUNTS">
                                     Accounts
                                 </option>
+
+
+                                <option value="HR">
+                                    HR
+                                </option>
+
+
+
+
+                                <option value="IT_SUPPORT">
+                                    IT SUPPORT
+                                </option>
+
+
+
+
 
                             </>
 

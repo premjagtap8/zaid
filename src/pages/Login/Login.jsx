@@ -424,6 +424,8 @@ function Login({ isOpen = true, onClose }) {
         INVENTORY: "/inventory-dashboard",
 
         ACCOUNTANT: "/accountant-dashboard",
+
+        HR_EXECUTIVE : "/hr-dashboard"
       };
 
       const targetRoute = roleRoutes[role];
